@@ -19,29 +19,42 @@
 
 export type Text = { en: string; es?: string };
 
-/** An empty slot — renders as a placeholder box until you fill it in. */
-export const blank: Text = { en: "", es: "" };
+/**
+ * An empty slot — renders as a placeholder box until you fill it in.
+ *
+ * Frozen because a single object is shared by every blank field on the site;
+ * without this, one accidental write would edit all of them at once.
+ */
+export const blank: Text = Object.freeze({ en: "", es: "" });
 
 /** True when nothing has been written yet. */
 export function isBlank(text?: Text): boolean {
   return !text || text.en.trim() === "";
 }
 
+/** The Spanish to display, falling back to English when untranslated. */
+export function spanish(text: Text): string {
+  return text.es?.trim() ? text.es : text.en;
+}
+
 /** A link families can click. `label` is bilingual; `href` is just a URL. */
 export type LinkItem = {
+  /** Permanent internal name — never shown. */
+  id: string;
   label: Text;
   /** Paste the web address here, e.g. "https://launchpad.classlink.com/cms" */
   href: string;
 };
 
-/** A titled box that holds a paragraph of writing. */
+/**
+ * A titled box holding a paragraph.
+ *
+ * `id` is a stable key that never changes even when you reword the title —
+ * so React keeps track of the box correctly, and layout never depends on
+ * what the heading happens to say.
+ */
 export type Block = {
+  id: string;
   title: Text;
   body: Text;
-};
-
-/** A list of short items under one heading. */
-export type ListBlock = {
-  title: Text;
-  items: Text[];
 };

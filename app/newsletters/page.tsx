@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { pastNewsletters } from "@/content/newsletters";
 import { isBlank } from "@/content/types";
+import { PageHeader } from "@/components/page-header";
 import { T } from "@/components/t";
 
 export const metadata: Metadata = {
@@ -14,34 +15,23 @@ export default function PastNewslettersPage() {
 
   return (
     <>
-      <header className="border-b border-line bg-gradient-to-b from-sky-soft/50 to-transparent">
-        <div className="mx-auto max-w-4xl px-5 py-12 sm:px-8 sm:py-16">
-          <h1 className="font-display text-4xl font-semibold leading-tight tracking-tight text-ink sm:text-5xl">
-            <span className="lang-en">Past Newsletters</span>
-            <span className="lang-es">Boletines Anteriores</span>
-          </h1>
-          <p className="mt-3 text-lg text-muted">
-            <span className="lang-en">
-              Every week of this school year, newest first.
-            </span>
-            <span className="lang-es">
-              Cada semana de este año escolar, la más reciente primero.
-            </span>
-          </p>
-        </div>
-      </header>
+      <PageHeader
+        tone="ice"
+        width="max-w-4xl"
+        title={{ en: "Past Newsletters", es: "Boletines Anteriores" }}
+        intro={{
+          en: "Every week of this school year, newest first.",
+          es: "Cada semana de este año escolar, la más reciente primero.",
+        }}
+      />
 
       <div className="mx-auto max-w-4xl px-5 py-12 sm:px-8 sm:py-14">
         {past.length === 0 ? (
           <p className="rounded-card border border-dashed border-line bg-surface-2 px-6 py-10 text-center italic text-muted">
-            <span className="lang-en">
-              Past newsletters will appear here once there is more than one
-              week.
-            </span>
-            <span className="lang-es">
-              Los boletines anteriores aparecerán aquí cuando haya más de una
-              semana.
-            </span>
+            <T
+              en="Past newsletters will appear here once there is more than one week."
+              es="Los boletines anteriores aparecerán aquí cuando haya más de una semana."
+            />
           </p>
         ) : (
           <ul className="space-y-3">
@@ -53,8 +43,7 @@ export default function PastNewslettersPage() {
                 >
                   <span>
                     <span className="block font-display text-lg font-semibold text-ink group-hover:text-accent">
-                      <span className="lang-en">Week {n.week}</span>
-                      <span className="lang-es">Semana {n.week}</span>
+                      <T en={`Week ${n.week}`} es={`Semana ${n.week}`} />
                     </span>
                     {!isBlank(n.dateRange) && (
                       <span className="mt-0.5 block text-sm text-muted">

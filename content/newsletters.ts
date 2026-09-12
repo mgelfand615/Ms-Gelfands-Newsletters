@@ -20,6 +20,11 @@
 import { blank, type Text } from "./types";
 
 export type Subject = {
+  /**
+   * A short, permanent name used internally — never shown to anyone.
+   * Keep it the same even if you reword the heading.
+   */
+  id: string;
   name: Text;
   /** What we're doing in this subject this week. */
   body: Text;
@@ -59,6 +64,8 @@ export type Newsletter = {
   learning: Subject[];
 };
 
+const directions: Text = { en: "Directions", es: "Instrucciones" };
+
 /** A fresh, empty week. Copy this block to start each newsletter. */
 export const newsletters: Newsletter[] = [
   {
@@ -75,6 +82,7 @@ export const newsletters: Newsletter[] = [
     learning: [
       {
         // Across the top — a few sentences.
+        id: "sel",
         name: {
           en: "Social Emotional Learning",
           es: "Aprendizaje Socioemocional",
@@ -84,41 +92,67 @@ export const newsletters: Newsletter[] = [
         showHomework: false,
         homework: blank,
         directionsLink: "",
-        directionsLabel: { en: "Directions", es: "Instrucciones" },
+        directionsLabel: directions,
       },
       {
         // Left-hand big box.
+        id: "reading",
         name: { en: "Reading", es: "Lectura" },
         body: blank,
         span: "half",
         showHomework: true,
         homework: blank,
         directionsLink: "",
-        directionsLabel: { en: "Directions", es: "Instrucciones" },
+        directionsLabel: directions,
       },
       {
         // Right-hand big box.
+        id: "math",
         name: { en: "Math", es: "Matemáticas" },
         body: blank,
         span: "half",
         showHomework: true,
         homework: blank,
         directionsLink: "",
-        directionsLabel: { en: "Directions", es: "Instrucciones" },
+        directionsLabel: directions,
       },
       {
         // Across the bottom.
+        id: "social-studies",
         name: { en: "Social Studies", es: "Estudios Sociales" },
         body: blank,
         span: "full",
         showHomework: false,
         homework: blank,
         directionsLink: "",
-        directionsLabel: { en: "Directions", es: "Instrucciones" },
+        directionsLabel: directions,
       },
     ],
   },
 ];
+
+/* ── Checks ─────────────────────────────────────────────────────────────────
+   These run when the site is built. They turn two easy mistakes into a plain
+   sentence telling you what to fix, instead of a confusing framework error
+   several steps later.                                                      */
+
+if (newsletters.length === 0) {
+  throw new Error(
+    "content/newsletters.ts: the `newsletters` list is empty. The site needs " +
+      "at least one newsletter — paste the template block back in.",
+  );
+}
+
+const slugsSeen = new Set<string>();
+for (const entry of newsletters) {
+  if (slugsSeen.has(entry.slug)) {
+    throw new Error(
+      `content/newsletters.ts: two newsletters both use slug "${entry.slug}". ` +
+        'Each week needs its own, e.g. "week-1", "week-2".',
+    );
+  }
+  slugsSeen.add(entry.slug);
+}
 
 /* ── Helpers ────────────────────────────────────────────────────────────── */
 
@@ -127,7 +161,7 @@ export function allNewsletters(): Newsletter[] {
   return [...newsletters].sort((a, b) => b.date.localeCompare(a.date));
 }
 
-/** The one families land on. */
+/** The one families land on. Guaranteed to exist by the check above. */
 export function latestNewsletter(): Newsletter {
   return allNewsletters()[0];
 }

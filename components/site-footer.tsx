@@ -24,8 +24,7 @@ export function SiteFooter() {
 
         <div>
           <p className="text-sm font-semibold text-ink">
-            <span className="lang-en">Pages</span>
-            <span className="lang-es">Páginas</span>
+            <T en="Pages" es="Páginas" />
           </p>
           <ul className="mt-3 space-y-2">
             {nav.map((item) => (
@@ -43,8 +42,7 @@ export function SiteFooter() {
 
         <div>
           <p className="text-sm font-semibold text-ink">
-            <span className="lang-en">Get in touch</span>
-            <span className="lang-es">Comuníquese</span>
+            <T en="Get in touch" es="Comuníquese" />
           </p>
           <a
             href={`mailto:${contact.email}`}

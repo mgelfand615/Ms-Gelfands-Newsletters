@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { NewsletterBody, NewsletterTitle } from "@/components/newsletter-body";
 import { newsletterBySlug, newsletters } from "@/content/newsletters";
+import { T } from "@/components/t";
 
 /** One static page per newsletter at build time. */
 export async function generateStaticParams() {
@@ -38,8 +39,7 @@ export default async function NewsletterPage({
         href="/newsletters"
         className="no-print text-sm font-medium text-accent underline-offset-4 hover:underline"
       >
-        <span className="lang-en">← Past Newsletters</span>
-        <span className="lang-es">← Boletines Anteriores</span>
+        <T en="← Past Newsletters" es="← Boletines Anteriores" />
       </Link>
 
       <div className="mb-12 mt-4">

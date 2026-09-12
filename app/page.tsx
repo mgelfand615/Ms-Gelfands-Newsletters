@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { NewsletterBody, NewsletterTitle } from "@/components/newsletter-body";
 import { latestNewsletter, pastNewsletters } from "@/content/newsletters";
+import { T } from "@/components/t";
 
 /**
  * Families land straight on the most recent newsletter — no click needed.
@@ -24,8 +25,10 @@ export default function HomePage() {
             href="/newsletters"
             className="font-semibold text-accent underline-offset-4 hover:underline"
           >
-            <span className="lang-en">← See all past newsletters</span>
-            <span className="lang-es">← Ver todos los boletines anteriores</span>
+            <T
+              en="← See all past newsletters"
+              es="← Ver todos los boletines anteriores"
+            />
           </Link>
         </p>
       )}
