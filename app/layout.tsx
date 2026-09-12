@@ -31,15 +31,21 @@ export const metadata: Metadata = {
   },
 };
 
-/* Apply the saved language before first paint, so a family who chose Spanish
-   never sees a flash of English. */
-const langScript = `
+/* Apply saved choices before first paint: a family who chose Spanish never
+   sees a flash of English, and one who chose dark never sees a white flash.
+   This has to be a blocking script in <head> — anything later runs after the
+   browser has already painted. */
+const preferencesScript = `
 (function () {
   try {
-    var saved = localStorage.getItem('lang');
-    if (saved === 'es') {
+    var lang = localStorage.getItem('lang');
+    if (lang === 'es') {
       document.documentElement.dataset.lang = 'es';
       document.documentElement.lang = 'es';
+    }
+    var theme = localStorage.getItem('theme');
+    if (theme === 'light' || theme === 'dark') {
+      document.documentElement.dataset.theme = theme;
     }
   } catch (e) {}
 })();
@@ -55,7 +61,7 @@ export default function RootLayout({
       className={`${fraunces.variable} ${inter.variable} h-full`}
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: langScript }} />
+        <script dangerouslySetInnerHTML={{ __html: preferencesScript }} />
       </head>
       <body className="flex min-h-full flex-col">
         <a

@@ -61,33 +61,81 @@
   --info-soft: var(--ice);
 }
 
+/* ── Dark values ────────────────────────────────────────────────────────
+   Declared once here, then pointed at by the two selectors below: one for
+   "follow my device", one for "I chose dark". Only the aliasing repeats, so
+   the values themselves can never drift apart.
+   (tests/theme.test.ts fails if the two lists stop matching.)
+   ─────────────────────────────────────────────────────────────────────── */
+:root {
+  --d-bg: #12152b;
+  --d-chrome: #1c2041;
+  --d-surface: #1b1f3d;
+  --d-surface-2: #262b4f;
+  --d-ink: #eef1ff;
+  --d-muted: #a3abd4;
+  --d-line: #333863;
+  --d-chrome-line: #3d4370;
+  --d-accent: #9289e2;
+  --d-accent-ink: #13162e;
+  --d-accent-soft: #2c2a57;
+  --d-good: #6befb2;
+  --d-good-soft: #16382f;
+  --d-caution: #f0a061;
+  --d-caution-soft: #38251a;
+  --d-info: #5ac5f2;
+  --d-info-soft: #14334a;
+}
+
+/* Follows the device, unless the reader explicitly chose light. */
 @media (prefers-color-scheme: dark) {
-  :root {
-    /* In the dark the chrome sits *above* the page rather than below it —
-       a raised band reads correctly where a darker one would look like a
-       hole. Everything else keeps the same roles. */
-    --bg: #12152b;
-    --chrome: #1c2041;
-    --surface: #1b1f3d;
-    --surface-2: #262b4f;
-    --ink: #eef1ff;
-    --muted: #a3abd4;
-    --line: #333863;
-    --chrome-line: #3d4370;
-
-    --accent: #9289e2;
-    --accent-ink: #13162e;
-    --accent-soft: #2c2a57;
-
-    --good: #6befb2;
-    --good-soft: #16382f;
-
-    --caution: #f0a061;
-    --caution-soft: #38251a;
-
-    --info: #5ac5f2;
-    --info-soft: #14334a;
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: var(--d-bg);
+    --chrome: var(--d-chrome);
+    --surface: var(--d-surface);
+    --surface-2: var(--d-surface-2);
+    --ink: var(--d-ink);
+    --muted: var(--d-muted);
+    --line: var(--d-line);
+    --chrome-line: var(--d-chrome-line);
+    --accent: var(--d-accent);
+    --accent-ink: var(--d-accent-ink);
+    --accent-soft: var(--d-accent-soft);
+    --good: var(--d-good);
+    --good-soft: var(--d-good-soft);
+    --caution: var(--d-caution);
+    --caution-soft: var(--d-caution-soft);
+    --info: var(--d-info);
+    --info-soft: var(--d-info-soft);
   }
+}
+
+/* The reader chose dark, whatever their device says. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: var(--d-bg);
+  --chrome: var(--d-chrome);
+  --surface: var(--d-surface);
+  --surface-2: var(--d-surface-2);
+  --ink: var(--d-ink);
+  --muted: var(--d-muted);
+  --line: var(--d-line);
+  --chrome-line: var(--d-chrome-line);
+  --accent: var(--d-accent);
+  --accent-ink: var(--d-accent-ink);
+  --accent-soft: var(--d-accent-soft);
+  --good: var(--d-good);
+  --good-soft: var(--d-good-soft);
+  --caution: var(--d-caution);
+  --caution-soft: var(--d-caution-soft);
+  --info: var(--d-info);
+  --info-soft: var(--d-info-soft);
+}
+
+/* The reader chose light, whatever their device says. */
+:root[data-theme="light"] {
+  color-scheme: light;
 }
 
 @theme inline {
@@ -124,7 +172,6 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
-  color-scheme: light dark;
 }
 
 @media (prefers-reduced-motion: reduce) {

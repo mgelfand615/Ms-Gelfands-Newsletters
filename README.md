@@ -48,6 +48,17 @@ languages — nothing breaks, so you can add Spanish whenever you get to it.
 The toggle is instant (both languages are already in the page) and remembers
 each family's choice on their own device.
 
+## Light and dark
+
+The button beside the language switch walks through three states: **follow my
+device** (the default), **light**, and **dark**. The icon shows which one is
+active.
+
+"Follow my device" stores nothing at all — which is the point. A family who
+tries dark in the evening and switches back isn't then frozen in whatever
+their phone happened to be that night; the page goes back to tracking their
+phone's own day/night setting.
+
 ## Adding this week's newsletter
 
 This is the only thing you do each week.
@@ -100,6 +111,9 @@ The suite covers the things that would quietly break:
   Spanish is tagged `lang="es"` so screen readers pronounce it correctly.
 - **Placeholders** appear when a field is empty and disappear when it's filled.
 - **The language toggle** — saving, reloading, and two tabs staying in step.
+- **The appearance button** — the three-state cycle, that "follow my device"
+  stores nothing and leaves no attribute on the page, and that the two dark
+  palettes in the CSS list exactly the same variables.
 
 ## Colors
 
