@@ -1,10 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { NewsletterBody } from "@/components/newsletter-body";
+import { NewsletterBody, NewsletterTitle } from "@/components/newsletter-body";
 import { newsletterBySlug, newsletters } from "@/content/newsletters";
-import { isBlank } from "@/content/types";
-import { T } from "@/components/t";
 
 /** One static page per newsletter at build time. */
 export async function generateStaticParams() {
@@ -35,31 +33,20 @@ export default async function NewsletterPage({
   if (!newsletter) notFound();
 
   return (
-    <>
-      <header className="border-b border-line bg-gradient-to-b from-accent-soft/50 to-transparent">
-        <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-16">
-          <Link
-            href="/newsletters"
-            className="no-print text-sm font-medium text-accent underline-offset-4 hover:underline"
-          >
-            <span className="lang-en">← Past Newsletters</span>
-            <span className="lang-es">← Boletines Anteriores</span>
-          </Link>
-          <h1 className="mt-4 font-display text-4xl font-semibold leading-tight tracking-tight text-ink sm:text-5xl">
-            <span className="lang-en">Week {newsletter.week}</span>
-            <span className="lang-es">Semana {newsletter.week}</span>
-          </h1>
-          {!isBlank(newsletter.dateRange) && (
-            <p className="mt-3 text-lg text-muted">
-              <T value={newsletter.dateRange} />
-            </p>
-          )}
-        </div>
-      </header>
+    <div className="mx-auto max-w-6xl px-5 py-10 sm:px-8 sm:py-12">
+      <Link
+        href="/newsletters"
+        className="no-print text-sm font-medium text-accent underline-offset-4 hover:underline"
+      >
+        <span className="lang-en">← Past Newsletters</span>
+        <span className="lang-es">← Boletines Anteriores</span>
+      </Link>
 
-      <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-14">
-        <NewsletterBody newsletter={newsletter} />
+      <div className="mb-12 mt-4">
+        <NewsletterTitle dateRange={newsletter.dateRange} />
       </div>
-    </>
+
+      <NewsletterBody newsletter={newsletter} />
+    </div>
   );
 }
