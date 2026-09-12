@@ -26,8 +26,11 @@ export type Subject = {
    */
   id: string;
   name: Text;
-  /** What we're doing in this subject this week. */
-  body: Text;
+  /**
+   * What we're doing in this subject this week. One point renders as a
+   * sentence; two or more render as bullets.
+   */
+  body: Text[];
 
   /**
    * How wide the box is.
@@ -59,7 +62,8 @@ export type Newsletter = {
   dateRange: Text;
 
   updates: Text;
-  upcomingDates: Text;
+  /** One date per entry — these render as bullets. */
+  upcomingDates: Text[];
   birthdays: Text;
   learning: Subject[];
 };
@@ -75,8 +79,21 @@ export const newsletters: Newsletter[] = [
     dateRange: blank,
 
     updates: blank,
-    upcomingDates: blank,
-    birthdays: blank,
+
+    upcomingDates: [
+      {
+        en: "Tuesday, September 15th: Chuck E. Cheese Fundraiser 3:30pm-9:00pm at 7970 Lyles Lane NW, Concord, NC 28027",
+        es: "",
+      },
+      { en: "Wednesday, September 16th: Curriculum Night 5-6pm", es: "" },
+      { en: "Thursday, September 17th: End Unit Reading Test", es: "" },
+      { en: "Friday, September 18th: Math Unit 1 Retest", es: "" },
+    ],
+
+    birthdays: {
+      en: "September 14th: Tebi, Tabi, and Antonella",
+      es: "",
+    },
 
     // Listed in the order they appear on the page.
     learning: [
@@ -87,7 +104,12 @@ export const newsletters: Newsletter[] = [
           en: "Social Emotional Learning",
           es: "Aprendizaje Socioemocional",
         },
-        body: blank,
+        body: [
+          {
+            en: "This week, students will focus on being responsible at home and school while practicing active listening skills to build trust within their classroom community. Through activities like class graphing and Venn diagrams, they will explore their similarities and unique differences to foster mutual respect and connection. Finally, students will reflect on their weekly progress to celebrate achievements and set goals for continuous growth.",
+            es: "",
+          },
+        ],
         span: "full",
         showHomework: false,
         homework: blank,
@@ -98,21 +120,45 @@ export const newsletters: Newsletter[] = [
         // Left-hand big box.
         id: "reading",
         name: { en: "Reading", es: "Lectura" },
-        body: blank,
+        body: [
+          {
+            en: "Scholars will continue to read Love That Dog and identify the main character’s feelings and how they change throughout the story. They will also read and analyze poems to identify the theme and summary.",
+            es: "",
+          },
+          {
+            en: "Our End Unit Assessment will take place Thursday. Scholars will answer both multiple choice questions and open response questions requiring them to identify character feelings using evidence from the text. They will also participate in a small group discussion about what they have read in class so far.",
+            es: "",
+          },
+        ],
         span: "half",
         showHomework: true,
-        homework: blank,
-        directionsLink: "",
-        directionsLabel: directions,
+        homework: { en: "Weekly Reading Log due Friday, 9/18.", es: "" },
+        directionsLink: "/weekly-reading-log-directions.pdf",
+        directionsLabel: {
+          en: "Weekly Reading Log Directions",
+          es: "Instrucciones del Registro de Lectura Semanal",
+        },
       },
       {
         // Right-hand big box.
         id: "math",
         name: { en: "Math", es: "Matemáticas" },
-        body: blank,
+        body: [
+          {
+            en: "Scholars will use a variety of strategies (number line, multiples of the denominator, visual representations) to identify and compare fractions.",
+            es: "",
+          },
+          {
+            en: "Scholars will have the opportunity to retest for Unit 1 on Friday. The Unit 1 Review Study Guide is attached.",
+            es: "",
+          },
+        ],
         span: "half",
         showHomework: true,
-        homework: blank,
+        homework: {
+          en: "The worksheet that will be sent home on Monday.",
+          es: "",
+        },
         directionsLink: "",
         directionsLabel: directions,
       },
@@ -120,7 +166,12 @@ export const newsletters: Newsletter[] = [
         // Across the bottom.
         id: "social-studies",
         name: { en: "Social Studies", es: "Estudios Sociales" },
-        body: blank,
+        body: [
+          {
+            en: "Scholars will continue learning about the three regions of North Carolina, and the impact they have had on the state.",
+            es: "",
+          },
+        ],
         span: "full",
         showHomework: false,
         homework: blank,

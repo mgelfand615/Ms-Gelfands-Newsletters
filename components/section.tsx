@@ -1,16 +1,20 @@
 import type { Text } from "@/content/types";
-import { Prose, T } from "@/components/t";
+import { Points, Prose, T } from "@/components/t";
 import { toneHeading, toneSurface, type Tone } from "@/components/tone";
 
 /** A titled box. Shows a placeholder until the body is written. */
 export function SectionCard({
   title,
   body,
+  items,
   tone = "plain",
   children,
 }: {
   title: Text;
+  /** A paragraph. Use `items` instead when the field is a list. */
   body?: Text;
+  /** Several points. One renders as a sentence, more render as bullets. */
+  items?: Text[];
   tone?: Tone;
   children?: React.ReactNode;
 }) {
@@ -22,7 +26,7 @@ export function SectionCard({
         <T value={title} />
       </h3>
       <div className="mt-3">
-        <Prose value={body} />
+        {items ? <Points items={items} /> : <Prose value={body} />}
         {children}
       </div>
     </section>

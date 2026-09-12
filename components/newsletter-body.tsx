@@ -1,8 +1,9 @@
 import type { Newsletter, Subject } from "@/content/newsletters";
 import { isBlank, spanish, type Text } from "@/content/types";
-import { Prose, T } from "@/components/t";
+import { Points, Prose, T } from "@/components/t";
 import { SectionCard, SectionHeading } from "@/components/section";
 import { QuickLinks } from "@/components/quick-links";
+import { asset } from "@/lib/asset";
 
 /**
  * The page title: "September 11 Newsletter", with a rule under it.
@@ -44,7 +45,7 @@ export function NewsletterBody({ newsletter }: { newsletter: Newsletter }) {
         <SectionCard
           tone="info"
           title={{ en: "Upcoming Dates", es: "Próximas Fechas" }}
-          body={newsletter.upcomingDates}
+          items={newsletter.upcomingDates}
         />
         <SectionCard
           tone="good"
@@ -85,7 +86,7 @@ function SubjectCard({ subject }: { subject: Subject }) {
       </h3>
 
       <div className={full ? "mt-2" : "mt-3 flex-1"}>
-        <Prose value={subject.body} />
+        <Points items={subject.body} />
       </div>
 
       {subject.showHomework && (
@@ -108,7 +109,7 @@ function SubjectCard({ subject }: { subject: Subject }) {
 
       {subject.directionsLink && (
         <a
-          href={subject.directionsLink}
+          href={asset(subject.directionsLink)}
           target="_blank"
           rel="noopener noreferrer"
           className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-accent underline-offset-4 hover:underline"

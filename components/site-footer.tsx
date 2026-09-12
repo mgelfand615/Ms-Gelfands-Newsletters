@@ -23,7 +23,7 @@ export function SiteFooter() {
                 {" · "}
               </>
             )}
-            {klass.district} · {klass.year}
+            {klass.year}
           </p>
         </div>
 

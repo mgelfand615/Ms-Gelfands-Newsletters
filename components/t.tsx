@@ -86,3 +86,49 @@ export function Prose({
     </p>
   );
 }
+
+/**
+ * A field that may hold several points — upcoming dates, or two things
+ * happening in one subject this week.
+ *
+ * One point renders as a sentence; several render as bullets. A lone bullet
+ * looks like a mistake, so the shape follows the content rather than being
+ * fixed in advance.
+ */
+export function Points({
+  items,
+  placeholder,
+  placeholderClassName,
+}: {
+  items?: Text[];
+  placeholder?: Text;
+  placeholderClassName?: string;
+}) {
+  const written = (items ?? []).filter((item) => !isBlank(item));
+
+  if (written.length === 0) {
+    return (
+      <Placeholder label={placeholder} className={placeholderClassName} />
+    );
+  }
+
+  if (written.length === 1) {
+    return <Prose value={written[0]} />;
+  }
+
+  return (
+    <ul className="space-y-2">
+      {written.map((item) => (
+        <li key={item.en} className="flex gap-2.5 leading-relaxed text-ink">
+          <span
+            aria-hidden
+            className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-muted/50"
+          />
+          <span>
+            <T value={item} />
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
