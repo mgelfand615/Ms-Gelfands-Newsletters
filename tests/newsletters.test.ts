@@ -17,9 +17,9 @@ function week(slug: string, date: string, number = 1): Newsletter {
     week: number,
     date,
     dateRange: blank,
-    updates: blank,
+    updates: [],
     upcomingDates: [],
-    birthdays: blank,
+    birthdays: [],
     learning: [],
   };
 }

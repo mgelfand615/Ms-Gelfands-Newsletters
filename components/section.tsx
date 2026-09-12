@@ -26,7 +26,13 @@ export function SectionCard({
         <T value={title} />
       </h3>
       <div className="mt-3">
-        {items ? <Points items={items} /> : <Prose value={body} />}
+        {/* A card given children draws its own contents, so the placeholder
+            would sit above real text rather than standing in for it. */}
+        {items ? (
+          <Points items={items} />
+        ) : body !== undefined || !children ? (
+          <Prose value={body} />
+        ) : null}
         {children}
       </div>
     </section>

@@ -30,3 +30,30 @@ export const toneHeading: Record<Tone, string> = {
   brand: "text-accent",
   plain: "text-ink",
 };
+
+/**
+ * Subject tints for What We're Learning.
+ *
+ * Here colour marks the subject rather than a role — keep a subject on the
+ * same colour every week and families learn where to look. Headings and body
+ * stay black on these, which is why they are the palest tints.
+ *
+ * They reuse the role tint tokens so dark mode is handled: a pastel light
+ * enough for black text would be blinding on a dark page.
+ */
+export type SubjectColor = "mint" | "lilac" | "ice" | "clay";
+
+export const subjectSurface: Record<SubjectColor, string> = {
+  mint: "bg-good-soft border-good/25",
+  lilac: "bg-accent-soft border-accent/25",
+  ice: "bg-info-soft border-info/25",
+  clay: "bg-caution-soft border-caution/25",
+};
+
+/** The panel inside a subject card — a step further from the card's tint. */
+export const subjectPanel: Record<SubjectColor, string> = {
+  mint: "bg-surface/70",
+  lilac: "bg-surface/70",
+  ice: "bg-surface/70",
+  clay: "bg-surface/70",
+};

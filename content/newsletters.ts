@@ -18,6 +18,13 @@
  */
 
 import { blank, type Text } from "./types";
+import type { SubjectColor } from "@/components/tone";
+
+/** One line in Upcoming Dates. The day is bolded; the detail is not. */
+export type DateEntry = { when: Text; what: Text };
+
+/** One birthday, in its own box. */
+export type Birthday = { id: string; name: string; date: Text };
 
 export type Subject = {
   /**
@@ -41,6 +48,12 @@ export type Subject = {
    */
   span: "full" | "half";
 
+  /**
+   * The card's tint. Within a newsletter, colour marks the subject — keep a
+   * subject on the same colour every week and families learn to find it.
+   */
+  color: SubjectColor;
+
   /** Set false to hide the homework box for this subject entirely. */
   showHomework: boolean;
 
@@ -61,10 +74,10 @@ export type Newsletter = {
   /** How the week is written out, e.g. "September 8–11" */
   dateRange: Text;
 
-  updates: Text;
-  /** One date per entry — these render as bullets. */
-  upcomingDates: Text[];
-  birthdays: Text;
+  /** One point per entry. Any web address becomes a link on its own. */
+  updates: Text[];
+  upcomingDates: DateEntry[];
+  birthdays: Birthday[];
   learning: Subject[];
 };
 
@@ -78,28 +91,59 @@ export const newsletters: Newsletter[] = [
     date: "2026-09-11",
     dateRange: blank,
 
-    updates: blank,
+    updates: [
+      {
+        en: "i-Ready testing is all finished!  For students who were absent this on one of the testing days will make it up this coming week.  i-Ready scores will be sent home in your child’s takehome folder soon.",
+        es: "",
+      },
+      {
+        en: "Interested in joining the PTA? Click here to join: https://gvsa.givebacks.com/shop",
+        es: "",
+      },
+      {
+        en: "GVSA Fundraiser: Our first fundraiser of the school year is kicking off Tuesday, September 22nd, and we’re ready to see which classroom can bring in the BIGGEST popcorn sales! 🚀 Our classroom has its own unique fundraising link that you can share with your families, friends, neighbors, and anyone else who loves a good snack! 🍿 🍕 TOP-SELLING CLASSROOM will earn an EPIC PIZZA PARTY! 🎉🍕\nLink: https://poppinpopcornonline.com/store/store.php?sID=00676032",
+        es: "",
+      },
+    ],
 
     upcomingDates: [
       {
-        en: "Tuesday, September 15th: Chuck E. Cheese Fundraiser 3:30pm-9:00pm at 7970 Lyles Lane NW, Concord, NC 28027",
-        es: "",
+        when: { en: "Tuesday, September 15th", es: "" },
+        what: {
+          en: "Chuck E. Cheese Fundraiser 3:30pm-9:00pm at 7970 Lyles Lane NW, Concord, NC 28027",
+          es: "",
+        },
       },
-      { en: "Wednesday, September 16th: Curriculum Night 5-6pm", es: "" },
-      { en: "Thursday, September 17th: End Unit Reading Test", es: "" },
-      { en: "Friday, September 18th: Math Unit 1 Retest", es: "" },
+      {
+        when: { en: "Wednesday, September 16th", es: "" },
+        what: { en: "Curriculum Night 5-6pm", es: "" },
+      },
+      {
+        when: { en: "Thursday, September 17th", es: "" },
+        what: { en: "End Unit Reading Test", es: "" },
+      },
+      {
+        when: { en: "Friday, September 18th", es: "" },
+        what: { en: "Math Unit 1 Retest", es: "" },
+      },
     ],
 
-    birthdays: {
-      en: "September 14th: Tebi, Tabi, and Antonella",
-      es: "",
-    },
+    birthdays: [
+      { id: "tebi", name: "Tebi", date: { en: "September 14th", es: "" } },
+      { id: "tabi", name: "Tabi", date: { en: "September 14th", es: "" } },
+      {
+        id: "antonella",
+        name: "Antonella",
+        date: { en: "September 14th", es: "" },
+      },
+    ],
 
     // Listed in the order they appear on the page.
     learning: [
       {
         // Across the top — a few sentences.
         id: "sel",
+        color: "mint",
         name: {
           en: "Social Emotional Learning",
           es: "Aprendizaje Socioemocional",
@@ -119,6 +163,7 @@ export const newsletters: Newsletter[] = [
       {
         // Left-hand big box.
         id: "reading",
+        color: "lilac",
         name: { en: "Reading", es: "Lectura" },
         body: [
           {
@@ -142,6 +187,7 @@ export const newsletters: Newsletter[] = [
       {
         // Right-hand big box.
         id: "math",
+        color: "clay",
         name: { en: "Math", es: "Matemáticas" },
         body: [
           {
@@ -156,7 +202,7 @@ export const newsletters: Newsletter[] = [
         span: "half",
         showHomework: true,
         homework: {
-          en: "The worksheet that will be sent home on Monday.",
+          en: "The worksheet that will be sent home on Monday. Due Friday, 9/18.",
           es: "",
         },
         directionsLink: "",
@@ -165,6 +211,7 @@ export const newsletters: Newsletter[] = [
       {
         // Across the bottom.
         id: "social-studies",
+        color: "ice",
         name: { en: "Social Studies", es: "Estudios Sociales" },
         body: [
           {
