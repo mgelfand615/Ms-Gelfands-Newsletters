@@ -6,6 +6,7 @@ import { useState } from "react";
 import { klass, nav } from "@/content/site";
 import { LangToggle } from "@/components/lang-toggle";
 import { T } from "@/components/t";
+import { Mark } from "@/components/mark";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -19,12 +20,7 @@ export function SiteHeader() {
     <header className="no-print sticky top-0 z-40 border-b border-line bg-bg/90 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-5 sm:px-8">
         <Link href="/" className="flex items-center gap-3" aria-label="Home">
-          <span
-            aria-hidden
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-accent text-sm font-bold text-accent-ink"
-          >
-            4
-          </span>
+          <Mark className="h-9 w-9 shrink-0" />
           <span className="text-sm font-semibold leading-tight tracking-tight text-ink">
             {klass.name}
           </span>
