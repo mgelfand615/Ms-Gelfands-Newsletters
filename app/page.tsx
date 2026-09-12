@@ -1,84 +1,57 @@
 import Link from "next/link";
 import { NewsletterBody } from "@/components/newsletter-body";
-import { NewsletterCard } from "@/components/newsletter-card";
 import { latestNewsletter, pastNewsletters } from "@/content/newsletters";
-import { klass } from "@/content/site";
+import { isBlank } from "@/content/types";
+import { T } from "@/components/t";
 
+/**
+ * Families land straight on the most recent newsletter — no click needed.
+ * Older weeks live on the Past Newsletters tab.
+ */
 export default function HomePage() {
   const latest = latestNewsletter();
-  const past = pastNewsletters();
+  const hasPast = pastNewsletters().length > 0;
 
   return (
     <>
-      {/* ── Masthead ─────────────────────────────────────────────────────── */}
-      <section className="border-b border-line bg-surface-2">
-        <div className="mx-auto max-w-3xl px-5 py-14 sm:px-8 sm:py-20">
+      <header className="border-b border-line bg-gradient-to-b from-accent-soft/50 to-transparent">
+        <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-16">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
-            {klass.school} · {klass.year}
+            <span className="lang-en">This week</span>
+            <span className="lang-es">Esta semana</span>
           </p>
           <h1 className="mt-3 font-display text-4xl font-semibold leading-tight tracking-tight text-ink sm:text-5xl">
-            {klass.name}
+            <span className="lang-en">Newsletter</span>
+            <span className="lang-es">Boletín</span>
           </h1>
-          <p className="mt-5 text-lg leading-relaxed text-muted">
-            {klass.welcome}
+          <p className="mt-3 text-lg text-muted">
+            <span className="lang-en">Week {latest.week}</span>
+            <span className="lang-es">Semana {latest.week}</span>
+            {!isBlank(latest.dateRange) && (
+              <>
+                {" · "}
+                <T value={latest.dateRange} />
+              </>
+            )}
           </p>
         </div>
-      </section>
+      </header>
 
-      {/* ── This week's newsletter ───────────────────────────────────────── */}
-      <article className="mx-auto max-w-3xl px-5 py-14 sm:px-8 sm:py-16">
-        <div className="flex flex-wrap items-center gap-3">
-          <span className="rounded-full bg-accent px-3 py-1 text-xs font-semibold uppercase tracking-wide text-accent-ink">
-            This week
-          </span>
-          <span className="text-sm font-medium text-muted">
-            Week {latest.week} · {latest.dateRange}
-          </span>
-        </div>
-
-        <h2 className="mt-4 font-display text-3xl font-semibold leading-tight tracking-tight text-ink sm:text-4xl">
-          {latest.title}
-        </h2>
-        <p className="mt-4 text-lg leading-relaxed text-muted">
-          {latest.intro}
-        </p>
-
-        <div className="rule my-10" />
-
+      <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-14">
         <NewsletterBody newsletter={latest} />
 
-        <p className="no-print mt-10 text-sm text-muted">
-          <Link
-            href={`/newsletters/${latest.slug}`}
-            className="text-accent underline-offset-4 hover:underline"
-          >
-            Open this newsletter on its own page
-          </Link>{" "}
-          to print it or share the link.
-        </p>
-      </article>
-
-      {/* ── Archive ──────────────────────────────────────────────────────── */}
-      {past.length > 0 && (
-        <section
-          id="archive"
-          className="border-t border-line bg-surface-2 py-14 sm:py-16"
-        >
-          <div className="mx-auto max-w-3xl px-5 sm:px-8">
-            <h2 className="font-display text-2xl font-semibold tracking-tight text-ink">
-              Past newsletters
-            </h2>
-            <p className="mt-2 text-muted">
-              Every week of the {klass.year} school year, newest first.
-            </p>
-            <ul className="mt-6 space-y-3">
-              {past.map((n) => (
-                <NewsletterCard key={n.slug} newsletter={n} />
-              ))}
-            </ul>
-          </div>
-        </section>
-      )}
+        {hasPast && (
+          <p className="no-print mt-14 border-t border-line pt-8 text-sm">
+            <Link
+              href="/newsletters"
+              className="font-semibold text-accent underline-offset-4 hover:underline"
+            >
+              <span className="lang-en">← See all past newsletters</span>
+              <span className="lang-es">← Ver todos los boletines anteriores</span>
+            </Link>
+          </p>
+        )}
+      </div>
     </>
   );
 }

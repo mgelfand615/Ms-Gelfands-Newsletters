@@ -1,41 +1,64 @@
 @import "tailwindcss";
 
 /* ───────────────────────────────────────────────────────────────────────
-   Design tokens — bright, friendly, easy to read on a phone.
+   CLASSROOM PALETTE
 
-   Light values live on :root; dark values follow the reader's system
-   setting. @theme inline maps them to Tailwind utilities (bg-bg,
-   text-ink, border-line, text-accent, …).
+   The six colors from the classroom theme, used as soft backgrounds:
 
-   To re-skin the whole site, change --accent and --highlight.
+     mint   #c5f7db   green  #6befb2
+     lilac  #dbc9f8   purple #9289e2
+     ice    #bcf9ff   sky    #5ac5f2
+
+   Pastels this light can't carry white text or small type, so each one
+   also has a deeper partner (--accent, --highlight, --sky-ink) used for
+   headings, links, and buttons. Same family, enough contrast to read.
+
+   To re-skin the site, change these variables and nothing else.
    ─────────────────────────────────────────────────────────────────────── */
 :root {
-  --bg: #f7f9fc;          /* soft cool paper              */
-  --surface: #ffffff;     /* cards                        */
-  --surface-2: #eef3fa;   /* tinted panel                 */
-  --ink: #17212e;         /* primary text                 */
-  --muted: #5b6a7d;       /* secondary text               */
-  --line: #dde5f0;        /* borders / hairlines          */
-  --accent: #1d5c8f;      /* primary accent (deep blue)   */
-  --accent-ink: #ffffff;  /* text on accent               */
-  --accent-soft: #e3eefa; /* pale blue tint               */
-  --highlight: #c2540f;   /* amber/rust secondary touch   */
-  --highlight-soft: #fdeee0;
+  /* the palette itself */
+  --mint: #c5f7db;
+  --green: #6befb2;
+  --lilac: #dbc9f8;
+  --purple: #9289e2;
+  --ice: #bcf9ff;
+  --sky: #5ac5f2;
+
+  /* page */
+  --bg: #f7fcfb;           /* barely-there mint wash   */
+  --surface: #ffffff;      /* cards                    */
+  --surface-2: #eefaf4;    /* tinted panel             */
+  --ink: #1c2242;          /* deep indigo text         */
+  --muted: #59618a;        /* secondary text           */
+  --line: #dfe9f0;         /* hairlines                */
+
+  /* interactive — deepened so white text passes contrast */
+  --accent: #5b4fc7;       /* purple, darkened         */
+  --accent-ink: #ffffff;
+  --accent-soft: var(--lilac);
+  --highlight: #0b7f5c;    /* green, darkened          */
+  --highlight-soft: var(--mint);
+  --sky-ink: #10709f;      /* sky, darkened            */
+  --sky-soft: var(--ice);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0f1520;
-    --surface: #172030;
-    --surface-2: #1d2839;
-    --ink: #eaf0f8;
-    --muted: #9aabc0;
-    --line: #2a3648;
-    --accent: #7db8e8;
-    --accent-ink: #0b1220;
-    --accent-soft: #17293c;
-    --highlight: #f0a061;
-    --highlight-soft: #2e2118;
+    --bg: #12152b;
+    --surface: #1b1f3d;
+    --surface-2: #232748;
+    --ink: #eef1ff;
+    --muted: #a3abd4;
+    --line: #333863;
+
+    /* in the dark the pastels become the readable colors */
+    --accent: var(--purple);
+    --accent-ink: #13162e;
+    --accent-soft: #2c2a57;
+    --highlight: var(--green);
+    --highlight-soft: #16382f;
+    --sky-ink: var(--sky);
+    --sky-soft: #14334a;
   }
 }
 
@@ -51,11 +74,20 @@
   --color-accent-soft: var(--accent-soft);
   --color-highlight: var(--highlight);
   --color-highlight-soft: var(--highlight-soft);
+  --color-sky-ink: var(--sky-ink);
+  --color-sky-soft: var(--sky-soft);
+
+  --color-mint: var(--mint);
+  --color-green: var(--green);
+  --color-lilac: var(--lilac);
+  --color-purple: var(--purple);
+  --color-ice: var(--ice);
+  --color-sky: var(--sky);
 
   --font-sans: var(--font-inter);
   --font-display: var(--font-fraunces);
 
-  --radius-card: 1rem;
+  --radius-card: 1.25rem;
 }
 
 /* ── Base ──────────────────────────────────────────────────────────────── */
@@ -84,7 +116,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Editorial display type for headings */
 .font-display {
   font-family: var(--font-display), ui-serif, Georgia, serif;
   font-optical-sizing: auto;
@@ -95,27 +126,33 @@ body {
   color: var(--accent-ink);
 }
 
-/* Consistent, visible keyboard focus */
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 3px;
 }
 
-/* Hairline used to separate sections */
-.rule {
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    var(--line) 10%,
-    var(--line) 90%,
-    transparent
-  );
+/* ── English / Spanish ──────────────────────────────────────────────────
+   Both languages are written into the page; the toggle flips which one is
+   shown. `display: contents` means the wrapper itself never affects layout,
+   so a translated phrase inside a sentence still flows normally.
+   ─────────────────────────────────────────────────────────────────────── */
+.lang-en,
+.lang-es {
+  display: contents;
 }
 
-/* Printing a newsletter should produce a clean sheet, not a screenshot of a
-   website — families do print these for the fridge. */
+html:not([data-lang="es"]) .lang-es {
+  display: none;
+}
+
+html[data-lang="es"] .lang-en {
+  display: none;
+}
+
+/* ── Print ──────────────────────────────────────────────────────────────
+   Families do print these for the fridge. Drop the navigation and chrome.
+   ─────────────────────────────────────────────────────────────────────── */
 @media print {
   .no-print {
     display: none !important;

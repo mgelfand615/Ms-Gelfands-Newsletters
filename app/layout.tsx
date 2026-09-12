@@ -5,14 +5,12 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { klass } from "@/content/site";
 
-/* Friendly serif for display headings */
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
   display: "swap",
 });
 
-/* Clean humanist sans for body + UI */
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -33,14 +31,32 @@ export const metadata: Metadata = {
   },
 };
 
+/* Apply the saved language before first paint, so a family who chose Spanish
+   never sees a flash of English. */
+const langScript = `
+(function () {
+  try {
+    var saved = localStorage.getItem('lang');
+    if (saved === 'es') {
+      document.documentElement.dataset.lang = 'es';
+      document.documentElement.lang = 'es';
+    }
+  } catch (e) {}
+})();
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${fraunces.variable} ${inter.variable} h-full`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: langScript }} />
+      </head>
       <body className="flex min-h-full flex-col">
         <a
           href="#main"
