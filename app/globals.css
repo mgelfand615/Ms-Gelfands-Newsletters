@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+/* ───────────────────────────────────────────────────────────────────────
+   Design tokens — bright, friendly, easy to read on a phone.
+
+   Light values live on :root; dark values follow the reader's system
+   setting. @theme inline maps them to Tailwind utilities (bg-bg,
+   text-ink, border-line, text-accent, …).
+
+   To re-skin the whole site, change --accent and --highlight.
+   ─────────────────────────────────────────────────────────────────────── */
+:root {
+  --bg: #f7f9fc;          /* soft cool paper              */
+  --surface: #ffffff;     /* cards                        */
+  --surface-2: #eef3fa;   /* tinted panel                 */
+  --ink: #17212e;         /* primary text                 */
+  --muted: #5b6a7d;       /* secondary text               */
+  --line: #dde5f0;        /* borders / hairlines          */
+  --accent: #1d5c8f;      /* primary accent (deep blue)   */
+  --accent-ink: #ffffff;  /* text on accent               */
+  --accent-soft: #e3eefa; /* pale blue tint               */
+  --highlight: #c2540f;   /* amber/rust secondary touch   */
+  --highlight-soft: #fdeee0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1520;
+    --surface: #172030;
+    --surface-2: #1d2839;
+    --ink: #eaf0f8;
+    --muted: #9aabc0;
+    --line: #2a3648;
+    --accent: #7db8e8;
+    --accent-ink: #0b1220;
+    --accent-soft: #17293c;
+    --highlight: #f0a061;
+    --highlight-soft: #2e2118;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-highlight: var(--highlight);
+  --color-highlight-soft: var(--highlight-soft);
+
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-fraunces);
+
+  --radius-card: 1rem;
+}
+
+/* ── Base ──────────────────────────────────────────────────────────────── */
+* {
+  border-color: var(--line);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  color-scheme: light dark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "kern", "liga";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Editorial display type for headings */
+.font-display {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-optical-sizing: auto;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* Consistent, visible keyboard focus */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Hairline used to separate sections */
+.rule {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--line) 10%,
+    var(--line) 90%,
+    transparent
+  );
+}
+
+/* Printing a newsletter should produce a clean sheet, not a screenshot of a
+   website — families do print these for the fridge. */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #000;
+  }
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+}
