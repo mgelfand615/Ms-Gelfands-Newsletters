@@ -26,7 +26,7 @@ export const klass = {
   description:
     "Weekly newsletters, classroom news, and family resources for Mrs. Gelfand's 4th grade class.",
   /** Used for link previews. Update after you deploy. */
-  url: "https://example.com",
+  url: "https://mgelfand615.github.io/Ms-Gelfands-Newsletters",
   /** Short welcome shown under the site title on the home page */
   welcome:
     "Every Friday I post that week's newsletter here — what we learned, what's coming up, and how you can help at home. Past weeks are always available below.",

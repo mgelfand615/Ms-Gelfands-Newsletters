@@ -34,7 +34,7 @@ jobs:
         run: npm run build
         env:
           # Project page is served from /<repo>; must match the repo name exactly.
-          NEXT_PUBLIC_BASE_PATH: /Class-Newsletters
+          NEXT_PUBLIC_BASE_PATH: /Ms-Gelfands-Newsletters
 
       - name: Disable Jekyll (serve _next assets as-is)
         run: touch out/.nojekyll

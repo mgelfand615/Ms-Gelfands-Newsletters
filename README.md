@@ -61,16 +61,16 @@ automatically.
 
 ## Publishing to GitHub Pages
 
-1. Create a GitHub repository named **`Class-Newsletters`** and push this folder
+1. Create a GitHub repository named **`Ms-Gelfands-Newsletters`** and push this folder
    to its `main` branch.
 2. In the repo, go to **Settings → Pages** and set **Source** to
    **GitHub Actions**.
 3. Every push to `main` now rebuilds and republishes the site automatically
    (see [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)).
 
-Your site will be at `https://<your-username>.github.io/Class-Newsletters/`.
+Your site will be at `https://<your-username>.github.io/Ms-Gelfands-Newsletters/`.
 
-If you name the repository something other than `Class-Newsletters`, update
+If you name the repository something other than `Ms-Gelfands-Newsletters`, update
 `NEXT_PUBLIC_BASE_PATH` in the workflow file to match the new name exactly, and
 set `klass.url` in `content/site.ts` to the published address.
 
