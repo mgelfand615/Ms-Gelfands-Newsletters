@@ -14,7 +14,6 @@ export default function TeachersPage() {
   return (
     <>
       <PageHeader
-        tone="mint"
         title={{ en: "About Your Teachers", es: "Sobre Sus Maestras" }}
       />
 
@@ -63,17 +62,17 @@ function TeacherCard({ teacher }: { teacher: Teacher }) {
 
       <div className="mt-6 grid gap-5 sm:grid-cols-3">
         <Field
-          tone="ice"
+          tone="plain"
           label={{ en: "Contact", es: "Contacto" }}
           value={teacher.contact}
         />
         <Field
-          tone="lilac"
+          tone="plain"
           label={{ en: "Education", es: "Educación" }}
           value={teacher.education}
         />
         <Field
-          tone="mint"
+          tone="plain"
           label={{ en: "Favorites", es: "Favoritos" }}
           value={teacher.favorites}
         />

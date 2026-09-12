@@ -1,32 +1,32 @@
 /**
- * The pastel each card is tinted with — one definition for the whole site.
+ * Card tones, named for what they mean rather than what colour they are.
  *
- * Previously the card colors and the teacher-field colors were two separate
- * copies of the same values, which meant a palette change had to be made in
- * two files and silently drifted if you forgot one.
+ * Picking "good" instead of "mint" is what stops the palette drifting back
+ * into decoration: if no role fits, the answer is `plain`, not a new colour.
+ *
+ *   good     earning, celebrating          green
+ *   caution  fines, tickets, warnings      clay
+ *   info     dates and deadlines           blue
+ *   brand    the site's own voice          purple
+ *   plain    ordinary content              white
  */
 
-export type Tone = "mint" | "lilac" | "ice" | "plain";
+export type Tone = "good" | "caution" | "info" | "brand" | "plain";
 
 /** Background + border for a tinted card. */
 export const toneSurface: Record<Tone, string> = {
-  mint: "bg-highlight-soft/60 border-highlight/25",
-  lilac: "bg-accent-soft/50 border-accent/25",
-  ice: "bg-sky-soft/50 border-sky-ink/20",
+  good: "bg-good-soft border-good/30",
+  caution: "bg-caution-soft border-caution/30",
+  info: "bg-info-soft border-info/30",
+  brand: "bg-accent-soft border-accent/30",
   plain: "bg-surface border-line",
 };
 
-/** Heading color that reads against that background. */
+/** Heading colour that reads against that background. */
 export const toneHeading: Record<Tone, string> = {
-  mint: "text-highlight",
-  lilac: "text-accent",
-  ice: "text-sky-ink",
+  good: "text-good",
+  caution: "text-caution",
+  info: "text-info",
+  brand: "text-accent",
   plain: "text-ink",
-};
-
-/** The wash behind a page's masthead. */
-export const toneWash: Record<Exclude<Tone, "plain">, string> = {
-  mint: "from-highlight-soft/60",
-  lilac: "from-accent-soft/50",
-  ice: "from-sky-soft/60",
 };

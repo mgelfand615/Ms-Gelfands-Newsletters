@@ -34,18 +34,20 @@ export function NewsletterBody({ newsletter }: { newsletter: Newsletter }) {
   return (
     <div className="space-y-14">
       <div className="grid gap-5 md:grid-cols-3">
+        {/* Updates is ordinary news, so it stays neutral. Dates are blue and
+            birthdays green because those colours mean something site-wide. */}
         <SectionCard
-          tone="lilac"
+          tone="plain"
           title={{ en: "Updates", es: "Novedades" }}
           body={newsletter.updates}
         />
         <SectionCard
-          tone="ice"
+          tone="info"
           title={{ en: "Upcoming Dates", es: "Próximas Fechas" }}
           body={newsletter.upcomingDates}
         />
         <SectionCard
-          tone="mint"
+          tone="good"
           title={{ en: "Birthdays", es: "Cumpleaños" }}
           body={newsletter.birthdays}
         />

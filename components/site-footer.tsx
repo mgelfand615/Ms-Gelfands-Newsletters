@@ -10,7 +10,7 @@ import { T } from "@/components/t";
  */
 export function SiteFooter() {
   return (
-    <footer className="no-print mt-20 border-t border-line bg-surface-2">
+    <footer className="no-print mt-20 border-t border-chrome-line bg-chrome">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 sm:flex-row sm:items-baseline sm:justify-between sm:px-8">
         <div>
           <p className="font-display text-lg font-semibold text-ink">

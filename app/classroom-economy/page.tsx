@@ -16,7 +16,6 @@ export default function ClassroomEconomyPage() {
   return (
     <>
       <PageHeader
-        tone="mint"
         title={{ en: "Classroom Economy", es: "Economía del Salón" }}
         intro={economyIntro}
       />
@@ -25,25 +24,28 @@ export default function ClassroomEconomyPage() {
         <div className="grid gap-8 lg:grid-cols-2">
           <BankColumn
             arrow="↑"
-            tone="mint"
-            headingClass="text-highlight"
+            tone="good"
+            headingClass="text-good"
             heading={{ en: "Making Bank", es: "Ganando Dinero" }}
             blocks={makingBank}
           />
           <BankColumn
             arrow="↓"
-            tone="lilac"
-            headingClass="text-accent"
+            tone="caution"
+            headingClass="text-caution"
             heading={{ en: "Breaking Bank", es: "Perdiendo Dinero" }}
             blocks={breakingBank}
           />
         </div>
 
         <div className="grid gap-5 md:grid-cols-3">
+          {/* Bills, scores and perks are ordinary reference, not dates — so
+              they stay neutral rather than borrowing a colour that means
+              something else elsewhere. */}
           {economySections.map((block) => (
             <SectionCard
               key={block.id}
-              tone="ice"
+              tone="plain"
               title={block.title}
               body={block.body}
             />
@@ -97,7 +99,7 @@ function BankColumn({
                     <li key={item.en} className="flex gap-2.5 text-sm text-ink">
                       <span
                         aria-hidden
-                        className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                        className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-caution"
                       />
                       <T value={item} />
                     </li>

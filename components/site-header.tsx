@@ -17,7 +17,7 @@ export function SiteHeader() {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="no-print sticky top-0 z-40 border-b border-line bg-bg/90 backdrop-blur-md">
+    <header className="no-print sticky top-0 z-40 border-b border-chrome-line bg-chrome/95 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-5 sm:px-8">
         <Link href="/" className="flex items-center gap-3" aria-label="Home">
           <Mark className="h-9 w-9 shrink-0" />
@@ -51,7 +51,7 @@ export function SiteHeader() {
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-surface text-ink transition-colors hover:border-accent hover:text-accent lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-chrome-line bg-surface text-ink transition-colors hover:border-accent hover:text-accent lg:hidden"
           >
             <svg
               width="18"
@@ -81,7 +81,7 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <div className="border-t border-line bg-bg lg:hidden">
+        <div className="border-t border-chrome-line bg-chrome lg:hidden">
           <nav className="mx-auto flex max-w-6xl flex-col px-5 py-3 sm:px-8">
             {nav.map((item) => (
               <Link

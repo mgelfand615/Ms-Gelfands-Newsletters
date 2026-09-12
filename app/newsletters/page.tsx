@@ -16,7 +16,6 @@ export default function PastNewslettersPage() {
   return (
     <>
       <PageHeader
-        tone="ice"
         width="max-w-4xl"
         title={{ en: "Past Newsletters", es: "Boletines Anteriores" }}
         intro={{

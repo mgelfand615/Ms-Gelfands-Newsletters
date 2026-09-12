@@ -14,7 +14,6 @@ export default function StudentTechPage() {
   return (
     <>
       <PageHeader
-        tone="ice"
         title={{
           en: "Student Tech at Home",
           es: "Tecnología del Estudiante en Casa",

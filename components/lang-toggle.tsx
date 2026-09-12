@@ -20,7 +20,7 @@ export function LangToggle() {
 
   return (
     <div
-      className="no-print flex shrink-0 items-center rounded-full border border-line bg-surface p-0.5"
+      className="no-print flex shrink-0 items-center rounded-full border border-chrome-line bg-surface p-0.5"
       role="group"
       aria-label="Language / Idioma"
     >

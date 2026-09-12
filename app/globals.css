@@ -1,88 +1,114 @@
 @import "tailwindcss";
 
 /* ───────────────────────────────────────────────────────────────────────
-   CLASSROOM PALETTE
+   COLOUR SYSTEM
 
-   The six colors from the classroom theme, used as soft backgrounds:
+   Every colour has exactly one job. That is the whole rule — if a colour
+   starts meaning two things, the page stops communicating.
 
-     mint   #c5f7db   green  #6befb2
-     lilac  #dbc9f8   purple #9289e2
-     ice    #bcf9ff   sky    #5ac5f2
+     purple   you can click this          (links, buttons, the active tab)
+     green    good news                   (earning, celebrating)
+     clay     careful, this costs you     (fines, tickets, warnings)
+     blue     a date to know              (deadlines, calendar)
+     neutral  ordinary content            (everything else)
 
-   Pastels this light can't carry white text or small type, so each one
-   also has a deeper partner (--accent, --highlight, --sky-ink) used for
-   headings, links, and buttons. Same family, enough contrast to read.
+   Each role has a deep tone for text and a pale tint for backgrounds. The
+   pale tints are the classroom palette; the deep tones are the same hues
+   pushed dark enough to read on them (all pairs clear WCAG AA).
 
-   To re-skin the site, change these variables and nothing else.
+   Clay is the one addition to the six classroom colours. The six are all
+   cool, and a palette with no warm tone cannot say "careful" — which the
+   Classroom Economy page needs.
+
+   SURFACES, back to front:
+     --bg        the page
+     --chrome    the header and footer bands
+     --surface   cards sitting on the page
+     --surface-2 panels inside a card (homework boxes, placeholders)
+
+   --surface-2 is tuned against --surface, not --bg, because that is where it
+   actually sits. The few places it lands on the page carry a dashed border.
    ─────────────────────────────────────────────────────────────────────── */
 :root {
-  /* the palette itself */
+  /* the classroom palette, used as background tints */
   --mint: #c5f7db;
-  --green: #6befb2;
   --lilac: #dbc9f8;
-  --purple: #9289e2;
   --ice: #bcf9ff;
-  --sky: #5ac5f2;
+  --clay: #f6e2d4;
 
-  /* page */
-  --bg: #f7fcfb;           /* barely-there mint wash   */
-  --surface: #ffffff;      /* cards                    */
-  --surface-2: #eefaf4;    /* tinted panel             */
-  --ink: #1c2242;          /* deep indigo text         */
-  --muted: #59618a;        /* secondary text           */
-  --line: #dfe9f0;         /* hairlines                */
+  /* surfaces */
+  --bg: #f5faf8;
+  --chrome: #dceee7;
+  --surface: #ffffff;
+  --surface-2: #e4f2ec;
+  --ink: #1b2140;
+  --muted: #535d80;
+  --line: #cbe0d6;
+  --chrome-line: #b3d5c7;
 
-  /* interactive — deepened so white text passes contrast */
-  --accent: #5b4fc7;       /* purple, darkened         */
+  /* roles — deep tone for text, pale tint for backgrounds */
+  --accent: #5b4fc7;
   --accent-ink: #ffffff;
   --accent-soft: var(--lilac);
-  --highlight: #0b7f5c;    /* green, darkened          */
-  --highlight-soft: var(--mint);
-  --sky-ink: #10709f;      /* sky, darkened            */
-  --sky-soft: var(--ice);
+
+  --good: #097151;
+  --good-soft: var(--mint);
+
+  --caution: #a34c1d;
+  --caution-soft: var(--clay);
+
+  --info: #0f6b98;
+  --info-soft: var(--ice);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    /* In the dark the chrome sits *above* the page rather than below it —
+       a raised band reads correctly where a darker one would look like a
+       hole. Everything else keeps the same roles. */
     --bg: #12152b;
+    --chrome: #1c2041;
     --surface: #1b1f3d;
-    --surface-2: #232748;
+    --surface-2: #262b4f;
     --ink: #eef1ff;
     --muted: #a3abd4;
     --line: #333863;
+    --chrome-line: #3d4370;
 
-    /* in the dark the pastels become the readable colors */
-    --accent: var(--purple);
+    --accent: #9289e2;
     --accent-ink: #13162e;
     --accent-soft: #2c2a57;
-    --highlight: var(--green);
-    --highlight-soft: #16382f;
-    --sky-ink: var(--sky);
-    --sky-soft: #14334a;
+
+    --good: #6befb2;
+    --good-soft: #16382f;
+
+    --caution: #f0a061;
+    --caution-soft: #38251a;
+
+    --info: #5ac5f2;
+    --info-soft: #14334a;
   }
 }
 
 @theme inline {
   --color-bg: var(--bg);
+  --color-chrome: var(--chrome);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-line: var(--line);
+  --color-chrome-line: var(--chrome-line);
+
   --color-accent: var(--accent);
   --color-accent-ink: var(--accent-ink);
   --color-accent-soft: var(--accent-soft);
-  --color-highlight: var(--highlight);
-  --color-highlight-soft: var(--highlight-soft);
-  --color-sky-ink: var(--sky-ink);
-  --color-sky-soft: var(--sky-soft);
-
-  --color-mint: var(--mint);
-  --color-green: var(--green);
-  --color-lilac: var(--lilac);
-  --color-purple: var(--purple);
-  --color-ice: var(--ice);
-  --color-sky: var(--sky);
+  --color-good: var(--good);
+  --color-good-soft: var(--good-soft);
+  --color-caution: var(--caution);
+  --color-caution-soft: var(--caution-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
 
   --font-sans: var(--font-inter);
   --font-display: var(--font-fraunces);
@@ -134,8 +160,8 @@ body {
 
 /* ── English / Spanish ──────────────────────────────────────────────────
    Both languages are written into the page; the toggle flips which one is
-   shown. `display: contents` means the wrapper itself never affects layout,
-   so a translated phrase inside a sentence still flows normally.
+   shown. `display: contents` means the wrapper never affects layout, so a
+   translated phrase inside a sentence still flows normally.
    ─────────────────────────────────────────────────────────────────────── */
 .lang-en,
 .lang-es {

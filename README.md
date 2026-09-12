@@ -103,19 +103,34 @@ The suite covers the things that would quietly break:
 
 ## Colors
 
-The classroom palette lives at the top of
-[`app/globals.css`](app/globals.css):
+Every colour has one job. That is the whole rule — a colour that means two
+things stops meaning either.
 
-```
-mint  #c5f7db    green  #6befb2
-lilac #dbc9f8    purple #9289e2
-ice   #bcf9ff    sky    #5ac5f2
-```
+| Colour | Means | Where |
+| --- | --- | --- |
+| Purple | you can click this | links, buttons, the active tab |
+| Green | good news | Making Bank, birthdays |
+| Clay | careful, this costs you | Breaking Bank, fines, tickets |
+| Blue | a date to know | Upcoming Dates |
+| Neutral | ordinary content | everything else |
 
-Those pastels are too light to hold small text, so each has a deeper partner
-(`--accent`, `--highlight`, `--sky-ink`) used for headings, links, and buttons.
-Change these variables and the whole site re-skins. Dark mode follows the
-reader's device setting.
+If a box doesn't fit one of those, it stays neutral. Reaching for a colour
+because a section looks plain is how the meaning gets diluted.
+
+Each role has a deep tone for text and a pale tint for backgrounds, set in
+[`app/globals.css`](app/globals.css). Every text-on-tint pair clears WCAG AA
+(4.5:1) in both light and dark. If you change a colour, check the new pair —
+the pale classroom tints leave little headroom.
+
+Clay is the one addition to the six classroom colours. The six are all cool,
+and a palette with no warm tone cannot say "careful".
+
+**Surfaces**, back to front: `--bg` the page, `--chrome` the header and
+footer bands, `--surface` cards, `--surface-2` panels inside a card. The
+header and footer share one band so they read as a frame around the site
+rather than part of the page. In dark mode that band sits *above* the page
+instead of below it — a raised strip reads right where a darker one looks
+like a hole.
 
 ## Publishing to GitHub Pages
 
