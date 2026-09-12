@@ -1,67 +1,45 @@
-import Link from "next/link";
-import { contact, klass, nav } from "@/content/site";
+import { contact, klass } from "@/content/site";
 import { isBlank } from "@/content/types";
 import { T } from "@/components/t";
 
+/**
+ * One slim band: who this is, and how to reach them.
+ *
+ * The page list that used to sit here repeated the header nav exactly, and on
+ * a five-page site with a sticky header that is just more to read.
+ */
 export function SiteFooter() {
   return (
     <footer className="no-print mt-20 border-t border-line bg-surface-2">
-      <div className="mx-auto grid max-w-6xl gap-8 px-5 py-12 sm:px-8 md:grid-cols-3">
+      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 sm:flex-row sm:items-baseline sm:justify-between sm:px-8">
         <div>
           <p className="font-display text-lg font-semibold text-ink">
             {klass.name}
           </p>
-          <p className="mt-2 text-sm leading-relaxed text-muted">
+          <p className="mt-1 text-sm text-muted">
             {!isBlank(klass.school) && (
               <>
                 <T value={klass.school} />
-                <br />
+                {" · "}
               </>
             )}
             {klass.district} · {klass.year}
           </p>
         </div>
 
-        <div>
-          <p className="text-sm font-semibold text-ink">
-            <T en="Pages" es="Páginas" />
-          </p>
-          <ul className="mt-3 space-y-2">
-            {nav.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="text-sm text-muted transition-colors hover:text-accent"
-                >
-                  <T value={item.label} />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <p className="text-sm font-semibold text-ink">
-            <T en="Get in touch" es="Comuníquese" />
-          </p>
+        <div className="sm:text-right">
           <a
             href={`mailto:${contact.email}`}
-            className="mt-3 block break-words text-sm text-accent underline-offset-4 hover:underline"
+            className="break-words text-sm font-medium text-accent underline-offset-4 hover:underline"
           >
             {contact.email}
           </a>
           {!isBlank(contact.hours) && (
-            <p className="mt-2 text-sm text-muted">
+            <p className="mt-1 text-sm text-muted">
               <T value={contact.hours} />
             </p>
           )}
         </div>
-      </div>
-
-      <div className="border-t border-line">
-        <p className="mx-auto max-w-6xl px-5 py-5 text-xs text-muted sm:px-8">
-          © {new Date().getFullYear()} {klass.name}
-        </p>
       </div>
     </footer>
   );
