@@ -13,8 +13,24 @@ const STORAGE_KEY = "lang";
 
 const listeners = new Set<() => void>();
 
-/** Cached so getSnapshot returns a stable value between renders. */
-let current: Lang | null = null;
+/**
+ * Resolved once when this module loads, so it is never null and every later
+ * comparison is against a known value.
+ *
+ * Client components still render on the server during the static export, so
+ * this has to cope with there being no browser at all.
+ */
+function readSavedLang(): Lang {
+  if (typeof document === "undefined") return "en";
+  try {
+    return localStorage.getItem(STORAGE_KEY) === "es" ? "es" : "en";
+  } catch {
+    // Private browsing — default to English for this visit.
+    return "en";
+  }
+}
+
+let current: Lang = readSavedLang();
 
 export function subscribe(onChange: () => void): () => void {
   listeners.add(onChange);
@@ -30,20 +46,7 @@ export function subscribe(onChange: () => void): () => void {
   };
 }
 
-/** Another tab changed the language. */
-function onStorage(event: StorageEvent) {
-  if (event.key !== STORAGE_KEY) return;
-  apply(event.newValue === "es" ? "es" : "en");
-}
-
 export function getSnapshot(): Lang {
-  if (current !== null) return current;
-  try {
-    current = localStorage.getItem(STORAGE_KEY) === "es" ? "es" : "en";
-  } catch {
-    // Private browsing — default to English for this visit.
-    current = "en";
-  }
   return current;
 }
 
@@ -52,16 +55,28 @@ export function getServerSnapshot(): Lang {
   return "en";
 }
 
+/** Switch language and remember the choice on this device. */
 export function setLang(next: Lang): void {
+  apply(next);
+
   try {
     localStorage.setItem(STORAGE_KEY, next);
   } catch {
     // Nothing to persist to; the choice still applies to this visit.
   }
-  apply(next);
 }
 
-/** Put a language into effect without writing it back to storage. */
+/** Another tab changed the language. */
+function onStorage(event: StorageEvent): void {
+  if (event.key !== STORAGE_KEY) return;
+  apply(event.newValue === "es" ? "es" : "en");
+}
+
+/**
+ * Put a language into effect: update the cache, the page, and anything
+ * listening. Does not touch storage, so it can serve both a click here and a
+ * change made in another tab.
+ */
 function apply(next: Lang): void {
   if (current === next) return;
   current = next;

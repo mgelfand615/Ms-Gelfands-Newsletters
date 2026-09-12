@@ -1,11 +1,6 @@
 import type { Metadata } from "next";
-import {
-  breakingBank,
-  economyIntro,
-  economySections,
-  makingBank,
-} from "@/content/site";
-import type { EconomyBlock } from "@/content/site";
+import { breakingBank, economyIntro, economySections, makingBank } from "@/content/classroom-economy";
+import type { EconomyBlock } from "@/content/classroom-economy";
 import type { Text } from "@/content/types";
 import { PageHeader } from "@/components/page-header";
 import { T } from "@/components/t";

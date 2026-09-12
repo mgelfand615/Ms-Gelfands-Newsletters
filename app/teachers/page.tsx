@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { teachers } from "@/content/site";
-import type { Teacher } from "@/content/site";
+import { teachers } from "@/content/teachers";
+import type { Teacher } from "@/content/teachers";
 import { PageHeader } from "@/components/page-header";
 import { Field, FieldLabel } from "@/components/section";
 import { Prose, T } from "@/components/t";

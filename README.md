@@ -18,13 +18,17 @@ Then open http://localhost:3000.
 
 ## The pages
 
+One file per page, so you only ever open the one you're changing:
+
 | Page | File to edit |
 | --- | --- |
 | Newsletter (home) | `content/newsletters.ts` |
 | Past Newsletters | fills itself in automatically |
-| About Your Teachers | `content/site.ts` → `teachers` |
-| Student Tech at Home | `content/site.ts` → `techSteps` |
-| Classroom Economy | `content/site.ts` → `makingBank`, `breakingBank`, … |
+| About Your Teachers | `content/teachers.ts` |
+| Student Tech at Home | `content/student-tech.ts` |
+| Classroom Economy | `content/classroom-economy.ts` |
+| Quick Links | `content/quick-links.ts` |
+| Class name, tabs, contact | `content/site.ts` |
 
 Anywhere you haven't written anything yet shows a dashed **placeholder box**.
 Fill in that field and the box disappears on its own — so you can see at a
@@ -74,6 +78,29 @@ On the Student Tech page:
 
 Send passwords home on paper, or by email to that one family.
 
+## Tests
+
+```bash
+npm test          # run once
+npm run test:watch  # re-run as you edit
+```
+
+They also run automatically on every push — a failure stops the site from
+publishing, so a mistake never reaches families.
+
+The suite covers the things that would quietly break:
+
+- **Which newsletter is current** — that the newest `date` wins no matter what
+  order the weeks are typed in, and that it's left out of the archive.
+- **Content mistakes** — an empty newsletter list or two weeks sharing a
+  `slug` fail with a plain sentence naming the file.
+- **Duplicate `id`s** — the likeliest mistake, since you add a teacher or a
+  tool by copying an existing one.
+- **Both languages render**, English fills in for missing Spanish, and the
+  Spanish is tagged `lang="es"` so screen readers pronounce it correctly.
+- **Placeholders** appear when a field is empty and disappear when it's filled.
+- **The language toggle** — saving, reloading, and two tabs staying in step.
+
 ## Colors
 
 The classroom palette lives at the top of
@@ -119,8 +146,13 @@ app/
 components/                     Header, footer, cards, the EN/ES toggle
 content/
   newsletters.ts                ← edit weekly
-  site.ts                       ← edit for everything else
+  teachers.ts                   ← one file per page
+  student-tech.ts
+  classroom-economy.ts
+  quick-links.ts
+  site.ts                       Class name, tabs, contact
   types.ts                      The bilingual Text type
+tests/                          Run with `npm test`
 ```
 
 ## A note on privacy

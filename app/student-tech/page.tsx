@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { techIntro, techSteps } from "@/content/site";
-import type { TechStep } from "@/content/site";
+import { techIntro, techSteps } from "@/content/student-tech";
+import type { TechStep } from "@/content/student-tech";
 import type { Text } from "@/content/types";
 import { PageHeader } from "@/components/page-header";
 import { Prose, T } from "@/components/t";

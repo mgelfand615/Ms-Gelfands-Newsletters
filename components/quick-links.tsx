@@ -1,4 +1,4 @@
-import { quickLinks } from "@/content/site";
+import { quickLinks } from "@/content/quick-links";
 import { T } from "@/components/t";
 import { SectionHeading } from "@/components/section";
 

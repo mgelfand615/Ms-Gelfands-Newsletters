@@ -136,41 +136,58 @@ export const newsletters: Newsletter[] = [
    sentence telling you what to fix, instead of a confusing framework error
    several steps later.                                                      */
 
-if (newsletters.length === 0) {
-  throw new Error(
-    "content/newsletters.ts: the `newsletters` list is empty. The site needs " +
-      "at least one newsletter — paste the template block back in.",
-  );
-}
-
-const slugsSeen = new Set<string>();
-for (const entry of newsletters) {
-  if (slugsSeen.has(entry.slug)) {
+/**
+ * Throws a readable error if the newsletter list can't work.
+ *
+ * Exported separately from the data so the rules can be tested directly
+ * rather than by breaking the real content.
+ */
+export function validateNewsletters(list: Newsletter[]): void {
+  if (list.length === 0) {
     throw new Error(
-      `content/newsletters.ts: two newsletters both use slug "${entry.slug}". ` +
-        'Each week needs its own, e.g. "week-1", "week-2".',
+      "content/newsletters.ts: the `newsletters` list is empty. The site needs " +
+        "at least one newsletter — paste the template block back in.",
     );
   }
-  slugsSeen.add(entry.slug);
+
+  const seen = new Set<string>();
+  for (const entry of list) {
+    if (seen.has(entry.slug)) {
+      throw new Error(
+        `content/newsletters.ts: two newsletters both use slug "${entry.slug}". ` +
+          'Each week needs its own, e.g. "week-1", "week-2".',
+      );
+    }
+    seen.add(entry.slug);
+  }
 }
 
-/* ── Helpers ────────────────────────────────────────────────────────────── */
+validateNewsletters(newsletters);
+
+/* ── Helpers ────────────────────────────────────────────────────────────────
+   Each takes the list to work on, defaulting to the real one. Passing a list
+   in is what lets the tests check the sorting rules against fixed data.     */
 
 /** All newsletters, newest first. */
-export function allNewsletters(): Newsletter[] {
-  return [...newsletters].sort((a, b) => b.date.localeCompare(a.date));
+export function allNewsletters(list: Newsletter[] = newsletters): Newsletter[] {
+  return [...list].sort((a, b) => b.date.localeCompare(a.date));
 }
 
 /** The one families land on. Guaranteed to exist by the check above. */
-export function latestNewsletter(): Newsletter {
-  return allNewsletters()[0];
+export function latestNewsletter(list: Newsletter[] = newsletters): Newsletter {
+  return allNewsletters(list)[0];
 }
 
 /** Everything except the newest — the Past Newsletters tab. */
-export function pastNewsletters(): Newsletter[] {
-  return allNewsletters().slice(1);
+export function pastNewsletters(
+  list: Newsletter[] = newsletters,
+): Newsletter[] {
+  return allNewsletters(list).slice(1);
 }
 
-export function newsletterBySlug(slug: string): Newsletter | undefined {
-  return newsletters.find((n) => n.slug === slug);
+export function newsletterBySlug(
+  slug: string,
+  list: Newsletter[] = newsletters,
+): Newsletter | undefined {
+  return list.find((n) => n.slug === slug);
 }
