@@ -48,7 +48,7 @@ export default function ClassroomEconomyPage() {
           />
         </div>
 
-        <div className="grid gap-5 md:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-2">
           {/* Bills, scores and perks are ordinary reference, not dates — so
               they stay neutral rather than borrowing a colour that means
               something else elsewhere. */}
@@ -58,7 +58,9 @@ export default function ClassroomEconomyPage() {
               tone="plain"
               title={block.title}
               body={block.body}
-            />
+            >
+              <BlockLists block={block} bullet="bg-muted/50" />
+            </SectionCard>
           ))}
         </div>
       </div>
@@ -106,41 +108,61 @@ function BankColumn({
             title={block.title}
             body={block.body}
           >
-            {block.lists?.map((list) => (
-              // A labelled list gets its own inset box; an unlabelled one is
-              // just the detail of the paragraph above it.
-              <div
-                key={list.id}
-                className={
-                  list.label ? "mt-4 rounded-xl bg-surface/70 p-4" : "mt-3"
-                }
-              >
-                {list.label && (
-                  <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted">
-                    <T value={list.label} />
-                  </p>
-                )}
-                <ul className="space-y-2">
-                  {list.items.map((item) => (
-                    <li
-                      key={item.en}
-                      className="flex gap-2.5 text-sm leading-relaxed text-ink"
-                    >
-                      <span
-                        aria-hidden
-                        className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${bullet}`}
-                      />
-                      <span>
-                        <Rich value={item} />
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            <BlockLists block={block} bullet={bullet} />
           </SectionCard>
         ))}
       </div>
     </section>
+  );
+}
+
+/**
+ * The lists under a card's paragraph. Shared by the two bank columns and the
+ * boxes along the bottom — when it lived only inside the columns, Monthly
+ * Bills and The Perks silently dropped theirs.
+ *
+ * A labelled list gets its own inset box; an unlabelled one is just the
+ * detail of the paragraph above it.
+ */
+function BlockLists({
+  block,
+  bullet,
+}: {
+  block: EconomyBlock;
+  bullet: string;
+}) {
+  if (!block.lists || block.lists.length === 0) return null;
+
+  return (
+    <>
+      {block.lists.map((list) => (
+        <div
+          key={list.id}
+          className={list.label ? "mt-4 rounded-xl bg-surface/70 p-4" : "mt-3"}
+        >
+          {list.label && (
+            <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted">
+              <T value={list.label} />
+            </p>
+          )}
+          <ul className="space-y-2">
+            {list.items.map((item) => (
+              <li
+                key={item.en}
+                className="flex gap-2.5 text-sm leading-relaxed text-ink"
+              >
+                <span
+                  aria-hidden
+                  className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${bullet}`}
+                />
+                <span>
+                  <Rich value={item} />
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </>
   );
 }

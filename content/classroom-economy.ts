@@ -6,7 +6,7 @@
  * ─────────────────────────────────────────────────────────────────────────
  */
 
-import { blank, type Block, type Text } from "./types";
+import type { Block, Text } from "./types";
 
 /**
  * One box on the page. `items` is an optional bulleted list shown under the
@@ -173,8 +173,8 @@ export const breakingBank: EconomyBlock[] = [
     id: "major-violations",
     title: { en: "Major Violations", es: "Faltas Mayores" },
     body: {
-      en: "These skip the warnings entirely: **an immediate $50 Expectation Notice and an Agenda Score of 1.**",
-      es: "Estas se saltan las advertencias por completo: **un Aviso de Expectativas de $50 de inmediato y un Puntaje de Agenda de 1.**",
+      en: "These skip the warnings entirely: **an immediate $50 Expectation Notice and an Agenda Score of 1.** An Expectation Notice is a coloured slip stapled into your child's agenda — please sign it and send it back the next day.",
+      es: "Estas se saltan las advertencias por completo: **un Aviso de Expectativas de $50 de inmediato y un Puntaje de Agenda de 1.** El Aviso de Expectativas es una hoja de color que se engrapa en la agenda de su hijo/a — por favor fírmela y devuélvala al día siguiente.",
     },
     lists: [
       {
@@ -204,16 +204,57 @@ export const economySections: EconomyBlock[] = [
   {
     id: "monthly-bills",
     title: { en: "Monthly Bills", es: "Cuentas Mensuales" },
-    body: blank,
-  },
-  {
-    id: "agenda-scores",
-    title: { en: "Agenda Scores", es: "Puntos de Agenda" },
-    body: blank,
+    body: {
+      en: "Just like in the real world, students are responsible for paying monthly living expenses on the **first Friday of each month**:",
+      es: "Como en el mundo real, los estudiantes son responsables de pagar sus gastos mensuales el **primer viernes de cada mes**:",
+    },
+    lists: [
+      {
+        id: "bills",
+        items: [
+          { en: "**Cubby Rent** — $200", es: "**Renta del cubby** — $200" },
+          {
+            en: "**Chromebook Rent** — $50",
+            es: "**Renta de la Chromebook** — $50",
+          },
+          {
+            en: "**Utilities** — $30 · Electricity $10, Water $10, Wi-Fi $10",
+            es: "**Servicios** — $30 · Electricidad $10, Agua $10, Wi-Fi $10",
+          },
+          {
+            en: "**Total monthly bills — $280**",
+            es: "**Total de cuentas mensuales — $280**",
+          },
+        ],
+      },
+    ],
   },
   {
     id: "perks",
     title: { en: "The Perks", es: "Los Beneficios" },
-    body: blank,
+    body: {
+      en: "Students shop the classroom store every payday — **every other Friday**. What is on the shelves:",
+      es: "Los estudiantes van a la tienda del salón cada día de pago — **cada dos viernes**. Esto es lo que hay:",
+    },
+    lists: [
+      {
+        id: "store",
+        items: [
+          { en: "Candy Bin", es: "Bote de dulces" },
+          { en: "Pen Day", es: "Día de pluma" },
+          { en: "Line Jumper", es: "Pase para saltar la fila" },
+          { en: "Takis!", es: "¡Takis!" },
+          { en: "Homework Pass", es: "Pase de tarea" },
+          { en: "Lunch with the Teacher", es: "Almuerzo con la maestra" },
+          {
+            en: "Teacher's Desk Day",
+            es: "Día en el escritorio de la maestra",
+          },
+          { en: "Positive Call Home", es: "Llamada positiva a casa" },
+          { en: "Secret Agent", es: "Agente secreto" },
+          { en: "Class Announcer", es: "Locutor de la clase" },
+        ],
+      },
+    ],
   },
 ];
