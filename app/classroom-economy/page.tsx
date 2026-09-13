@@ -30,9 +30,9 @@ export default function ClassroomEconomyPage() {
       />
 
       <div className="mx-auto max-w-5xl space-y-12 px-5 py-12 sm:px-8 sm:py-14">
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="grid items-stretch gap-8 lg:grid-cols-2">
           <BankColumn
-            arrow="↑"
+            arrow="📈"
             tone="good"
             headingClass="text-good"
             heading={{ en: "Making Bank", es: "Ganando Dinero" }}
@@ -40,7 +40,7 @@ export default function ClassroomEconomyPage() {
             blocks={makingBank}
           />
           <BankColumn
-            arrow="↓"
+            arrow="📉"
             tone="caution"
             headingClass="text-caution"
             heading={{ en: "Breaking Bank", es: "Perdiendo Dinero" }}
@@ -51,6 +51,7 @@ export default function ClassroomEconomyPage() {
 
         <section>
           <h2 className="mb-1 font-display text-2xl font-semibold tracking-tight text-info sm:text-3xl">
+            <span aria-hidden className="mr-2.5">🛒</span>
             <T en="Spending" es="Gastando" />
           </h2>
           <p className="mb-5 leading-relaxed text-muted">
@@ -95,7 +96,7 @@ function BankColumn({
   const bullet = tone === "good" ? "bg-good" : "bg-caution";
 
   return (
-    <section>
+    <section className="flex h-full flex-col">
       <h2
         className={`mb-5 flex items-center gap-3 font-display text-2xl font-semibold tracking-tight sm:text-3xl ${headingClass}`}
       >
@@ -109,11 +110,12 @@ function BankColumn({
           <Rich value={intro} />
         </p>
       )}
-      <div className="space-y-4">
+      <div className="flex flex-1 flex-col gap-4 [&>*]:grow">
         {blocks.map((block) => (
           <SectionCard
             key={block.id}
             tone={tone}
+            emoji={block.emoji}
             title={block.title}
             body={block.body}
           >

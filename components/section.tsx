@@ -6,12 +6,15 @@ import { toneHeading, toneSurface, type Tone } from "@/components/tone";
 /** A titled box. Shows a placeholder until the body is written. */
 export function SectionCard({
   title,
+  emoji,
   body,
   items,
   tone = "plain",
   children,
 }: {
   title: Text;
+  /** Decorative only — hidden from screen readers. */
+  emoji?: string;
   /** A paragraph. Use `items` instead when the field is a list. */
   body?: Text;
   /** Several points. One renders as a sentence, more render as bullets. */
@@ -20,11 +23,16 @@ export function SectionCard({
   children?: React.ReactNode;
 }) {
   return (
-    <section className={`rounded-card border p-5 sm:p-6 ${toneSurface[tone]}`}>
+    <section
+      className={`flex flex-col justify-center rounded-card border p-5 sm:p-6 ${toneSurface[tone]}`}
+    >
       <h3
-        className={`font-display text-xl font-semibold tracking-tight ${toneHeading[tone]}`}
+        className={`flex items-center gap-2 font-display text-xl font-semibold tracking-tight ${toneHeading[tone]}`}
       >
-        <T value={title} />
+        {emoji && <span aria-hidden>{emoji}</span>}
+        <span>
+          <T value={title} />
+        </span>
       </h3>
       <div className="mt-3">
         {/* A card given children draws its own contents, so the placeholder

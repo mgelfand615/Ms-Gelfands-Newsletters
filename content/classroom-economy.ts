@@ -17,6 +17,8 @@ import type { Block, Text } from "./types";
  * "Major Violations" silently deleted the list.
  */
 export type EconomyBlock = Block & {
+  /** Shown beside the heading. Decorative — screen readers skip it. */
+  emoji?: string;
   /**
    * Lists under the paragraph. A list with no label sits directly beneath
    * it; a labelled one gets its own inset box, for an aside like "Examples".
@@ -51,6 +53,7 @@ export const makingBankIntro: Text = {
 export const makingBank: EconomyBlock[] = [
   {
     id: "jobs",
+    emoji: "💼",
     title: { en: "Classroom Jobs", es: "Trabajos del Salón" },
     body: {
       en: "Every student applies for and holds a classroom job.",
@@ -74,6 +77,7 @@ export const makingBank: EconomyBlock[] = [
   },
   {
     id: "bonuses",
+    emoji: "⭐",
     title: { en: "Bonuses", es: "Bonificaciones" },
     body: {
       en: "Earned for positive actions:",
@@ -102,6 +106,7 @@ export const makingBank: EconomyBlock[] = [
   },
   {
     id: "bonus-notices",
+    emoji: "🎉",
     title: { en: "Bonus Notices", es: "Avisos de Bonificación" },
     body: {
       en: "**+$50**, given for going Above and Beyond or showing Huge Improvement.",
@@ -120,6 +125,7 @@ export const breakingBankIntro: Text = {
 export const breakingBank: EconomyBlock[] = [
   {
     id: "minor-violations",
+    emoji: "⚠️",
     title: { en: "Minor Violations", es: "Faltas Menores" },
     body: {
       en: "The same three steps every time:",
@@ -177,6 +183,7 @@ export const breakingBank: EconomyBlock[] = [
   },
   {
     id: "major-violations",
+    emoji: "🛑",
     title: { en: "Major Violations", es: "Faltas Mayores" },
     body: {
       en: "These skip the warnings entirely: **an immediate $50 Expectation Notice and an Agenda Score of 1.** An Expectation Notice is a coloured slip stapled into your child's agenda — please sign it and send it back the next day.",
@@ -215,6 +222,7 @@ export const spendingIntro: Text = {
 export const economySections: EconomyBlock[] = [
   {
     id: "monthly-bills",
+    emoji: "🧾",
     title: { en: "Monthly Bills", es: "Cuentas Mensuales" },
     body: {
       en: "Just like in the real world, students are responsible for paying monthly living expenses on the **first Friday of each month**:",
@@ -243,6 +251,7 @@ export const economySections: EconomyBlock[] = [
   },
   {
     id: "perks",
+    emoji: "🎁",
     title: { en: "The Perks", es: "Los Beneficios" },
     body: {
       en: "Students shop the classroom store every payday — **every other Friday**. What is on the shelves:",
