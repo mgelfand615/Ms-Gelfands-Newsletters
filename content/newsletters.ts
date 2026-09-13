@@ -33,6 +33,8 @@ export type Subject = {
    */
   id: string;
   name: Text;
+  /** Shown beside the heading. Decorative — screen readers skip it. */
+  emoji: string;
   /**
    * What we're doing in this subject this week. One point renders as a
    * sentence; two or more render as bullets.
@@ -143,6 +145,7 @@ export const newsletters: Newsletter[] = [
       {
         // Across the top — a few sentences.
         id: "sel",
+        emoji: "💛",
         color: "mint",
         name: {
           en: "Social Emotional Learning",
@@ -163,6 +166,7 @@ export const newsletters: Newsletter[] = [
       {
         // Left-hand big box.
         id: "reading",
+        emoji: "📚",
         color: "lilac",
         name: { en: "Reading", es: "Lectura" },
         body: [
@@ -190,6 +194,7 @@ export const newsletters: Newsletter[] = [
       {
         // Right-hand big box.
         id: "math",
+        emoji: "🔢",
         color: "clay",
         name: { en: "Math", es: "Matemáticas" },
         body: [
@@ -214,6 +219,7 @@ export const newsletters: Newsletter[] = [
       {
         // Across the bottom.
         id: "social-studies",
+        emoji: "🗺️",
         color: "ice",
         name: { en: "Social Studies", es: "Estudios Sociales" },
         body: [

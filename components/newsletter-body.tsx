@@ -78,7 +78,7 @@ function GeneralReminders() {
       <SectionHeading
         title={{ en: "General Reminders", es: "Recordatorios Generales" }}
       />
-      <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {generalReminders.map((reminder) => (
           <li
             key={reminder.id}
@@ -238,8 +238,11 @@ function SubjectCard({
         paired ? "sm:row-span-3 sm:grid sm:grid-rows-subgrid" : ""
       }`}
     >
-      <h3 className="font-display text-xl font-semibold tracking-tight text-ink">
-        <T value={subject.name} />
+      <h3 className="flex items-center gap-2 font-display text-xl font-semibold tracking-tight text-ink">
+        <span aria-hidden>{subject.emoji}</span>
+        <span>
+          <T value={subject.name} />
+        </span>
       </h3>
 
       <div className={paired ? "" : "mt-2"}>
