@@ -3,7 +3,7 @@ import { techIntro, techSteps } from "@/content/student-tech";
 import type { TechStep } from "@/content/student-tech";
 import { isBlank, type Text } from "@/content/types";
 import { PageHeader } from "@/components/page-header";
-import { Prose, T } from "@/components/t";
+import { T } from "@/components/t";
 import { Rich } from "@/components/rich-text";
 
 export const metadata: Metadata = {
@@ -56,15 +56,26 @@ function StepCard({ step }: { step: TechStep }) {
         )}
       </div>
 
-      <div className="mt-4">
-        {isBlank(step.body) ? (
-          <Prose value={step.body} />
-        ) : (
-          <p className="leading-relaxed text-ink">
-            <Rich value={step.body} />
-          </p>
-        )}
-      </div>
+      {!isBlank(step.body) && (
+        <p className="mt-4 leading-relaxed text-ink">
+          <Rich value={step.body} />
+        </p>
+      )}
+
+      {step.notes && step.notes.length > 0 && (
+        <div className="mt-4 space-y-3">
+          {step.notes.map((note) => (
+            <div key={note.label.en} className="rounded-xl bg-surface-2 p-4">
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted">
+                <T value={note.label} />
+              </p>
+              <p className="mt-1.5 leading-relaxed text-ink">
+                <Rich value={note.text} />
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
 
       {(!isBlank(step.username) || !isBlank(step.password)) && (
         <dl className="mt-5 space-y-3 rounded-xl bg-surface-2 p-4">

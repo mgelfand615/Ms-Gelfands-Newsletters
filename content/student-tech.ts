@@ -30,6 +30,11 @@ export type TechStep = {
   username: Text;
   /** Where the password can be found — never the password. Blank hides it. */
   password: Text;
+  /**
+   * Short labelled sections, for a tool that needs more than a paragraph —
+   * how to sign in, what to do on a computer, what to do on a tablet.
+   */
+  notes?: { label: Text; text: Text }[];
   /** App Store listing, if the service has an app. */
   appleApp?: string;
   /** Google Play listing, if the service has an app. */
@@ -65,13 +70,39 @@ export const techSteps: TechStep[] = [
   {
     id: "iready",
     title: { en: "i-Ready", es: "i-Ready" },
-    body: {
-      en: "**Open i-Ready through ClassLink.** There is no separate username or password for i-Ready — sign in to ClassLink and tap the i-Ready tile. There is no i-Ready app, so use the ClassLink app or the website.",
-      es: "**Abra i-Ready desde ClassLink.** No hay usuario ni contraseña aparte para i-Ready — inicie sesión en ClassLink y toque el ícono de i-Ready. No existe una aplicación de i-Ready, así que use la aplicación de ClassLink o el sitio web.",
-    },
+    body: blank,
     href: "https://login.i-ready.com/",
     username: blank,
     password: blank,
+    notes: [
+      {
+        label: { en: "Signing in", es: "Cómo iniciar sesión" },
+        text: {
+          en: "There is **no i-Ready username or password.** Sign in to ClassLink and tap the i-Ready tile.",
+          es: "**No hay usuario ni contraseña de i-Ready.** Inicie sesión en ClassLink y toque el ícono de i-Ready.",
+        },
+      },
+      {
+        label: {
+          en: "On a Chromebook or computer",
+          es: "En una Chromebook o computadora",
+        },
+        text: {
+          en: "Use the i-Ready website. There is nothing to install.",
+          es: "Use el sitio web de i-Ready. No hay que instalar nada.",
+        },
+      },
+      {
+        label: {
+          en: "On a tablet or phone",
+          es: "En una tableta o teléfono",
+        },
+        text: {
+          en: "The i-Ready app has to be downloaded first — i-Ready will not run in a tablet or phone browser.",
+          es: "Hay que descargar la aplicación de i-Ready primero — i-Ready no funciona en el navegador de una tableta o teléfono.",
+        },
+      },
+    ],
   },
   {
     id: "google",
