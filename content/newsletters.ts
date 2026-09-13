@@ -95,16 +95,16 @@ export const newsletters: Newsletter[] = [
 
     updates: [
       {
-        en: "i-Ready testing is all finished!  For students who were absent this on one of the testing days will make it up this coming week.  i-Ready scores will be sent home in your child’s takehome folder soon.",
-        es: "¡Las pruebas de i-Ready ya terminaron! Los estudiantes que estuvieron ausentes en uno de los días de prueba las recuperarán esta próxima semana. Los resultados de i-Ready se enviarán a casa próximamente en la carpeta de su hijo/a.",
+        en: "**i-Ready Testing:** i-Ready testing is all finished! Students who were absent on one of the testing days will make it up this coming week. i-Ready scores will be sent home in your child’s takehome folder soon.",
+        es: "**Pruebas de i-Ready:** ¡Las pruebas de i-Ready ya terminaron! Los estudiantes que estuvieron ausentes en uno de los días de prueba las recuperarán esta próxima semana. Los resultados de i-Ready se enviarán a casa próximamente en la carpeta de su hijo/a.",
       },
       {
-        en: "Interested in joining the PTA? Click here to join: https://gvsa.givebacks.com/shop",
-        es: "¿Le interesa unirse a la PTA? Haga clic aquí para unirse: https://gvsa.givebacks.com/shop",
+        en: "**Interested in joining the PTA?** Click here to join: https://gvsa.givebacks.com/shop",
+        es: "**¿Le interesa unirse a la PTA?** Haga clic aquí para unirse: https://gvsa.givebacks.com/shop",
       },
       {
-        en: "GVSA Fundraiser: Our first fundraiser of the school year is kicking off Tuesday, September 22nd, and we’re ready to see which classroom can bring in the BIGGEST popcorn sales! 🚀 Our classroom has its own unique fundraising link that you can share with your families, friends, neighbors, and anyone else who loves a good snack! 🍿 🍕 TOP-SELLING CLASSROOM will earn an EPIC PIZZA PARTY! 🎉🍕\nLink: https://poppinpopcornonline.com/store/store.php?sID=00676032",
-        es: "Recaudación de fondos de GVSA: ¡Nuestra primera recaudación de fondos del año escolar comienza el martes 22 de septiembre, y estamos listos para ver qué salón logra las MAYORES ventas de palomitas! 🚀 Nuestro salón tiene su propio enlace de recaudación que puede compartir con su familia, amigos, vecinos y cualquier persona a la que le guste un buen bocadillo. 🍿 🍕 ¡EL SALÓN CON MÁS VENTAS ganará una ÉPICA FIESTA DE PIZZA! 🎉🍕\nEnlace: https://poppinpopcornonline.com/store/store.php?sID=00676032",
+        en: "**GVSA Fundraiser:** Our first fundraiser of the school year is kicking off Tuesday, September 22nd, and we’re ready to see which classroom can bring in the BIGGEST popcorn sales! 🚀 Our classroom has its own unique fundraising link that you can share with your families, friends, neighbors, and anyone else who loves a good snack! 🍿 🍕 TOP-SELLING CLASSROOM will earn an EPIC PIZZA PARTY! 🎉🍕\n**Ms. Gelfand’s Homeroom class link:**\nhttps://poppinpopcornonline.com/store/store.php?sID=00676032",
+        es: "**Recaudación de fondos de GVSA:** ¡Nuestra primera recaudación de fondos del año escolar comienza el martes 22 de septiembre, y estamos listos para ver qué salón logra las MAYORES ventas de palomitas! 🚀 Nuestro salón tiene su propio enlace de recaudación que puede compartir con su familia, amigos, vecinos y cualquier persona a la que le guste un buen bocadillo. 🍿 🍕 ¡EL SALÓN CON MÁS VENTAS ganará una ÉPICA FIESTA DE PIZZA! 🎉🍕\n**Enlace del salón de Ms. Gelfand:**\nhttps://poppinpopcornonline.com/store/store.php?sID=00676032",
       },
     ],
 
