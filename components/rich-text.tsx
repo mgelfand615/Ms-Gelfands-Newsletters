@@ -22,20 +22,21 @@ export function Rich({ value }: { value: Text }) {
   );
 }
 
-/** Splits on web addresses, keeping them (the capture group). */
-const URL = /(https?:\/\/[^\s<>"')]+)/g;
+/** Splits on web addresses and email addresses, keeping them. */
+const LINKABLE = /(https?:\/\/[^\s<>"')]+|[^\s<>"'(),;:]+@[^\s<>"'(),;:]+\.[a-z]{2,})/gi;
 
 function render(text: string) {
   return text.split("\n").map((line, lineIndex) => (
     <span key={lineIndex}>
       {lineIndex > 0 && <br />}
-      {line.split(URL).map((part, i) =>
-        /^https?:\/\//.test(part) ? (
+      {line.split(LINKABLE).map((part, i) =>
+        /^https?:\/\//.test(part) || /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(part) ? (
           <a
             key={i}
-            href={part}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={/^https?:\/\//.test(part) ? part : `mailto:${part}`}
+            {...(/^https?:\/\//.test(part)
+              ? { target: "_blank", rel: "noopener noreferrer" }
+              : {})}
             className="break-all font-medium text-accent underline underline-offset-2"
           >
             {part}

@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { teachers } from "@/content/teachers";
 import type { Teacher } from "@/content/teachers";
+import { isBlank } from "@/content/types";
 import { PageHeader } from "@/components/page-header";
 import { Field, FieldLabel } from "@/components/section";
 import { Prose, T } from "@/components/t";
+import { Rich } from "@/components/rich-text";
+import { asset } from "@/lib/asset";
 
 export const metadata: Metadata = {
   title: "About Your Teachers",
@@ -42,7 +45,7 @@ function TeacherCard({ teacher }: { teacher: Teacher }) {
         {teacher.photo ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={teacher.photo}
+            src={asset(teacher.photo)}
             alt={teacher.name}
             className="h-40 w-40 rounded-card object-cover"
           />
@@ -55,7 +58,13 @@ function TeacherCard({ teacher }: { teacher: Teacher }) {
         <div>
           <FieldLabel label={{ en: "About Me", es: "Sobre Mí" }} />
           <div className="mt-2">
-            <Prose value={teacher.aboutMe} />
+            {isBlank(teacher.aboutMe) ? (
+              <Prose value={teacher.aboutMe} />
+            ) : (
+              <p className="leading-relaxed text-ink">
+                <Rich value={teacher.aboutMe} />
+              </p>
+            )}
           </div>
         </div>
       </div>

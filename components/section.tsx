@@ -1,5 +1,6 @@
-import type { Text } from "@/content/types";
+import { isBlank, type Text } from "@/content/types";
 import { Points, Prose, T } from "@/components/t";
+import { Rich } from "@/components/rich-text";
 import { toneHeading, toneSurface, type Tone } from "@/components/tone";
 
 /** A titled box. Shows a placeholder until the body is written. */
@@ -82,10 +83,13 @@ export function Field({
     <div className={`rounded-card border p-5 ${toneSurface[tone]}`}>
       <FieldLabel label={label} />
       <div className="mt-2">
-        <Prose
-          value={value}
-          placeholderClassName="text-sm italic text-muted"
-        />
+        {isBlank(value) ? (
+          <Prose value={value} placeholderClassName="text-sm italic text-muted" />
+        ) : (
+          <p className="leading-relaxed text-ink">
+            <Rich value={value} />
+          </p>
+        )}
       </div>
     </div>
   );
