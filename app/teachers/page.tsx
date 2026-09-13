@@ -39,7 +39,9 @@ export default function TeachersPage() {
 function TeacherCard({ teacher }: { teacher: Teacher }) {
   return (
     <section className="rounded-card border border-line bg-surface p-6 sm:p-8">
-      <div className="flex flex-col gap-6 sm:flex-row sm:gap-8">
+      {/* The photo stretches to whatever height the introduction needs, so
+          there is never a gap under it — however long the bio runs. */}
+      <div className="flex flex-col gap-6 sm:flex-row sm:items-stretch sm:gap-10">
         {teacher.photo ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -47,10 +49,10 @@ function TeacherCard({ teacher }: { teacher: Teacher }) {
             alt={teacher.name}
             width={180}
             height={180}
-            className="h-44 w-44 shrink-0 rounded-card object-cover"
+            className="h-52 w-52 shrink-0 rounded-card object-cover object-top sm:h-auto sm:max-h-[22rem] sm:w-56"
           />
         ) : (
-          <div className="flex h-44 w-44 shrink-0 items-center justify-center rounded-card border border-dashed border-line bg-surface-2 p-3 text-center text-xs italic text-muted">
+          <div className="flex h-52 w-52 shrink-0 items-center justify-center rounded-card border border-dashed border-line bg-surface-2 p-3 text-center text-xs italic text-muted sm:h-auto sm:min-h-52 sm:w-56">
             <T en="Add a photo" es="Agregue una foto" />
           </div>
         )}
