@@ -119,8 +119,8 @@ export const makingBank: EconomyBlock[] = [
     emoji: "🎉",
     title: { en: "Bonus Notices", es: "Avisos de Bonificación" },
     body: {
-      en: "**+$50**, given for going Above and Beyond or showing Huge Improvement. It is the largest amount a student can earn at one time.",
-      es: "**+$50**, se dan por esforzarse Más de lo Esperado o por mostrar una Gran Mejoría. Es la cantidad más grande que un estudiante puede ganar de una sola vez.",
+      en: "**+$50**, given for going Above and Beyond or showing Huge Improvement. It is stapled into your child's agenda.",
+      es: "**+$50**, se dan por esforzarse Más de lo Esperado o por mostrar una Gran Mejoría. Se engrapa en la agenda de su hijo/a.",
     },
   },
 ];

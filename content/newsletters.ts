@@ -20,8 +20,12 @@
 import { blank, type Text } from "./types";
 import type { SubjectColor } from "@/components/tone";
 
-/** One line in Upcoming Dates. The day is bolded; the detail is not. */
-export type DateEntry = { when: Text; what: Text };
+/**
+ * One day in Upcoming Dates: the day in bold, with its events bulleted
+ * underneath. An empty `events` list shows a single "None" bullet, so a quiet
+ * day still appears rather than going missing from the week.
+ */
+export type DateEntry = { when: Text; events: Text[] };
 
 /** One birthday, in its own box. */
 export type Birthday = { id: string; name: string; date: Text };
@@ -110,26 +114,51 @@ export const newsletters: Newsletter[] = [
 
     upcomingDates: [
       {
-        when: { en: "Tuesday, September 15th", es: "Martes 15 de septiembre" },
-        what: {
-          en: "Chuck E. Cheese Fundraiser 3:30pm-9:00pm at 7970 Lyles Lane NW, Concord, NC 28027",
-          es: "Recaudación de fondos en Chuck E. Cheese de 3:30pm a 9:00pm en 7970 Lyles Lane NW, Concord, NC 28027",
-        },
+        when: { en: "Monday, September 14th", es: "Lunes 14 de septiembre" },
+        events: [],
       },
       {
-        when: { en: "Wednesday, September 16th", es: "Miércoles 16 de septiembre" },
-        what: { en: "Curriculum Night 5-6pm", es: "Noche de Currículo de 5 a 6pm" },
+        when: { en: "Tuesday, September 15th", es: "Martes 15 de septiembre" },
+        events: [
+          {
+            en: "Chuck E. Cheese Fundraiser 3:30pm-9:00pm at 7970 Lyles Lane NW, Concord, NC 28027",
+            es: "Recaudación de fondos en Chuck E. Cheese de 3:30pm a 9:00pm en 7970 Lyles Lane NW, Concord, NC 28027",
+          },
+        ],
+      },
+      {
+        when: {
+          en: "Wednesday, September 16th",
+          es: "Miércoles 16 de septiembre",
+        },
+        events: [
+          {
+            en: "Curriculum Night 5-6pm",
+            es: "Noche de Currículo de 5 a 6pm",
+          },
+        ],
       },
       {
         when: { en: "Thursday, September 17th", es: "Jueves 17 de septiembre" },
-        what: {
-          en: "End Unit Reading Test\nChick-fil-A Night 4:00-7:00pm at 8700 University Executive Park Dr, Charlotte, NC 28262",
-          es: "Examen de Lectura de Fin de Unidad\nNoche de Chick-fil-A de 4:00 a 7:00pm en 8700 University Executive Park Dr, Charlotte, NC 28262",
-        },
+        events: [
+          {
+            en: "End Unit Reading Test",
+            es: "Examen de Lectura de Fin de Unidad",
+          },
+          {
+            en: "Chick-fil-A Night 4:00-7:00pm at 8700 University Executive Park Dr, Charlotte, NC 28262",
+            es: "Noche de Chick-fil-A de 4:00 a 7:00pm en 8700 University Executive Park Dr, Charlotte, NC 28262",
+          },
+        ],
       },
       {
         when: { en: "Friday, September 18th", es: "Viernes 18 de septiembre" },
-        what: { en: "Math Unit 1 Retest", es: "Reexamen de Matemáticas de la Unidad 1" },
+        events: [
+          {
+            en: "Math Unit 1 Retest",
+            es: "Reexamen de Matemáticas de la Unidad 1",
+          },
+        ],
       },
     ],
 

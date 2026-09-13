@@ -119,27 +119,52 @@ function Bullets({ items }: { items: Text[] }) {
   );
 }
 
-/** The day in bold, the detail beside it in normal weight. */
+/** The day in bold, with its events bulleted underneath. */
 function Dates({ newsletter }: { newsletter: Newsletter }) {
   const dates = newsletter.upcomingDates.filter((d) => !isBlank(d.when));
   if (dates.length === 0) return <Placeholder />;
 
   return (
-    <ul className="space-y-3">
-      {dates.map((date) => (
-        <li key={date.when.en} className="leading-relaxed text-ink">
-          <span className="font-semibold">
-            <T value={date.when} />
-          </span>
-          {!isBlank(date.what) && (
-            <>
-              {": "}
-              <Rich value={date.what} />
-            </>
-          )}
-        </li>
-      ))}
+    <ul className="space-y-4">
+      {dates.map((date) => {
+        const events = date.events.filter((event) => !isBlank(event));
+
+        return (
+          <li key={date.when.en}>
+            <p className="font-semibold text-ink">
+              <T value={date.when} />
+            </p>
+            <ul className="mt-1.5 space-y-1.5">
+              {events.length === 0 ? (
+                // A quiet day still gets a line, so the week reads straight
+                // through instead of skipping days.
+                <Event>
+                  <T en="None" es="Ninguno" />
+                </Event>
+              ) : (
+                events.map((event) => (
+                  <Event key={event.en}>
+                    <Rich value={event} />
+                  </Event>
+                ))
+              )}
+            </ul>
+          </li>
+        );
+      })}
     </ul>
+  );
+}
+
+function Event({ children }: { children: React.ReactNode }) {
+  return (
+    <li className="flex gap-2.5 leading-relaxed text-ink">
+      <span
+        aria-hidden
+        className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-info/60"
+      />
+      <span>{children}</span>
+    </li>
   );
 }
 
