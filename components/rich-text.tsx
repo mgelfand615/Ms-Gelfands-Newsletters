@@ -51,14 +51,22 @@ function render(text: string): ReactNode {
   // A blank line starts a new paragraph; a single break is just a new line.
   const paragraphs = text.split(/\n{2,}/);
 
+  // One paragraph stays inline, so a phrase used mid-sentence — a date's
+  // detail after its colon, say — does not get pushed onto its own line.
+  if (paragraphs.length === 1) return lines(paragraphs[0]);
+
   return paragraphs.map((paragraph, p) => (
     <span key={p} className={p > 0 ? "mt-3 block" : "block"}>
-      {paragraph.split("\n").map((line, l) => (
-        <span key={l}>
-          {l > 0 && <br />}
-          {emphasise(line)}
-        </span>
-      ))}
+      {lines(paragraph)}
+    </span>
+  ));
+}
+
+function lines(paragraph: string): ReactNode {
+  return paragraph.split("\n").map((line, l) => (
+    <span key={l}>
+      {l > 0 && <br />}
+      {emphasise(line)}
     </span>
   ));
 }

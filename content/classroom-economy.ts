@@ -264,8 +264,8 @@ export const economySections: EconomyBlock[] = [
     emoji: "🎁",
     title: { en: "The Perks", es: "Los Beneficios" },
     body: {
-      en: "Students shop the classroom store every payday — **every other Friday**. What is on the shelves:",
-      es: "Los estudiantes van a la tienda del salón cada día de pago — **cada dos viernes**. Esto es lo que hay:",
+      en: "Students shop the classroom store every payday — **every other Friday**. Some of what they can buy, with more on the shelves:",
+      es: "Los estudiantes van a la tienda del salón cada día de pago — **cada dos viernes**. Algunas de las cosas que pueden comprar, y hay más en la tienda:",
     },
     lists: [
       {

@@ -122,7 +122,10 @@ export const newsletters: Newsletter[] = [
       },
       {
         when: { en: "Thursday, September 17th", es: "Jueves 17 de septiembre" },
-        what: { en: "End Unit Reading Test", es: "Examen de Lectura de Fin de Unidad" },
+        what: {
+          en: "End Unit Reading Test\nChick-fil-A Night 4:00-7:00pm at 8700 University Executive Park Dr, Charlotte, NC 28262",
+          es: "Examen de Lectura de Fin de Unidad\nNoche de Chick-fil-A de 4:00 a 7:00pm en 8700 University Executive Park Dr, Charlotte, NC 28262",
+        },
       },
       {
         when: { en: "Friday, September 18th", es: "Viernes 18 de septiembre" },

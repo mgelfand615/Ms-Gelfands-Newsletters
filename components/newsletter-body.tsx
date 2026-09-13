@@ -134,7 +134,7 @@ function Dates({ newsletter }: { newsletter: Newsletter }) {
           {!isBlank(date.what) && (
             <>
               {": "}
-              <T value={date.what} />
+              <Rich value={date.what} />
             </>
           )}
         </li>
