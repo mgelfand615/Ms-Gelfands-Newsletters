@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
-import { breakingBank, economyIntro, economySections, makingBank } from "@/content/classroom-economy";
+import {
+  breakingBank,
+  economyIntro,
+  economySections,
+  makingBank,
+  makingBankIntro,
+} from "@/content/classroom-economy";
 import type { EconomyBlock } from "@/content/classroom-economy";
 import type { Text } from "@/content/types";
 import { PageHeader } from "@/components/page-header";
 import { T } from "@/components/t";
+import { Rich } from "@/components/rich-text";
 import { SectionCard } from "@/components/section";
 import type { Tone } from "@/components/tone";
 
@@ -27,6 +34,7 @@ export default function ClassroomEconomyPage() {
             tone="good"
             headingClass="text-good"
             heading={{ en: "Making Bank", es: "Ganando Dinero" }}
+            intro={makingBankIntro}
             blocks={makingBank}
           />
           <BankColumn
@@ -62,13 +70,17 @@ function BankColumn({
   headingClass,
   tone,
   blocks,
+  intro,
 }: {
   arrow: string;
   heading: Text;
   headingClass: string;
   tone: Tone;
   blocks: EconomyBlock[];
+  intro?: Text;
 }) {
+  const bullet = tone === "good" ? "bg-good" : "bg-caution";
+
   return (
     <section>
       <h2
@@ -79,6 +91,11 @@ function BankColumn({
           <T value={heading} />
         </span>
       </h2>
+      {intro && (
+        <p className="mb-5 leading-relaxed text-muted">
+          <Rich value={intro} />
+        </p>
+      )}
       <div className="space-y-4">
         {blocks.map((block) => (
           <SectionCard
@@ -88,20 +105,31 @@ function BankColumn({
             body={block.body}
           >
             {block.items && block.items.length > 0 && (
-              <div className="mt-4 rounded-xl bg-surface/70 p-4">
+              // A labelled list gets its own inset box; an unlabelled one is
+              // just the detail of the paragraph above it.
+              <div
+                className={
+                  block.itemsLabel ? "mt-4 rounded-xl bg-surface/70 p-4" : "mt-3"
+                }
+              >
                 {block.itemsLabel && (
-                  <p className="text-xs font-semibold uppercase tracking-wide text-muted">
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted">
                     <T value={block.itemsLabel} />
                   </p>
                 )}
-                <ul className="mt-2 space-y-1.5">
+                <ul className="space-y-2">
                   {block.items.map((item) => (
-                    <li key={item.en} className="flex gap-2.5 text-sm text-ink">
+                    <li
+                      key={item.en}
+                      className="flex gap-2.5 text-sm leading-relaxed text-ink"
+                    >
                       <span
                         aria-hidden
-                        className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-caution"
+                        className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${bullet}`}
                       />
-                      <T value={item} />
+                      <span>
+                        <Rich value={item} />
+                      </span>
                     </li>
                   ))}
                 </ul>

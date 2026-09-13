@@ -1,5 +1,6 @@
-import type { Text } from "@/content/types";
-import { Points, Prose, T } from "@/components/t";
+import { isBlank, type Text } from "@/content/types";
+import { Placeholder, Points, T } from "@/components/t";
+import { Rich } from "@/components/rich-text";
 import { toneHeading, toneSurface, type Tone } from "@/components/tone";
 
 /** A titled box. Shows a placeholder until the body is written. */
@@ -30,9 +31,17 @@ export function SectionCard({
             would sit above real text rather than standing in for it. */}
         {items ? (
           <Points items={items} />
-        ) : body !== undefined || !children ? (
-          <Prose value={body} />
-        ) : null}
+        ) : isBlank(body) ? (
+          // A card drawing its own contents doesn't need a placeholder
+          // standing in for a body it was never given.
+          children ? null : (
+            <Placeholder />
+          )
+        ) : (
+          <p className="leading-relaxed text-ink">
+            <Rich value={body!} />
+          </p>
+        )}
         {children}
       </div>
     </section>
