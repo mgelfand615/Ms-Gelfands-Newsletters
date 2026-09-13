@@ -44,6 +44,11 @@ export type LinkItem = {
   label: Text;
   /** Paste the web address here, e.g. "https://launchpad.classlink.com/cms" */
   href: string;
+  /**
+   * The service's own logo, saved in /public/logos. Leave it out and the
+   * link shows its first letter instead, which reads just as well.
+   */
+  logo?: string;
 };
 
 /**

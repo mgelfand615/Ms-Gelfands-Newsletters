@@ -89,52 +89,52 @@ export const newsletters: Newsletter[] = [
     slug: "week-1",
     week: 1,
     date: "2026-09-11",
-    dateRange: { en: "September 14 - September 18", es: "" },
+    dateRange: { en: "September 14 - September 18", es: "14 - 18 de septiembre" },
 
     updates: [
       {
         en: "i-Ready testing is all finished!  For students who were absent this on one of the testing days will make it up this coming week.  i-Ready scores will be sent home in your child’s takehome folder soon.",
-        es: "",
+        es: "¡Las pruebas de i-Ready ya terminaron! Los estudiantes que estuvieron ausentes en uno de los días de prueba las recuperarán esta próxima semana. Los resultados de i-Ready se enviarán a casa próximamente en la carpeta de su hijo/a.",
       },
       {
         en: "Interested in joining the PTA? Click here to join: https://gvsa.givebacks.com/shop",
-        es: "",
+        es: "¿Le interesa unirse a la PTA? Haga clic aquí para unirse: https://gvsa.givebacks.com/shop",
       },
       {
         en: "GVSA Fundraiser: Our first fundraiser of the school year is kicking off Tuesday, September 22nd, and we’re ready to see which classroom can bring in the BIGGEST popcorn sales! 🚀 Our classroom has its own unique fundraising link that you can share with your families, friends, neighbors, and anyone else who loves a good snack! 🍿 🍕 TOP-SELLING CLASSROOM will earn an EPIC PIZZA PARTY! 🎉🍕\nLink: https://poppinpopcornonline.com/store/store.php?sID=00676032",
-        es: "",
+        es: "Recaudación de fondos de GVSA: ¡Nuestra primera recaudación de fondos del año escolar comienza el martes 22 de septiembre, y estamos listos para ver qué salón logra las MAYORES ventas de palomitas! 🚀 Nuestro salón tiene su propio enlace de recaudación que puede compartir con su familia, amigos, vecinos y cualquier persona a la que le guste un buen bocadillo. 🍿 🍕 ¡EL SALÓN CON MÁS VENTAS ganará una ÉPICA FIESTA DE PIZZA! 🎉🍕\nEnlace: https://poppinpopcornonline.com/store/store.php?sID=00676032",
       },
     ],
 
     upcomingDates: [
       {
-        when: { en: "Tuesday, September 15th", es: "" },
+        when: { en: "Tuesday, September 15th", es: "Martes 15 de septiembre" },
         what: {
           en: "Chuck E. Cheese Fundraiser 3:30pm-9:00pm at 7970 Lyles Lane NW, Concord, NC 28027",
-          es: "",
+          es: "Recaudación de fondos en Chuck E. Cheese de 3:30pm a 9:00pm en 7970 Lyles Lane NW, Concord, NC 28027",
         },
       },
       {
-        when: { en: "Wednesday, September 16th", es: "" },
-        what: { en: "Curriculum Night 5-6pm", es: "" },
+        when: { en: "Wednesday, September 16th", es: "Miércoles 16 de septiembre" },
+        what: { en: "Curriculum Night 5-6pm", es: "Noche de Currículo de 5 a 6pm" },
       },
       {
-        when: { en: "Thursday, September 17th", es: "" },
-        what: { en: "End Unit Reading Test", es: "" },
+        when: { en: "Thursday, September 17th", es: "Jueves 17 de septiembre" },
+        what: { en: "End Unit Reading Test", es: "Examen de Lectura de Fin de Unidad" },
       },
       {
-        when: { en: "Friday, September 18th", es: "" },
-        what: { en: "Math Unit 1 Retest", es: "" },
+        when: { en: "Friday, September 18th", es: "Viernes 18 de septiembre" },
+        what: { en: "Math Unit 1 Retest", es: "Reexamen de Matemáticas de la Unidad 1" },
       },
     ],
 
     birthdays: [
-      { id: "tebi", name: "Tebi", date: { en: "September 14th", es: "" } },
-      { id: "tabi", name: "Tabi", date: { en: "September 14th", es: "" } },
+      { id: "tebi", name: "Tebi", date: { en: "September 14th", es: "14 de septiembre" } },
+      { id: "tabi", name: "Tabi", date: { en: "September 14th", es: "14 de septiembre" } },
       {
         id: "antonella",
         name: "Antonella",
-        date: { en: "September 14th", es: "" },
+        date: { en: "September 14th", es: "14 de septiembre" },
       },
     ],
 
@@ -151,7 +151,7 @@ export const newsletters: Newsletter[] = [
         body: [
           {
             en: "This week, students will focus on being responsible at home and school while practicing active listening skills to build trust within their classroom community. Through activities like class graphing and Venn diagrams, they will explore their similarities and unique differences to foster mutual respect and connection. Finally, students will reflect on their weekly progress to celebrate achievements and set goals for continuous growth.",
-            es: "",
+            es: "Esta semana, los estudiantes se enfocarán en ser responsables en casa y en la escuela mientras practican la escucha activa para construir confianza dentro de la comunidad de su salón. A través de actividades como gráficas de clase y diagramas de Venn, explorarán sus semejanzas y sus diferencias únicas para fomentar el respeto mutuo y la conexión. Por último, reflexionarán sobre su progreso semanal para celebrar sus logros y fijar metas de crecimiento continuo.",
           },
         ],
         span: "full",
@@ -168,16 +168,19 @@ export const newsletters: Newsletter[] = [
         body: [
           {
             en: "Scholars will continue to read Love That Dog and identify the main character’s feelings and how they change throughout the story. They will also read and analyze poems to identify the theme and summary.",
-            es: "",
+            es: "Los estudiantes continuarán leyendo Love That Dog e identificarán los sentimientos del personaje principal y cómo cambian a lo largo de la historia. También leerán y analizarán poemas para identificar el tema y el resumen.",
           },
           {
             en: "Our End Unit Assessment will take place Thursday. Scholars will answer both multiple choice questions and open response questions requiring them to identify character feelings using evidence from the text. They will also participate in a small group discussion about what they have read in class so far.",
-            es: "",
+            es: "Nuestra evaluación de fin de unidad será el jueves. Los estudiantes responderán preguntas de opción múltiple y preguntas de respuesta abierta en las que deberán identificar los sentimientos de los personajes usando evidencia del texto. También participarán en una conversación en grupo pequeño sobre lo que han leído en clase hasta ahora.",
           },
         ],
         span: "half",
         showHomework: true,
-        homework: { en: "Weekly Reading Log due Friday, 9/18.", es: "" },
+        homework: {
+          en: "Weekly Reading Log due Friday, 9/18.",
+          es: "El registro de lectura semanal se entrega el viernes 18 de septiembre.",
+        },
         directionsLink: "/weekly-reading-log-directions.pdf",
         directionsLabel: {
           en: "Weekly Reading Log Directions",
@@ -192,18 +195,18 @@ export const newsletters: Newsletter[] = [
         body: [
           {
             en: "Scholars will use a variety of strategies (number line, multiples of the denominator, visual representations) to identify and compare fractions.",
-            es: "",
+            es: "Los estudiantes usarán una variedad de estrategias (recta numérica, múltiplos del denominador, representaciones visuales) para identificar y comparar fracciones.",
           },
           {
             en: "Scholars will have the opportunity to retest for Unit 1 on Friday. The Unit 1 Review Study Guide is attached.",
-            es: "",
+            es: "Los estudiantes tendrán la oportunidad de volver a tomar el examen de la Unidad 1 el viernes. La guía de repaso de la Unidad 1 está adjunta.",
           },
         ],
         span: "half",
         showHomework: true,
         homework: {
           en: "The worksheet that will be sent home on Monday. Due Friday, 9/18.",
-          es: "",
+          es: "La hoja de trabajo que se enviará a casa el lunes. Se entrega el viernes 18 de septiembre.",
         },
         directionsLink: "",
         directionsLabel: directions,
@@ -216,7 +219,7 @@ export const newsletters: Newsletter[] = [
         body: [
           {
             en: "Scholars will continue learning about the three regions of North Carolina, and the impact they have had on the state.",
-            es: "",
+            es: "Los estudiantes seguirán aprendiendo sobre las tres regiones de Carolina del Norte y el impacto que han tenido en el estado.",
           },
         ],
         span: "full",

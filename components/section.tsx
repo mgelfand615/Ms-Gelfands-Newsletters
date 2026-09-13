@@ -40,10 +40,21 @@ export function SectionCard({
 }
 
 /** A section heading with a hairline under it. */
-export function SectionHeading({ title }: { title: Text }) {
+export function SectionHeading({
+  title,
+  emoji,
+}: {
+  title: Text;
+  /** Decorative only — hidden from screen readers, which would read
+      "balloon" in the middle of the heading. */
+  emoji?: string;
+}) {
   return (
-    <h2 className="mb-5 border-b border-line pb-3 font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
-      <T value={title} />
+    <h2 className="mb-5 flex items-center gap-2.5 border-b border-line pb-3 font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+      {emoji && <span aria-hidden>{emoji}</span>}
+      <span>
+        <T value={title} />
+      </span>
     </h2>
   );
 }

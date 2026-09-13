@@ -23,7 +23,12 @@ import { blank, type Text } from "./types";
 export const klass = {
   name: "Ms. Gelfand's 4th Grade Connection",
   shortName: "4th Grade",
-  school: { en: "Governors' Village STEM Academy (Lower)", es: "" },
+  // A proper noun — the same in both languages, written out rather than
+  // left blank so it is clear it was not simply missed.
+  school: {
+    en: "Governors' Village STEM Academy (Lower)",
+    es: "Governors' Village STEM Academy (Lower)",
+  },
   year: "2026–2027",
   description:
     "Weekly newsletters and family resources for Ms. Gelfand's 4th grade class.",

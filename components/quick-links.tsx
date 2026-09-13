@@ -1,4 +1,6 @@
 import { quickLinks } from "@/content/quick-links";
+import type { LinkItem } from "@/content/types";
+import { asset } from "@/lib/asset";
 import { T } from "@/components/t";
 import { SectionHeading } from "@/components/section";
 
@@ -23,14 +25,20 @@ export function QuickLinks() {
                 rel="noopener noreferrer"
                 className="flex items-center justify-between gap-2 rounded-xl border border-line bg-surface px-4 py-3 font-medium text-ink transition-colors hover:border-accent hover:text-accent"
               >
-                <T value={link.label} />
+                <Logo link={link} />
+                <span className="flex-1">
+                  <T value={link.label} />
+                </span>
                 <span aria-hidden className="text-muted">
                   ↗
                 </span>
               </a>
             ) : (
               <span className="flex items-center justify-between gap-2 rounded-xl border border-dashed border-line bg-surface-2 px-4 py-3 font-medium text-muted">
-                <T value={link.label} />
+                <Logo link={link} />
+                <span className="flex-1">
+                  <T value={link.label} />
+                </span>
                 <span className="text-xs italic">
                   <T en="add link" es="agregar enlace" />
                 </span>
@@ -40,5 +48,37 @@ export function QuickLinks() {
         ))}
       </ul>
     </section>
+  );
+}
+
+/**
+ * The service's own logo, or its first letter when we don't have one.
+ *
+ * Logos are served from this site rather than fetched from the other one,
+ * so opening the newsletter doesn't tell those companies that a family is
+ * reading it.
+ */
+function Logo({ link }: { link: LinkItem }) {
+  if (link.logo) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={asset(link.logo)}
+        alt=""
+        aria-hidden
+        width={22}
+        height={22}
+        className="h-[22px] w-[22px] shrink-0 object-contain"
+      />
+    );
+  }
+
+  return (
+    <span
+      aria-hidden
+      className="flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-md bg-accent-soft text-[11px] font-bold text-accent"
+    >
+      {link.label.en.charAt(0)}
+    </span>
   );
 }

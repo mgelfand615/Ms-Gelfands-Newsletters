@@ -12,16 +12,19 @@ import type { LinkItem } from "./types";
 export const quickLinks: LinkItem[] = [
   {
     id: "parentsquare",
+    logo: "/logos/parentsquare.png",
     label: { en: "ParentSquare", es: "ParentSquare" },
     href: "https://www.parentsquare.com/signin",
   },
   {
     id: "alphaportal",
+    logo: "/logos/alphaportal.png",
     label: { en: "AlphaPortal", es: "AlphaPortal" },
     href: "https://cmsnc.alphaportal.app/#/user/sign-in?returnUrl=%2Fpages%2Fstudents",
   },
   {
     id: "getting-to-know-your-student",
+    logo: "/logos/googleforms.png",
     label: {
       en: "Getting to Know Your Student Form",
       es: "Formulario Para Conocer a Su Estudiante",
@@ -35,6 +38,7 @@ export const quickLinks: LinkItem[] = [
   },
   {
     id: "infinite-campus",
+    logo: "/logos/infinitecampus.png",
     label: { en: "Infinite Campus", es: "Infinite Campus" },
     href: "https://www.infinitecampus.com/login",
   },
