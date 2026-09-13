@@ -44,8 +44,8 @@ export type TechStep = {
 };
 
 export const techIntro: Text = {
-  en: "Here is where you'll find links to the academic sites your child uses at home. **See below for links and login information.**",
-  es: "Aquí encontrará los enlaces a los sitios académicos que su hijo/a usa en casa. **Abajo están los enlaces y la información para iniciar sesión.**",
+  en: "Here is where you'll find links to the academic sites your child uses at home.\n\n**See below for links and login information.**",
+  es: "Aquí encontrará los enlaces a los sitios académicos que su hijo/a usa en casa.\n\n**Abajo están los enlaces y la información para iniciar sesión.**",
 };
 
 export const techSteps: TechStep[] = [
