@@ -10,7 +10,12 @@
 import { blank, type Text } from "./types";
 
 /** One line of Education: the school, and what was earned there. */
-export type Degree = { school: Text; credential: Text };
+export type Degree = {
+  school: Text;
+  credential: Text;
+  /** The school's crest, saved in /public/logos. Optional. */
+  logo?: string;
+};
 
 /** One line of Favorites: "Snack" and "Trail mix". */
 export type Favorite = { label: Text; value: Text };
@@ -47,6 +52,7 @@ export const teachers: Teacher[] = [
     education: [
       {
         school: { en: "University of Rochester", es: "University of Rochester" },
+        logo: "/logos/rochester.png",
         credential: {
           en: "B.A. in Psychology & American Sign Language",
           es: "Licenciatura en Psicología y Lenguaje de Señas Americano",
@@ -54,6 +60,7 @@ export const teachers: Teacher[] = [
       },
       {
         school: { en: "East Carolina University", es: "East Carolina University" },
+        logo: "/logos/ecu.png",
         credential: {
           en: "Teaching License Certification",
           es: "Certificación de Licencia Docente",
@@ -61,6 +68,7 @@ export const teachers: Teacher[] = [
       },
       {
         school: { en: "UNC Charlotte", es: "UNC Charlotte" },
+        logo: "/logos/charlotte.png",
         credential: {
           en: "M.Ed. in Curriculum & Instruction · expected 2027",
           es: "Maestría en Currículo e Instrucción · previsto para 2027",
@@ -90,12 +98,11 @@ export const teachers: Teacher[] = [
     ],
   },
   {
-    // Replace with your co-teacher's name.
-    id: "second-teacher",
-    name: "«Second Teacher»",
+    id: "phoso",
+    name: "Mrs. Phoso",
     subject: { en: "Math", es: "Matemáticas" },
     photo: "",
-    email: "",
+    email: "janek.phoso@cms.k12.nc.us",
     phone: "",
     aboutMe: blank,
     education: [],

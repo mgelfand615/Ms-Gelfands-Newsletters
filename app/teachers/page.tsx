@@ -84,15 +84,26 @@ function TeacherCard({ teacher }: { teacher: Teacher }) {
           {teacher.education.length === 0 ? (
             <Placeholder />
           ) : (
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {teacher.education.map((degree) => (
-                <li key={degree.school.en}>
-                  <p className="font-semibold text-ink">
-                    <T value={degree.school} />
-                  </p>
-                  <p className="text-sm leading-snug text-muted">
-                    <T value={degree.credential} />
-                  </p>
+                <li key={degree.school.en} className="flex items-start gap-3">
+                  {degree.logo && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={asset(degree.logo)}
+                      alt=""
+                      aria-hidden
+                      className="mt-0.5 h-9 w-9 shrink-0 object-contain"
+                    />
+                  )}
+                  <div className="min-w-0">
+                    <p className="font-semibold text-ink">
+                      <T value={degree.school} />
+                    </p>
+                    <p className="text-sm leading-snug text-muted">
+                      <T value={degree.credential} />
+                    </p>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -163,9 +174,9 @@ function Panel({
 }) {
   return (
     <div className="rounded-card border border-line bg-surface-2 p-5">
-      <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-muted">
+      <h3 className="mb-4 font-display text-xl font-semibold tracking-tight text-ink">
         <T {...label} />
-      </p>
+      </h3>
       {children}
     </div>
   );
