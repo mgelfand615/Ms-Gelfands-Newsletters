@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { techIntro, techSteps } from "@/content/student-tech";
 import type { TechStep } from "@/content/student-tech";
-import type { Text } from "@/content/types";
+import { isBlank, type Text } from "@/content/types";
 import { PageHeader } from "@/components/page-header";
 import { Prose, T } from "@/components/t";
+import { Rich } from "@/components/rich-text";
 
 export const metadata: Metadata = {
   title: "Student Tech at Home",
@@ -56,53 +57,88 @@ function StepCard({ step }: { step: TechStep }) {
       </div>
 
       <div className="mt-4">
-        <Prose value={step.body} />
+        {isBlank(step.body) ? (
+          <Prose value={step.body} />
+        ) : (
+          <p className="leading-relaxed text-ink">
+            <Rich value={step.body} />
+          </p>
+        )}
       </div>
 
-      <dl className="mt-5 space-y-3 rounded-xl bg-surface-2 p-4">
-        <CredentialRow
-          label={{ en: "Username", es: "Usuario" }}
-          value={step.username}
-          hint={{
-            en: "Describe the pattern — for example, your child's student ID.",
-            es: "Describa el formato — por ejemplo, la identificación de su hijo.",
-          }}
-        />
-        <CredentialRow
-          label={{ en: "Password", es: "Contraseña" }}
-          value={step.password}
-          hint={{
-            en: "Say how the password was sent home. Never type the password itself — this page is public.",
-            es: "Explique cómo se envió la contraseña a casa. Nunca escriba la contraseña — esta página es pública.",
-          }}
-        />
-      </dl>
+      {(!isBlank(step.username) || !isBlank(step.password)) && (
+        <dl className="mt-5 space-y-3 rounded-xl bg-surface-2 p-4">
+          {!isBlank(step.username) && (
+            <CredentialRow
+              label={{ en: "Username", es: "Usuario" }}
+              value={step.username}
+            />
+          )}
+          {!isBlank(step.password) && (
+            <CredentialRow
+              label={{ en: "Password", es: "Contraseña" }}
+              value={step.password}
+            />
+          )}
+        </dl>
+      )}
+
+      <AppLinks step={step} />
     </article>
   );
 }
 
-function CredentialRow({
-  label,
-  value,
-  hint,
-}: {
-  label: Text;
-  value: Text;
-  hint: Text;
-}) {
+function CredentialRow({ label, value }: { label: Text; value: Text }) {
   return (
     <div className="grid gap-1 sm:grid-cols-[6.5rem_1fr] sm:gap-3">
       <dt className="text-xs font-semibold uppercase tracking-wide text-muted">
         <T value={label} />
       </dt>
-      <dd className="text-sm">
-        <Prose
-          value={value}
-          placeholder={hint}
-          placeholderClassName="text-sm italic text-muted"
-          className="text-ink"
-        />
+      {/* Plain text, not the content renderer: a username like
+          "StudentID@student.cms.k12.nc.us" is a pattern to type, and
+          linkifying it would invite a parent to email it. */}
+      <dd className="text-sm text-ink">
+        <T value={value} />
       </dd>
+    </div>
+  );
+}
+
+/**
+ * Straight to the app listing, so a parent on a phone doesn't have to guess
+ * which of several similarly-named apps is the right one.
+ */
+function AppLinks({ step }: { step: TechStep }) {
+  if (!step.appleApp && !step.androidApp) return null;
+
+  const pill =
+    "rounded-full border border-line bg-surface px-3 py-1.5 text-xs font-semibold text-accent transition-colors hover:border-accent";
+
+  return (
+    <div className="mt-4 flex flex-wrap items-center gap-2">
+      <span className="text-xs font-semibold uppercase tracking-wide text-muted">
+        <T en="Get the app" es="Obtener la aplicación" />
+      </span>
+      {step.appleApp && (
+        <a
+          href={step.appleApp}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={pill}
+        >
+          <T en="iPhone & iPad" es="iPhone y iPad" />
+        </a>
+      )}
+      {step.androidApp && (
+        <a
+          href={step.androidApp}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={pill}
+        >
+          Android
+        </a>
+      )}
     </div>
   );
 }
