@@ -10,6 +10,7 @@ export function SectionCard({
   body,
   items,
   tone = "plain",
+  textClass = "",
   children,
 }: {
   title: Text;
@@ -20,11 +21,13 @@ export function SectionCard({
   /** Several points. One renders as a sentence, more render as bullets. */
   items?: Text[];
   tone?: Tone;
+  /** Type scale for the body. The economy cards run larger than default. */
+  textClass?: string;
   children?: React.ReactNode;
 }) {
   return (
     <section
-      className={`flex flex-col justify-center rounded-card border p-5 sm:p-6 ${toneSurface[tone]}`}
+      className={`flex flex-col rounded-card border p-5 sm:p-6 ${toneSurface[tone]}`}
     >
       <h3
         className={`flex items-center gap-2 font-display text-xl font-semibold tracking-tight ${toneHeading[tone]}`}
@@ -46,7 +49,7 @@ export function SectionCard({
             <Placeholder />
           )
         ) : (
-          <p className="leading-relaxed text-ink">
+          <p className={`leading-relaxed text-ink ${textClass}`}>
             <Rich value={body!} />
           </p>
         )}

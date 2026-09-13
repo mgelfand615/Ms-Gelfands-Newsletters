@@ -118,6 +118,7 @@ function BankColumn({
             emoji={block.emoji}
             title={block.title}
             body={block.body}
+            textClass="text-[17px]"
           >
             <BlockLists block={block} bullet={bullet} />
           </SectionCard>
@@ -166,11 +167,11 @@ function BlockLists({
             {list.items.map((item) => (
               <li
                 key={item.en}
-                className="flex gap-2.5 break-inside-avoid text-sm leading-relaxed text-ink"
+                className="flex gap-2.5 break-inside-avoid text-[17px] leading-relaxed text-ink"
               >
                 <span
                   aria-hidden
-                  className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${bullet}`}
+                  className={`mt-2 h-1.5 w-1.5 shrink-0 rounded-full ${bullet}`}
                 />
                 <span>
                   <Rich value={item} />
