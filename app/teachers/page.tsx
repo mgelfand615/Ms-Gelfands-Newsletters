@@ -3,7 +3,7 @@ import { teachers } from "@/content/teachers";
 import type { Teacher } from "@/content/teachers";
 import { isBlank } from "@/content/types";
 import { PageHeader } from "@/components/page-header";
-import { Placeholder, T } from "@/components/t";
+import { T } from "@/components/t";
 import { Rich } from "@/components/rich-text";
 import { asset } from "@/lib/asset";
 
@@ -51,11 +51,7 @@ function TeacherCard({ teacher }: { teacher: Teacher }) {
             height={180}
             className="h-52 w-52 shrink-0 rounded-card object-cover object-top sm:h-auto sm:max-h-[22rem] sm:w-56"
           />
-        ) : (
-          <div className="flex h-52 w-52 shrink-0 items-center justify-center rounded-card border border-dashed border-line bg-surface-2 p-3 text-center text-xs italic text-muted sm:h-auto sm:min-h-52 sm:w-56">
-            <T en="Add a photo" es="Agregue una foto" />
-          </div>
-        )}
+        ) : null}
 
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
@@ -69,23 +65,21 @@ function TeacherCard({ teacher }: { teacher: Teacher }) {
 
           <Contact teacher={teacher} />
 
-          <div className="mt-4 border-t border-line pt-4">
-            {isBlank(teacher.aboutMe) ? (
-              <Placeholder />
-            ) : (
+          {!isBlank(teacher.aboutMe) && (
+            <div className="mt-4 border-t border-line pt-4">
               <p className="leading-relaxed text-ink">
                 <Rich value={teacher.aboutMe} />
               </p>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
 
+      {(teacher.education.length > 0 || teacher.favorites.length > 0) && (
       <div className="mt-6 grid gap-5 md:grid-cols-2">
+        {teacher.education.length > 0 && (
         <Panel label={{ en: "Education", es: "Educación" }}>
-          {teacher.education.length === 0 ? (
-            <Placeholder />
-          ) : (
+          {(
             <ul className="space-y-4">
               {teacher.education.map((degree) => (
                 <li key={degree.school.en} className="flex items-start gap-3">
@@ -111,11 +105,11 @@ function TeacherCard({ teacher }: { teacher: Teacher }) {
             </ul>
           )}
         </Panel>
+        )}
 
+        {teacher.favorites.length > 0 && (
         <Panel label={{ en: "Favorites", es: "Favoritos" }}>
-          {teacher.favorites.length === 0 ? (
-            <Placeholder />
-          ) : (
+          {(
             <dl className="space-y-2">
               {teacher.favorites.map((favorite) => (
                 <div key={favorite.label.en} className="flex gap-4">
@@ -130,22 +124,15 @@ function TeacherCard({ teacher }: { teacher: Teacher }) {
             </dl>
           )}
         </Panel>
+        )}
       </div>
+      )}
     </section>
   );
 }
 
 function Contact({ teacher }: { teacher: Teacher }) {
-  if (!teacher.email && !teacher.phone) {
-    return (
-      <p className="mt-2 text-sm italic text-muted">
-        <T
-          en="Add an email address and phone number."
-          es="Agregue un correo electrónico y un número de teléfono."
-        />
-      </p>
-    );
-  }
+  if (!teacher.email && !teacher.phone) return null;
 
   return (
     <p className="mt-2 text-[15px]">
