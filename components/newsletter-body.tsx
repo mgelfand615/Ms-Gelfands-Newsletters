@@ -4,7 +4,7 @@ import { Placeholder, T } from "@/components/t";
 import { Rich } from "@/components/rich-text";
 import { SectionCard, SectionHeading } from "@/components/section";
 import { QuickLinks } from "@/components/quick-links";
-import { subjectSurface } from "@/components/tone";
+import { subjectSurface, type SubjectColor } from "@/components/tone";
 import { asset } from "@/lib/asset";
 
 /**
@@ -109,18 +109,32 @@ function Dates({ newsletter }: { newsletter: Newsletter }) {
   );
 }
 
+/**
+ * The boxes cycle through the palette in order, so a week with several
+ * birthdays looks like a party rather than a list. Reorder this to change
+ * which child gets which colour.
+ */
+const BIRTHDAY_TINTS: SubjectColor[] = ["mint", "lilac", "ice", "clay"];
+
 /** One box per birthday, with the name large enough to spot from across the page. */
 function Birthdays({ newsletter }: { newsletter: Newsletter }) {
   if (newsletter.birthdays.length === 0) return null;
 
   return (
     <section>
-      <SectionHeading title={{ en: "Birthdays", es: "Cumpleaños" }} />
+      <SectionHeading
+        title={{
+          en: "HAPPY BIRTHDAY TO...",
+          es: "¡FELIZ CUMPLEAÑOS A...",
+        }}
+      />
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {newsletter.birthdays.map((birthday) => (
+        {newsletter.birthdays.map((birthday, i) => (
           <li
             key={birthday.id}
-            className="rounded-card border border-good/25 bg-good-soft px-5 py-6 text-center"
+            className={`rounded-card border px-5 py-6 text-center ${
+              subjectSurface[BIRTHDAY_TINTS[i % BIRTHDAY_TINTS.length]]
+            }`}
           >
             <p className="font-display text-3xl font-semibold leading-tight text-ink">
               {birthday.name}

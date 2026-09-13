@@ -21,7 +21,7 @@ import { blank, type Text } from "./types";
 /* ── The class ──────────────────────────────────────────────────────────── */
 
 export const klass = {
-  name: "Ms. Gelfand's 4th Grade",
+  name: "Ms. Gelfand's 4th Grade Connection",
   shortName: "4th Grade",
   school: { en: "Governors' Village STEM Academy (Lower)", es: "" },
   year: "2026–2027",

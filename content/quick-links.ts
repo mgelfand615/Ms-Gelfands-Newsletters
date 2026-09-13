@@ -11,25 +11,31 @@ import type { LinkItem } from "./types";
 
 export const quickLinks: LinkItem[] = [
   {
-    id: "parent-sign-in",
-    label: { en: "Parent Sign-In", es: "Registro de Padres" },
-    href: "",
+    id: "parentsquare",
+    label: { en: "ParentSquare", es: "ParentSquare" },
+    href: "https://www.parentsquare.com/signin",
   },
-  { id: "alphapoint", label: { en: "AlphaPoint", es: "AlphaPoint" }, href: "" },
-  { id: "forms", label: { en: "Forms", es: "Formularios" }, href: "" },
   {
-    id: "google-form",
-    label: { en: "Google Form", es: "Formulario de Google" },
-    href: "",
+    id: "alphaportal",
+    label: { en: "AlphaPortal", es: "AlphaPortal" },
+    href: "https://cmsnc.alphaportal.app/#/user/sign-in?returnUrl=%2Fpages%2Fstudents",
+  },
+  {
+    id: "getting-to-know-your-student",
+    label: {
+      en: "Getting to Know Your Student Form",
+      es: "Formulario Para Conocer a Su Estudiante",
+    },
+    href: "https://forms.gle/BDVnEFaAEinsoEPS7",
   },
   {
     id: "cms-volunteer",
     label: { en: "CMS Volunteer", es: "Voluntarios de CMS" },
-    href: "",
+    href: "https://cmsvolunteers.com",
   },
   {
     id: "infinite-campus",
     label: { en: "Infinite Campus", es: "Infinite Campus" },
-    href: "",
+    href: "https://www.infinitecampus.com/login",
   },
 ];

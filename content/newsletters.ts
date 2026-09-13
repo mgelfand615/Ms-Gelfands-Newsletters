@@ -89,7 +89,7 @@ export const newsletters: Newsletter[] = [
     slug: "week-1",
     week: 1,
     date: "2026-09-11",
-    dateRange: blank,
+    dateRange: { en: "September 14 - September 18", es: "" },
 
     updates: [
       {
