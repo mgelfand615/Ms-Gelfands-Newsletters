@@ -1,5 +1,6 @@
-import type { Text } from "@/content/types";
+import { isBlank, type Text } from "@/content/types";
 import { Prose, T } from "@/components/t";
+import { Rich } from "@/components/rich-text";
 
 /**
  * The masthead on every page except the newsletter, which has its own dated
@@ -27,7 +28,13 @@ export function PageHeader({
       </h1>
       {intro !== undefined && (
         <div className="mt-5 max-w-2xl">
-          <Prose value={intro} className="text-lg leading-relaxed text-muted" />
+          {isBlank(intro) ? (
+            <Prose value={intro} />
+          ) : (
+            <div className="text-lg leading-relaxed text-muted">
+              <Rich value={intro!} />
+            </div>
+          )}
         </div>
       )}
     </header>

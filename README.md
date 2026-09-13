@@ -45,6 +45,21 @@ Every piece of text is a pair:
 Write the English first. If you leave `es` blank, the English shows in both
 languages — nothing breaks, so you can add Spanish whenever you get to it.
 
+## Formatting your writing
+
+Inside any piece of text you can use:
+
+| What you type | What families see |
+| --- | --- |
+| `**important**` | **important** in bold |
+| `*gently*` | *gently* in italics |
+| `https://example.com` | a link, no markup needed |
+| `you@school.org` | a tappable email link |
+| one line break | a new line |
+| a blank line | a new paragraph |
+
+Nothing else is interpreted, so an asterisk on its own stays an asterisk.
+
 The toggle is instant (both languages are already in the page) and remembers
 each family's choice on their own device.
 
