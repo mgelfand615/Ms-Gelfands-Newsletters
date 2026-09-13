@@ -27,7 +27,7 @@ export function PageHeader({
         <T value={title} />
       </h1>
       {intro !== undefined && (
-        <div className="mt-5 max-w-2xl">
+        <div className="mt-5">
           {isBlank(intro) ? (
             <Prose value={intro} />
           ) : (
