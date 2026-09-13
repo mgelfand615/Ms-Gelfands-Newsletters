@@ -1,6 +1,5 @@
-import { isBlank, type Text } from "@/content/types";
+import type { Text } from "@/content/types";
 import { Points, Prose, T } from "@/components/t";
-import { Rich } from "@/components/rich-text";
 import { toneHeading, toneSurface, type Tone } from "@/components/tone";
 
 /** A titled box. Shows a placeholder until the body is written. */
@@ -60,37 +59,4 @@ export function SectionHeading({
   );
 }
 
-/** A small uppercase label above a value. */
-export function FieldLabel({ label }: { label: Text }) {
-  return (
-    <p className="text-xs font-semibold uppercase tracking-wide text-muted">
-      <T value={label} />
-    </p>
-  );
-}
 
-/** A tinted box holding one labelled field — used on About Your Teachers. */
-export function Field({
-  label,
-  value,
-  tone,
-}: {
-  label: Text;
-  value: Text;
-  tone: Tone;
-}) {
-  return (
-    <div className={`rounded-card border p-5 ${toneSurface[tone]}`}>
-      <FieldLabel label={label} />
-      <div className="mt-2">
-        {isBlank(value) ? (
-          <Prose value={value} placeholderClassName="text-sm italic text-muted" />
-        ) : (
-          <p className="leading-relaxed text-ink">
-            <Rich value={value} />
-          </p>
-        )}
-      </div>
-    </div>
-  );
-}
