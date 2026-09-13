@@ -88,21 +88,30 @@ export const techSteps: TechStep[] = [
           es: "En una Chromebook o computadora",
         },
         text: {
-          en: "Use the i-Ready website. There is nothing to install.",
-          es: "Use el sitio web de i-Ready. No hay que instalar nada.",
+          en: "Use the i-Ready website through ClassLink. There is nothing to install.",
+          es: "Use el sitio web de i-Ready desde ClassLink. No hay que instalar nada.",
+        },
+      },
+      {
+        label: { en: "On an iPad or iPhone", es: "En un iPad o iPhone" },
+        text: {
+          en: "Install the free **i-Ready Connect for Students** app first — i-Ready will not run in a tablet browser.",
+          es: "Instale primero la aplicación gratuita **i-Ready Connect for Students** — i-Ready no funciona en el navegador de una tableta.",
         },
       },
       {
         label: {
-          en: "On a tablet or phone",
-          es: "En una tableta o teléfono",
+          en: "On an Android tablet or phone",
+          es: "En una tableta o teléfono Android",
         },
         text: {
-          en: "The i-Ready app has to be downloaded first — i-Ready will not run in a tablet or phone browser.",
-          es: "Hay que descargar la aplicación de i-Ready primero — i-Ready no funciona en el navegador de una tableta o teléfono.",
+          en: "There is no i-Ready app for Android. Please use a Chromebook or computer instead.",
+          es: "No existe una aplicación de i-Ready para Android. Por favor use una Chromebook o computadora.",
         },
       },
     ],
+    appleApp:
+      "https://apps.apple.com/us/app/i-ready-connect-for-students/id1155613065",
   },
   {
     id: "google",
