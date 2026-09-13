@@ -21,7 +21,13 @@ export type EconomyBlock = Block & {
    * Lists under the paragraph. A list with no label sits directly beneath
    * it; a labelled one gets its own inset box, for an aside like "Examples".
    */
-  lists?: { id: string; label?: Text; items: Text[] }[];
+  lists?: {
+    id: string;
+    label?: Text;
+    items: Text[];
+    /** Set 2 for a long list of short phrases, so it stops running tall. */
+    columns?: 2;
+  }[];
 };
 
 /**
@@ -199,6 +205,12 @@ export const breakingBank: EconomyBlock[] = [
   },
 ];
 
+/** Sits under the "Spending" heading, above the boxes. */
+export const spendingIntro: Text = {
+  en: "Bills come first. Whatever is left is theirs to spend.",
+  es: "Primero las cuentas. Lo que sobra es suyo para gastar.",
+};
+
 /** The remaining sections, each its own box across the bottom. */
 export const economySections: EconomyBlock[] = [
   {
@@ -239,6 +251,7 @@ export const economySections: EconomyBlock[] = [
     lists: [
       {
         id: "store",
+        columns: 2,
         items: [
           { en: "Candy Bin", es: "Bote de dulces" },
           { en: "Pen Day", es: "Día de pluma" },

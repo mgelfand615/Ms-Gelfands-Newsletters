@@ -6,6 +6,7 @@ import {
   economySections,
   makingBank,
   makingBankIntro,
+  spendingIntro,
 } from "@/content/classroom-economy";
 import type { EconomyBlock } from "@/content/classroom-economy";
 import type { Text } from "@/content/types";
@@ -48,21 +49,29 @@ export default function ClassroomEconomyPage() {
           />
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2">
-          {/* Bills, scores and perks are ordinary reference, not dates — so
-              they stay neutral rather than borrowing a colour that means
-              something else elsewhere. */}
-          {economySections.map((block) => (
-            <SectionCard
-              key={block.id}
-              tone="plain"
-              title={block.title}
-              body={block.body}
-            >
-              <BlockLists block={block} bullet="bg-muted/50" />
-            </SectionCard>
-          ))}
-        </div>
+        <section>
+          <h2 className="mb-1 font-display text-2xl font-semibold tracking-tight text-info sm:text-3xl">
+            <T en="Spending" es="Gastando" />
+          </h2>
+          <p className="mb-5 leading-relaxed text-muted">
+            <Rich value={spendingIntro} />
+          </p>
+          {/* Bills and the store are ordinary reference rather than a signal,
+              so they stay neutral instead of borrowing a colour that means
+              something else elsewhere on the page. */}
+          <div className="grid gap-5 md:grid-cols-2">
+            {economySections.map((block) => (
+              <SectionCard
+                key={block.id}
+                tone="plain"
+                title={block.title}
+                body={block.body}
+              >
+                <BlockLists block={block} bullet="bg-muted/50" />
+              </SectionCard>
+            ))}
+          </div>
+        </section>
       </div>
     </>
   );
@@ -145,11 +154,17 @@ function BlockLists({
               <T value={list.label} />
             </p>
           )}
-          <ul className="space-y-2">
+          <ul
+            className={
+              list.columns === 2
+                ? "space-y-2 sm:columns-2 sm:gap-x-6"
+                : "space-y-2"
+            }
+          >
             {list.items.map((item) => (
               <li
                 key={item.en}
-                className="flex gap-2.5 text-sm leading-relaxed text-ink"
+                className="flex gap-2.5 break-inside-avoid text-sm leading-relaxed text-ink"
               >
                 <span
                   aria-hidden
