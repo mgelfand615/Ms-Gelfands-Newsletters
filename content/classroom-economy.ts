@@ -56,8 +56,8 @@ export const makingBank: EconomyBlock[] = [
     emoji: "💼",
     title: { en: "Classroom Jobs", es: "Trabajos del Salón" },
     body: {
-      en: "Every student applies for and holds a classroom job.",
-      es: "Cada estudiante solicita y desempeña un trabajo en el salón.",
+      en: "Every student applies for and holds a classroom job. Paychecks arrive every other Friday — the same day the class store opens.",
+      es: "Cada estudiante solicita y desempeña un trabajo en el salón. Los pagos llegan cada dos viernes — el mismo día que abre la tienda de la clase.",
     },
     lists: [
       {
@@ -102,6 +102,16 @@ export const makingBank: EconomyBlock[] = [
       },
         ],
       },
+      {
+        id: "bonuses-at-home",
+        label: { en: "At home", es: "En casa" },
+        items: [
+          {
+            en: "Ask which bonus your child earned this week. Bonuses are the quickest way to grow a balance, and they add on top of the regular paycheck.",
+            es: "Pregúntele qué bonificación ganó su hijo/a esta semana. Las bonificaciones son la manera más rápida de aumentar el saldo y se suman al pago regular.",
+          },
+        ],
+      },
     ],
   },
   {
@@ -109,8 +119,8 @@ export const makingBank: EconomyBlock[] = [
     emoji: "🎉",
     title: { en: "Bonus Notices", es: "Avisos de Bonificación" },
     body: {
-      en: "**+$50**, given for going Above and Beyond or showing Huge Improvement.",
-      es: "**+$50**, se dan por esforzarse Más de lo Esperado o por mostrar una Gran Mejoría.",
+      en: "**+$50**, given for going Above and Beyond or showing Huge Improvement. It is the largest amount a student can earn at one time.",
+      es: "**+$50**, se dan por esforzarse Más de lo Esperado o por mostrar una Gran Mejoría. Es la cantidad más grande que un estudiante puede ganar de una sola vez.",
     },
   },
 ];
