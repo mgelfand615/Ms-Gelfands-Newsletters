@@ -17,8 +17,11 @@ import { blank, type Block, type Text } from "./types";
  * "Major Violations" silently deleted the list.
  */
 export type EconomyBlock = Block & {
-  itemsLabel?: Text;
-  items?: Text[];
+  /**
+   * Lists under the paragraph. A list with no label sits directly beneath
+   * it; a labelled one gets its own inset box, for an aside like "Examples".
+   */
+  lists?: { id: string; label?: Text; items: Text[] }[];
 };
 
 /**
@@ -47,7 +50,10 @@ export const makingBank: EconomyBlock[] = [
       en: "Every student applies for and holds a classroom job.",
       es: "Cada estudiante solicita y desempeña un trabajo en el salón.",
     },
-    items: [
+    lists: [
+      {
+        id: "pay",
+        items: [
       {
         en: "**$200 bi-weekly** — the base paycheck for holding a job (Tech Support, Teacher Assistant, Errand Runner, and more).",
         es: "**$200 cada dos semanas** — el salario base por tener un trabajo (Soporte Técnico, Asistente de la Maestra, Mensajero y más).",
@@ -55,6 +61,8 @@ export const makingBank: EconomyBlock[] = [
       {
         en: "**Performance raises (+$25/month)** — performing job duties reliably, without reminders, earns a monthly raise!",
         es: "**Aumentos por desempeño (+$25 al mes)** — cumplir con las tareas del trabajo de manera confiable y sin recordatorios gana un aumento mensual.",
+      },
+        ],
       },
     ],
   },
@@ -65,7 +73,10 @@ export const makingBank: EconomyBlock[] = [
       en: "Earned for positive actions:",
       es: "Se ganan por acciones positivas:",
     },
-    items: [
+    lists: [
+      {
+        id: "amounts",
+        items: [
       { en: "**$10** — Happy to see your face", es: "**$10** — Qué gusto verte" },
       {
         en: "**$25** — Good Report from another teacher",
@@ -79,6 +90,8 @@ export const makingBank: EconomyBlock[] = [
         en: "**$100** — Academic Goal Met",
         es: "**$100** — Meta académica alcanzada",
       },
+        ],
+      },
     ],
   },
   {
@@ -91,32 +104,97 @@ export const makingBank: EconomyBlock[] = [
   },
 ];
 
+/** Sits under the "Breaking Bank" heading, above the boxes. */
+export const breakingBankIntro: Text = {
+  en: "When violations occur, fines reduce a student's balance.",
+  es: "Cuando hay una falta, las multas reducen el saldo del estudiante.",
+};
+
 /** Ways students lose money. */
 export const breakingBank: EconomyBlock[] = [
   {
-    id: "fines",
-    title: { en: "Fines", es: "Multas" },
-    body: blank,
-  },
-  {
     id: "minor-violations",
     title: { en: "Minor Violations", es: "Faltas Menores" },
-    body: blank,
-  },
-  {
-    id: "tickets",
-    title: { en: "Tickets (must be signed)", es: "Boletas (deben firmarse)" },
-    body: blank,
+    body: {
+      en: "The same three steps every time:",
+      es: "Siempre los mismos tres pasos:",
+    },
+    lists: [
+      {
+        id: "progression",
+        items: [
+          {
+            en: "**1st violation** — one free warning.",
+            es: "**1ª falta** — una advertencia gratis.",
+          },
+          {
+            en: "**2nd violation** — $20 fine (Agenda Score: 2).",
+            es: "**2ª falta** — multa de $20 (Puntaje de Agenda: 2).",
+          },
+          {
+            en: "**3rd violation** — $30 Expectation Notice, sent home to be signed (Agenda Score: 1).",
+            es: "**3ª falta** — Aviso de Expectativas de $30, que se envía a casa para firmar (Puntaje de Agenda: 1).",
+          },
+        ],
+      },
+      {
+        id: "examples",
+        label: { en: "Examples", es: "Ejemplos" },
+        items: [
+          {
+            en: "Talking during instruction",
+            es: "Hablar durante la instrucción",
+          },
+          {
+            en: "Out of seat without permission",
+            es: "Levantarse del asiento sin permiso",
+          },
+          {
+            en: "Calling out instead of raising a hand",
+            es: "Gritar la respuesta en vez de levantar la mano",
+          },
+          {
+            en: "Coming to class unprepared — no pencil, no agenda",
+            es: "Llegar a clase sin lo necesario — sin lápiz, sin agenda",
+          },
+          {
+            en: "Off task during work time",
+            es: "Distraerse durante el tiempo de trabajo",
+          },
+          {
+            en: "Not following directions the first time",
+            es: "No seguir las instrucciones a la primera",
+          },
+        ],
+      },
+    ],
   },
   {
     id: "major-violations",
     title: { en: "Major Violations", es: "Faltas Mayores" },
-    body: blank,
-    itemsLabel: { en: "Immediate ticket", es: "Boleta inmediata" },
-    items: [
-      { en: "Dishonesty", es: "Deshonestidad" },
-      { en: "Disrespect", es: "Falta de respeto" },
-      { en: "Unsafe body", es: "Comportamiento inseguro" },
+    body: {
+      en: "These skip the warnings entirely: **an immediate $50 Expectation Notice and an Agenda Score of 1.**",
+      es: "Estas se saltan las advertencias por completo: **un Aviso de Expectativas de $50 de inmediato y un Puntaje de Agenda de 1.**",
+    },
+    lists: [
+      {
+        id: "immediate-ticket",
+        label: { en: "Immediate ticket", es: "Boleta inmediata" },
+        items: [
+          {
+            en: "**Dishonesty** — lying to an adult, copying another student's work, taking something that isn't yours.",
+            es: "**Deshonestidad** — mentirle a un adulto, copiar el trabajo de otro estudiante, tomar algo que no le pertenece.",
+          },
+          {
+            en: "**Disrespect** — talking back, name-calling, refusing a direction from an adult.",
+            es: "**Falta de respeto** — contestar de mala manera, poner apodos, negarse a seguir la indicación de un adulto.",
+          },
+          {
+            en: "**Unsafe Body** — hitting, kicking, pushing, throwing objects, or leaving the room without permission.",
+            es: "**Comportamiento inseguro** — pegar, patear, empujar, lanzar objetos o salir del salón sin permiso.",
+          },
+        ],
+      },
     ],
   },
 ];

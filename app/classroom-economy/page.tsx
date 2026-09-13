@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import {
   breakingBank,
+  breakingBankIntro,
   economyIntro,
   economySections,
   makingBank,
@@ -42,6 +43,7 @@ export default function ClassroomEconomyPage() {
             tone="caution"
             headingClass="text-caution"
             heading={{ en: "Breaking Bank", es: "Perdiendo Dinero" }}
+            intro={breakingBankIntro}
             blocks={breakingBank}
           />
         </div>
@@ -104,21 +106,22 @@ function BankColumn({
             title={block.title}
             body={block.body}
           >
-            {block.items && block.items.length > 0 && (
+            {block.lists?.map((list) => (
               // A labelled list gets its own inset box; an unlabelled one is
               // just the detail of the paragraph above it.
               <div
+                key={list.id}
                 className={
-                  block.itemsLabel ? "mt-4 rounded-xl bg-surface/70 p-4" : "mt-3"
+                  list.label ? "mt-4 rounded-xl bg-surface/70 p-4" : "mt-3"
                 }
               >
-                {block.itemsLabel && (
+                {list.label && (
                   <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted">
-                    <T value={block.itemsLabel} />
+                    <T value={list.label} />
                   </p>
                 )}
                 <ul className="space-y-2">
-                  {block.items.map((item) => (
+                  {list.items.map((item) => (
                     <li
                       key={item.en}
                       className="flex gap-2.5 text-sm leading-relaxed text-ink"
@@ -134,7 +137,7 @@ function BankColumn({
                   ))}
                 </ul>
               </div>
-            )}
+            ))}
           </SectionCard>
         ))}
       </div>
