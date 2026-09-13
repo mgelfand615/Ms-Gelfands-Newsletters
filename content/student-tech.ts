@@ -22,6 +22,8 @@ export type TechStep = {
   /** Permanent internal name — never shown. Keep it stable. */
   id: string;
   title: Text;
+  /** The service's own logo, saved in /public/logos. */
+  logo?: string;
   /** What families should do — the steps, in plain language. */
   body: Text;
   /** The website to open. Leave blank to hide the link. */
@@ -49,6 +51,7 @@ export const techIntro: Text = {
 export const techSteps: TechStep[] = [
   {
     id: "classlink",
+    logo: "/logos/classlink.png",
     title: { en: "ClassLink / LaunchPad", es: "ClassLink / LaunchPad" },
     body: {
       en: "ClassLink is the front door to everything else. Once your child is signed in here, the other sites open without a second login.",
@@ -69,6 +72,7 @@ export const techSteps: TechStep[] = [
   },
   {
     id: "iready",
+    logo: "/logos/iready.png",
     title: { en: "i-Ready", es: "i-Ready" },
     body: blank,
     href: "https://login.i-ready.com/",
@@ -115,23 +119,32 @@ export const techSteps: TechStep[] = [
   },
   {
     id: "google",
+    logo: "/logos/drive.png",
     title: { en: "Google Drive & Classroom", es: "Google Drive y Classroom" },
-    body: {
-      en: "Two ways in: open it from ClassLink, or go to Google and sign in with your child's school email. Either way you end up at the same ClassLink sign-in page.",
-      es: "Dos maneras de entrar: ábralo desde ClassLink, o vaya a Google e inicie sesión con el correo escolar de su hijo/a. De cualquier forma llegará a la misma página de ClassLink.",
-    },
+    body: blank,
     href: "https://accounts.google.com/signin",
-    username: {
-      en: "StudentID@student.cms.k12.nc.us",
-      es: "IDdeEstudiante@student.cms.k12.nc.us",
-    },
-    password: {
-      en: "The same ClassLink password, in your child's take-home folder",
-      es: "La misma contraseña de ClassLink, en la carpeta que su hijo/a lleva a casa",
-    },
+    username: blank,
+    password: blank,
+    notes: [
+      {
+        label: { en: "Through ClassLink", es: "Desde ClassLink" },
+        text: {
+          en: "Sign in to ClassLink and tap the Google Drive or Google Classroom tile. Nothing else to enter.",
+          es: "Inicie sesión en ClassLink y toque el ícono de Google Drive o Google Classroom. No hay nada más que escribir.",
+        },
+      },
+      {
+        label: { en: "Through Google", es: "Desde Google" },
+        text: {
+          en: "Go to Google and enter your child's school email — **StudentID@student.cms.k12.nc.us** — and it redirects to ClassLink to sign in. There is no separate Google password.",
+          es: "Vaya a Google y escriba el correo escolar de su hijo/a — **IDdeEstudiante@student.cms.k12.nc.us** — y lo redirigirá a ClassLink para iniciar sesión. No hay una contraseña aparte de Google.",
+        },
+      },
+    ],
   },
   {
     id: "bank",
+    logo: "/logos/bank.png",
     title: { en: "Bank Account", es: "Cuenta Bancaria" },
     body: {
       en: "Where your child checks their classroom savings. **Account type must be set to Student.**",
@@ -139,8 +152,8 @@ export const techSteps: TechStep[] = [
     },
     href: "https://digital.myclassroomeconomy.org/en/login",
     username: {
-      en: "First name followed by 2035, with a capital first letter — for example, Madison2035",
-      es: "El nombre seguido de 2035, con la primera letra mayúscula — por ejemplo, Madison2035",
+      en: "First name followed by 2035, with a capital first letter — for example, Millie2035",
+      es: "El nombre seguido de 2035, con la primera letra mayúscula — por ejemplo, Millie2035",
     },
     password: {
       en: "In your child's take-home folder",

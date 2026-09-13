@@ -60,6 +60,10 @@ Inside any piece of text you can use:
 
 Nothing else is interpreted, so an asterisk on its own stays an asterisk.
 
+Text in **bold** or *italics* is shown exactly as written — nothing inside it
+becomes a link. That is how to show something that only looks like an address,
+such as the username pattern `**StudentID@student.cms.k12.nc.us**`.
+
 The toggle is instant (both languages are already in the page) and remembers
 each family's choice on their own device.
 

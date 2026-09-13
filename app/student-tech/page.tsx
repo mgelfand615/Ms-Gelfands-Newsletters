@@ -3,6 +3,7 @@ import { techIntro, techSteps } from "@/content/student-tech";
 import type { TechStep } from "@/content/student-tech";
 import { isBlank, type Text } from "@/content/types";
 import { PageHeader } from "@/components/page-header";
+import { asset } from "@/lib/asset";
 import { T } from "@/components/t";
 import { Rich } from "@/components/rich-text";
 
@@ -23,9 +24,19 @@ export default function StudentTechPage() {
       />
 
       <div className="mx-auto max-w-5xl px-5 py-12 sm:px-8 sm:py-14">
-        <div className="grid gap-5 sm:grid-cols-2">
-          {techSteps.map((step) => (
-            <StepCard key={step.id} step={step} />
+        {/* Two independent columns rather than a grid. In a grid every card
+            in a row is as tall as the tallest, so a short card leaves a gap
+            beneath it; here each column simply flows, and cards alternate
+            between them so the reading order still runs across. */}
+        <div className="grid items-start gap-5 sm:grid-cols-2">
+          {[0, 1].map((column) => (
+            <div key={column} className="flex flex-col gap-5">
+              {techSteps
+                .filter((_, i) => i % 2 === column)
+                .map((step) => (
+                  <StepCard key={step.id} step={step} />
+                ))}
+            </div>
           ))}
         </div>
       </div>
@@ -37,7 +48,16 @@ function StepCard({ step }: { step: TechStep }) {
   return (
     <article className="rounded-card border border-line bg-surface p-5 sm:p-6">
       <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-line pb-4">
-        <h2 className="font-display text-xl font-semibold tracking-tight text-ink">
+        <h2 className="flex items-center gap-2.5 font-display text-xl font-semibold tracking-tight text-ink">
+          {step.logo && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={asset(step.logo)}
+              alt=""
+              aria-hidden
+              className="h-6 w-6 shrink-0 object-contain"
+            />
+          )}
           <T value={step.title} />
         </h2>
         {step.href ? (
