@@ -80,9 +80,21 @@ export type Newsletter = {
   /** How the week is written out, e.g. "September 8–11" */
   dateRange: Text;
 
+  /** A sentence or two opening the week, above the bulleted updates. */
+  updatesLead: Text;
   /** One point per entry. Any web address becomes a link on its own. */
   updates: Text[];
+  /** A closing line under the updates. */
+  updatesClose: Text;
+
   upcomingDates: DateEntry[];
+  /**
+   * Notices that belong to the whole week rather than to one day — a sign-up
+   * that is still open, a fundraiser that is running. They sit under the days
+   * in the same box, and the box's heading grows to say "& Reminders".
+   */
+  reminders: Text[];
+
   birthdays: Birthday[];
   learning: Subject[];
 };
@@ -100,12 +112,40 @@ export const newsletters: Newsletter[] = [
       es: "21 - 25 de septiembre",
     },
 
-    updates: [],
+    updatesLead: {
+      en: "Another great week with lots of learning happening!",
+      es: "¡Otra gran semana con mucho aprendizaje!",
+    },
+
+    updates: [
+      {
+        en: "**Curriculum Night:** Thank you to everyone who came out for curriculum night! If you were unable to attend, the slides are linked below. Please reach out if you have any questions about the information shared there.\n**Curriculum Night slides:**\nhttps://docs.google.com/presentation/d/1WxpypzlAJcSLT1-WIb9Q5PhW6El1ttAaI7hjpR63BzY/edit",
+        es: "**Noche de Currículo:** ¡Gracias a todos los que asistieron a la Noche de Currículo! Si no pudo asistir, abajo está el enlace a las diapositivas. Comuníquese conmigo si tiene alguna pregunta sobre la información compartida.\n**Diapositivas de la Noche de Currículo:**\nhttps://docs.google.com/presentation/d/1WxpypzlAJcSLT1-WIb9Q5PhW6El1ttAaI7hjpR63BzY/edit",
+      },
+      {
+        en: "**Dressing for the Classroom:** My classroom is quite cold right now, while Mrs. Phoso’s is quite warm. With the weather changing and the classroom temperatures varying, please have students bring layers so they can adjust as needed.",
+        es: "**Cómo vestirse para el salón:** Mi salón está bastante frío en este momento, mientras que el de Mrs. Phoso está bastante caluroso. Con el cambio de clima y las distintas temperaturas de los salones, por favor envíe a su hijo/a con varias capas de ropa para que pueda ajustarse según lo necesite.",
+      },
+      {
+        en: "**Water Bottles:** Reusable water bottles sent with your child would be greatly appreciated. Coming in from recess we really want to get right to work, so having water with them in the classroom helps minimize our transition time and get right into learning!",
+        es: "**Botellas de agua:** Agradeceríamos mucho que su hijo/a traiga una botella de agua reutilizable. Al volver del recreo queremos ponernos a trabajar enseguida, así que tener agua en el salón nos ayuda a acortar la transición y ¡empezar a aprender de inmediato!",
+      },
+    ],
+
+    updatesClose: {
+      en: "Here’s a quick look at what we’ll be learning and what’s coming up next week!",
+      es: "¡Aquí tiene un vistazo rápido a lo que aprenderemos y a lo que viene la próxima semana!",
+    },
 
     upcomingDates: [
       {
         when: { en: "Monday, September 21st", es: "Lunes 21 de septiembre" },
-        events: [],
+        events: [
+          {
+            en: "Teacher Work Day — NO SCHOOL for students",
+            es: "Día de trabajo docente — NO HAY CLASES para los estudiantes",
+          },
+        ],
       },
       {
         when: { en: "Tuesday, September 22nd", es: "Martes 22 de septiembre" },
@@ -116,15 +156,40 @@ export const newsletters: Newsletter[] = [
           en: "Wednesday, September 23rd",
           es: "Miércoles 23 de septiembre",
         },
-        events: [],
+        events: [
+          {
+            en: "School Improvement Team (SIT) Meeting on Teams at 4pm",
+            es: "Reunión del Equipo de Mejora Escolar (SIT) por Teams a las 4pm",
+          },
+        ],
       },
       {
         when: { en: "Thursday, September 24th", es: "Jueves 24 de septiembre" },
-        events: [],
+        events: [
+          {
+            en: "Reading Quiz: Writing an Informative Paragraph Describing a Character",
+            es: "Prueba de Lectura: escribir un párrafo informativo que describa a un personaje",
+          },
+          {
+            en: "Second Harvest Food Drive in the bus lot 5-6pm",
+            es: "Colecta de alimentos de Second Harvest en el estacionamiento de autobuses de 5 a 6pm",
+          },
+        ],
       },
       {
         when: { en: "Friday, September 25th", es: "Viernes 25 de septiembre" },
         events: [],
+      },
+    ],
+
+    reminders: [
+      {
+        en: "**Interested in joining the PTA?** Click here to join: https://gvsa.givebacks.com/shop",
+        es: "**¿Le interesa unirse a la PTA?** Haga clic aquí para unirse: https://gvsa.givebacks.com/shop",
+      },
+      {
+        en: "**GVSA Fundraiser:** Our first fundraiser of the school year is kicking off Tuesday, September 22nd, and we’re ready to see which classroom can bring in the BIGGEST popcorn sales! 🚀 Our classroom has its own unique fundraising link that you can share with your families, friends, neighbors, and anyone else who loves a good snack! 🍿 🍕 TOP-SELLING CLASSROOM will earn an EPIC PIZZA PARTY! 🎉🍕\n**Link:**\nhttps://poppinpopcornonline.com/store/store.php?sID=00676032",
+        es: "**Recaudación de fondos de GVSA:** ¡Nuestra primera recaudación de fondos del año escolar comienza el martes 22 de septiembre, y estamos listos para ver qué salón logra las MAYORES ventas de palomitas! 🚀 Nuestro salón tiene su propio enlace de recaudación que puede compartir con su familia, amigos, vecinos y cualquier persona a la que le guste un buen bocadillo. 🍿 🍕 ¡EL SALÓN CON MÁS VENTAS ganará una ÉPICA FIESTA DE PIZZA! 🎉🍕\n**Enlace:**\nhttps://poppinpopcornonline.com/store/store.php?sID=00676032",
       },
     ],
 
@@ -194,6 +259,8 @@ export const newsletters: Newsletter[] = [
     date: "2026-09-18",
     dateRange: { en: "September 14 - September 18", es: "14 - 18 de septiembre" },
 
+    updatesLead: blank,
+
     updates: [
       {
         en: "**i-Ready Testing:** i-Ready testing is all finished! Students who were absent on one of the testing days will make it up this coming week. i-Ready scores will be sent home in your child’s takehome folder soon.",
@@ -208,6 +275,8 @@ export const newsletters: Newsletter[] = [
         es: "**Recaudación de fondos de GVSA:** ¡Nuestra primera recaudación de fondos del año escolar comienza el martes 22 de septiembre, y estamos listos para ver qué salón logra las MAYORES ventas de palomitas! 🚀 Nuestro salón tiene su propio enlace de recaudación que puede compartir con su familia, amigos, vecinos y cualquier persona a la que le guste un buen bocadillo. 🍿 🍕 ¡EL SALÓN CON MÁS VENTAS ganará una ÉPICA FIESTA DE PIZZA! 🎉🍕\n**Enlace del salón de Ms. Gelfand:**\nhttps://poppinpopcornonline.com/store/store.php?sID=00676032",
       },
     ],
+
+    updatesClose: blank,
 
     upcomingDates: [
       {
@@ -258,6 +327,8 @@ export const newsletters: Newsletter[] = [
         ],
       },
     ],
+
+    reminders: [],
 
     birthdays: [
       { id: "tebi", name: "Tebi", date: { en: "September 14th", es: "14 de septiembre" } },

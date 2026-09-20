@@ -1,4 +1,4 @@
-import type { Newsletter, Subject } from "@/content/newsletters";
+import type { DateEntry, Newsletter, Subject } from "@/content/newsletters";
 import { isBlank, spanish, type Text } from "@/content/types";
 import { Placeholder, T } from "@/components/t";
 import { Rich } from "@/components/rich-text";
@@ -35,16 +35,27 @@ export function NewsletterTitle({ dateRange }: { dateRange: Text }) {
  * Shared by the home page and the archive, so a week only ever looks one way.
  */
 export function NewsletterBody({ newsletter }: { newsletter: Newsletter }) {
+  // The box is named for what is actually in it: a week with standing
+  // notices under the days says so in its heading.
+  const hasReminders = newsletter.reminders.some((item) => !isBlank(item));
+
   return (
     <div className="space-y-12">
       <div className="grid gap-5 md:grid-cols-2">
         <SectionCard title={{ en: "Updates", es: "Novedades" }}>
-          <Bullets items={newsletter.updates} />
+          <Updates newsletter={newsletter} />
         </SectionCard>
 
         <SectionCard
           tone="info"
-          title={{ en: "Upcoming Dates", es: "Próximas Fechas" }}
+          title={
+            hasReminders
+              ? {
+                  en: "Upcoming Dates & Reminders",
+                  es: "Próximas Fechas y Recordatorios",
+                }
+              : { en: "Upcoming Dates", es: "Próximas Fechas" }
+          }
         >
           <Dates newsletter={newsletter} />
         </SectionCard>
@@ -59,6 +70,35 @@ export function NewsletterBody({ newsletter }: { newsletter: Newsletter }) {
         <Learning subjects={newsletter.learning} />
       </section>
 
+    </div>
+  );
+}
+
+/**
+ * The week's news: an opening line, the bulleted announcements, and a
+ * closing line. Any of the three may be left out.
+ */
+function Updates({ newsletter }: { newsletter: Newsletter }) {
+  const { updatesLead, updates, updatesClose } = newsletter;
+  const written = updates.filter((item) => !isBlank(item));
+
+  if (written.length === 0 && isBlank(updatesLead) && isBlank(updatesClose)) {
+    return <Placeholder />;
+  }
+
+  return (
+    <div className="space-y-3">
+      {!isBlank(updatesLead) && (
+        <p className="leading-relaxed text-ink">
+          <Rich value={updatesLead} />
+        </p>
+      )}
+      {written.length > 0 && <Bullets items={written} />}
+      {!isBlank(updatesClose) && (
+        <p className="leading-relaxed text-ink">
+          <Rich value={updatesClose} />
+        </p>
+      )}
     </div>
   );
 }
@@ -85,11 +125,36 @@ function Bullets({ items }: { items: Text[] }) {
   );
 }
 
-/** The day in bold, with its events bulleted underneath. */
+/**
+ * The day in bold, with its events bulleted underneath, and any week-long
+ * reminders below a hairline at the bottom.
+ */
 function Dates({ newsletter }: { newsletter: Newsletter }) {
   const dates = newsletter.upcomingDates.filter((d) => !isBlank(d.when));
-  if (dates.length === 0) return <Placeholder />;
+  const reminders = newsletter.reminders.filter((item) => !isBlank(item));
+  if (dates.length === 0 && reminders.length === 0) return <Placeholder />;
 
+  return (
+    <>
+      {dates.length > 0 && <Days dates={dates} />}
+      {reminders.length > 0 && (
+        <ul
+          className={`space-y-3 ${
+            dates.length > 0 ? "mt-5 border-t border-info/40 pt-5" : ""
+          }`}
+        >
+          {reminders.map((reminder) => (
+            <Event key={reminder.en}>
+              <Rich value={reminder} />
+            </Event>
+          ))}
+        </ul>
+      )}
+    </>
+  );
+}
+
+function Days({ dates }: { dates: DateEntry[] }) {
   return (
     <ul className="space-y-4">
       {dates.map((date) => {
