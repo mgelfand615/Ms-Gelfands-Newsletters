@@ -278,8 +278,8 @@ export const newsletters: Newsletter[] = [
         span: "half",
         showHomework: true,
         homework: {
-          en: "The worksheet that will be sent home on Monday. Due Friday, 9/25.",
-          es: "La hoja de trabajo que se enviará a casa el lunes. Se entrega el viernes 25 de septiembre.",
+          en: "Worksheet due Friday, 9/25.",
+          es: "La hoja de trabajo se entrega el viernes 25 de septiembre.",
         },
         directionsLink: "",
         directionsLabel: directions,
