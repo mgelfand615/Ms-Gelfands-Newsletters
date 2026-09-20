@@ -1,8 +1,9 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 import { pastNewsletters } from "@/content/newsletters";
-import { isBlank } from "@/content/types";
+import type { Newsletter } from "@/content/newsletters";
+import { isBlank, spanish } from "@/content/types";
 import { PageHeader } from "@/components/page-header";
+import { NewsletterBody } from "@/components/newsletter-body";
 import { T } from "@/components/t";
 
 export const metadata: Metadata = {
@@ -16,15 +17,14 @@ export default function PastNewslettersPage() {
   return (
     <>
       <PageHeader
-        width="max-w-4xl"
         title={{ en: "Past Newsletters", es: "Boletines Anteriores" }}
         intro={{
-          en: "Every week of this school year, newest first.",
-          es: "Cada semana de este año escolar, la más reciente primero.",
+          en: "Every week of this school year, newest first. Tap a week to open it.",
+          es: "Cada semana de este año escolar, la más reciente primero. Toque una semana para abrirla.",
         }}
       />
 
-      <div className="mx-auto max-w-4xl px-5 py-12 sm:px-8 sm:py-14">
+      <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-14">
         {past.length === 0 ? (
           <p className="rounded-card border border-dashed border-line bg-surface-2 px-6 py-10 text-center italic text-muted">
             <T
@@ -33,32 +33,72 @@ export default function PastNewslettersPage() {
             />
           </p>
         ) : (
-          <ul className="space-y-3">
-            {past.map((n) => (
-              <li key={n.slug}>
-                <Link
-                  href={`/newsletters/${n.slug}`}
-                  className="group flex items-baseline justify-between gap-4 rounded-card border border-line bg-surface p-5 transition-colors hover:border-accent"
-                >
-                  <span>
-                    <span className="block font-display text-lg font-semibold text-ink group-hover:text-accent">
-                      <T en={`Week ${n.week}`} es={`Semana ${n.week}`} />
-                    </span>
-                    {!isBlank(n.dateRange) && (
-                      <span className="mt-0.5 block text-sm text-muted">
-                        <T value={n.dateRange} />
-                      </span>
-                    )}
-                  </span>
-                  <span aria-hidden className="text-muted">
-                    →
-                  </span>
-                </Link>
-              </li>
+          <div className="space-y-4">
+            {past.map((newsletter) => (
+              <ArchivedWeek key={newsletter.slug} newsletter={newsletter} />
             ))}
-          </ul>
+          </div>
         )}
       </div>
     </>
+  );
+}
+
+/**
+ * One week, closed until someone opens it.
+ *
+ * Built on <details>, so it works with the keyboard, is announced correctly,
+ * opens without JavaScript, and a browser's find-on-page can still reach the
+ * text inside.
+ */
+function ArchivedWeek({ newsletter }: { newsletter: Newsletter }) {
+  const dated = !isBlank(newsletter.dateRange);
+
+  return (
+    <details className="group rounded-card border border-line bg-surface">
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5 sm:p-6 [&::-webkit-details-marker]:hidden">
+        <span>
+          <span className="font-display text-xl font-semibold tracking-tight text-ink sm:text-2xl">
+            <T
+              en={
+                dated
+                  ? `${newsletter.dateRange.en} Newsletter`
+                  : `Week ${newsletter.week}`
+              }
+              es={
+                dated
+                  ? `Boletín del ${spanish(newsletter.dateRange)}`
+                  : `Semana ${newsletter.week}`
+              }
+            />
+          </span>
+          <span className="mt-0.5 block text-sm text-muted">
+            <T en={`Week ${newsletter.week}`} es={`Semana ${newsletter.week}`} />
+          </span>
+        </span>
+
+        <span
+          aria-hidden
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-line text-muted transition-transform group-open:rotate-180"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </span>
+      </summary>
+
+      <div className="border-t border-line p-5 sm:p-6">
+        <NewsletterBody newsletter={newsletter} />
+      </div>
+    </details>
   );
 }

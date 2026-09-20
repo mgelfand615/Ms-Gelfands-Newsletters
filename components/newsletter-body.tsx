@@ -3,8 +3,6 @@ import { isBlank, spanish, type Text } from "@/content/types";
 import { Placeholder, T } from "@/components/t";
 import { Rich } from "@/components/rich-text";
 import { SectionCard, SectionHeading } from "@/components/section";
-import { QuickLinks } from "@/components/quick-links";
-import { generalReminders } from "@/content/general-reminders";
 import { subjectSurface, type SubjectColor } from "@/components/tone";
 import { asset } from "@/lib/asset";
 
@@ -28,11 +26,13 @@ export function NewsletterTitle({ dateRange }: { dateRange: Text }) {
 }
 
 /**
- * One newsletter: news and dates side by side, then birthdays, then What
- * We're Learning, then Quick Links.
+ * One week's newsletter: news and dates, birthdays, What We're Learning.
  *
- * Shared by the main page and each past newsletter, so a week only ever
- * looks one way.
+ * Stops there on purpose. General Reminders and Quick Links are true all
+ * year, so they live on the home page beside the current newsletter rather
+ * than being repeated inside every archived week.
+ *
+ * Shared by the home page and the archive, so a week only ever looks one way.
  */
 export function NewsletterBody({ newsletter }: { newsletter: Newsletter }) {
   return (
@@ -59,41 +59,7 @@ export function NewsletterBody({ newsletter }: { newsletter: Newsletter }) {
         <Learning subjects={newsletter.learning} />
       </section>
 
-      <GeneralReminders />
-
-      <QuickLinks />
     </div>
-  );
-}
-
-/**
- * The things that are true all year — arrival, dismissal, birthday treats.
- * Laid out like the birthday row so the two read as a matching pair.
- */
-function GeneralReminders() {
-  if (generalReminders.length === 0) return null;
-
-  return (
-    <section>
-      <SectionHeading
-        title={{ en: "General Reminders", es: "Recordatorios Generales" }}
-      />
-      <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {generalReminders.map((reminder) => (
-          <li
-            key={reminder.id}
-            className="rounded-card border border-line bg-surface p-5"
-          >
-            <h3 className="font-display text-lg font-semibold tracking-tight text-ink">
-              <T value={reminder.title} />
-            </h3>
-            <p className="mt-2 leading-relaxed text-ink">
-              <Rich value={reminder.body} />
-            </p>
-          </li>
-        ))}
-      </ul>
-    </section>
   );
 }
 
@@ -177,8 +143,6 @@ const BIRTHDAY_TINTS: SubjectColor[] = ["mint", "lilac", "ice", "clay"];
 
 /** One box per birthday, with the name large enough to spot from across the page. */
 function Birthdays({ newsletter }: { newsletter: Newsletter }) {
-  if (newsletter.birthdays.length === 0) return null;
-
   return (
     <section>
       <SectionHeading
@@ -188,6 +152,14 @@ function Birthdays({ newsletter }: { newsletter: Newsletter }) {
           es: "¡FELIZ CUMPLEAÑOS A...",
         }}
       />
+      {newsletter.birthdays.length === 0 ? (
+        <Placeholder
+          label={{
+            en: "Add this week's birthdays here.",
+            es: "Agregue los cumpleaños de esta semana aquí.",
+          }}
+        />
+      ) : (
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {newsletter.birthdays.map((birthday, i) => (
           <li
@@ -207,6 +179,7 @@ function Birthdays({ newsletter }: { newsletter: Newsletter }) {
           </li>
         ))}
       </ul>
+      )}
     </section>
   );
 }
