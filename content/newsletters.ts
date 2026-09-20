@@ -130,6 +130,10 @@ export const newsletters: Newsletter[] = [
         en: "**Water Bottles:** Reusable water bottles sent with your child would be greatly appreciated. Coming in from recess we really want to get right to work, so having water with them in the classroom helps minimize our transition time and get right into learning!",
         es: "**Botellas de agua:** Agradeceríamos mucho que su hijo/a traiga una botella de agua reutilizable. Al volver del recreo queremos ponernos a trabajar enseguida, así que tener agua en el salón nos ayuda a acortar la transición y ¡empezar a aprender de inmediato!",
       },
+      {
+        en: "**The Gelf-Stand:** This Friday is the second time our class store will be open! The classroom money students have earned over the past two weeks can be spent there at the very end of the day — after they set aside $280 for their bills, which are due October 2nd. Any and all donations for the store would be greatly appreciated! Some popular items are large candy bars, baby bottle pops, push pops, ring pops, and little squishies. For a closer look at what The Gelf-Stand offers, check out the Classroom Economy tab.",
+        es: "**The Gelf-Stand:** ¡Este viernes será la segunda vez que abra la tienda de nuestro salón! El dinero del salón que los estudiantes ganaron en las últimas dos semanas se podrá gastar allí al final del día — después de apartar $280 para sus cuentas, que vencen el 2 de octubre. ¡Agradeceríamos muchísimo cualquier donación para la tienda! Algunos artículos populares son barras de dulce grandes, Baby Bottle Pops, Push Pops, Ring Pops y squishies pequeños. Para ver más de cerca lo que ofrece The Gelf-Stand, visite la pestaña de Economía del Salón.",
+      },
     ],
 
     updatesClose: {

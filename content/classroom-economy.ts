@@ -6,6 +6,7 @@
  * ─────────────────────────────────────────────────────────────────────────
  */
 
+import type { SubjectColor } from "@/components/tone";
 import type { Block, Text } from "./types";
 
 /**
@@ -264,29 +265,96 @@ export const economySections: EconomyBlock[] = [
     emoji: "🎁",
     title: { en: "The Perks", es: "Los Beneficios" },
     body: {
-      en: "Students shop the classroom store every payday — **every other Friday**. Some of what they can buy, with more on the shelves:",
-      es: "Los estudiantes van a la tienda del salón cada día de pago — **cada dos viernes**. Algunas de las cosas que pueden comprar, y hay más en la tienda:",
+      en: "Students shop **The Gelf-Stand**, our classroom store, every payday — **every other Friday**, at the very end of the day. Bills come out first; whatever is left is theirs to spend. Everything on the shelves is priced below.",
+      es: "Los estudiantes compran en **The Gelf-Stand**, la tienda de nuestro salón, cada día de pago — **cada dos viernes**, al final del día. Primero se pagan las cuentas; lo que sobra es suyo para gastar. Abajo están los precios de todo lo que hay en la tienda.",
     },
     lists: [
       {
-        id: "store",
-        columns: 2,
+        id: "donations",
+        label: { en: "Donations", es: "Donaciones" },
         items: [
-          { en: "Candy Bin", es: "Bote de dulces" },
-          { en: "Pen Day", es: "Día de pluma" },
-          { en: "Line Jumper", es: "Pase para saltar la fila" },
-          { en: "Takis!", es: "¡Takis!" },
-          { en: "Homework Pass", es: "Pase de tarea" },
-          { en: "Lunch with the Teacher", es: "Almuerzo con la maestra" },
           {
-            en: "Teacher's Desk Day",
-            es: "Día en el escritorio de la maestra",
+            en: "Any and all donations for the store are greatly appreciated! Popular items are large candy bars, baby bottle pops, push pops, ring pops, and little squishies.",
+            es: "¡Agradecemos muchísimo cualquier donación para la tienda! Los artículos más populares son barras de dulce grandes, Baby Bottle Pops, Push Pops, Ring Pops y squishies pequeños.",
           },
-          { en: "Positive Call Home", es: "Llamada positiva a casa" },
-          { en: "Secret Agent", es: "Agente secreto" },
-          { en: "Class Announcer", es: "Locutor de la clase" },
         ],
       },
+    ],
+  },
+];
+
+/**
+ * ─────────────────────────────────────────────────────────────────────────
+ *  THE GELF-STAND  — the class store's price board.
+ *
+ *  Tiers are bands of price, cheapest first. To change a price, edit the
+ *  `price` beside the item; to retire an item, delete its line.
+ * ─────────────────────────────────────────────────────────────────────────
+ */
+export type StoreTier = {
+  /** Permanent internal name — never shown. */
+  id: string;
+  name: Text;
+  /** The price band, shown beside the tier name. */
+  range: string;
+  /** The tier's tint. Runs coolest to richest, ending on purple. */
+  color: SubjectColor;
+  items: { id: string; name: Text; price: string }[];
+};
+
+export const gelfStandIntro: Text = {
+  en: "Everything students can buy, and what it costs. The store opens every other Friday, right after bills come out.",
+  es: "Todo lo que los estudiantes pueden comprar y cuánto cuesta. La tienda abre cada dos viernes, justo después de pagar las cuentas.",
+};
+
+export const gelfStand: StoreTier[] = [
+  {
+    id: "low",
+    name: { en: "Low Tier", es: "Nivel Bajo" },
+    range: "$0 – $100",
+    color: "ice",
+    items: [
+      { id: "candy-bin", name: { en: "Candy Bin", es: "Bote de dulces" }, price: "$25" },
+      { id: "line-jumper", name: { en: "Line Jumper", es: "Pase para saltar la fila" }, price: "$50" },
+      { id: "pen-day", name: { en: "Pen Day", es: "Día de pluma" }, price: "$50" },
+      { id: "free-draw", name: { en: "Free Draw Pass", es: "Pase de dibujo libre" }, price: "$100" },
+      { id: "text-home", name: { en: "Positive Text Home", es: "Mensaje positivo a casa" }, price: "$100" },
+    ],
+  },
+  {
+    id: "medium",
+    name: { en: "Medium Tier", es: "Nivel Medio" },
+    range: "$100 – $250",
+    color: "mint",
+    items: [
+      { id: "midsize-candy", name: { en: "Midsize Candy", es: "Dulce mediano" }, price: "$100" },
+      { id: "snack-box", name: { en: "Snack Box", es: "Caja de bocadillos" }, price: "$200" },
+      { id: "small-treasure", name: { en: "Small Treasure Box", es: "Cofre del tesoro pequeño" }, price: "$200" },
+      { id: "call-home", name: { en: "Positive Call Home", es: "Llamada positiva a casa" }, price: "$200" },
+      { id: "teacher-desk", name: { en: "Sit at Teacher Desk", es: "Sentarse en el escritorio de la maestra" }, price: "$250" },
+    ],
+  },
+  {
+    id: "high",
+    name: { en: "High Tier", es: "Nivel Alto" },
+    range: "$250 – $400",
+    color: "clay",
+    items: [
+      { id: "homework-pass", name: { en: "Homework Pass", es: "Pase de tarea" }, price: "$250" },
+      { id: "large-candy", name: { en: "Large Candy", es: "Dulce grande" }, price: "$300" },
+      { id: "lunch", name: { en: "Lunch with Teacher/Friend", es: "Almuerzo con la maestra o con un amigo" }, price: "$300" },
+      { id: "secret-agent", name: { en: "Secret Agent", es: "Agente secreto" }, price: "$300" },
+      { id: "large-treasure", name: { en: "Large Treasure Box", es: "Cofre del tesoro grande" }, price: "$350" },
+    ],
+  },
+  {
+    id: "premier",
+    name: { en: "Premier Tier", es: "Nivel Premier" },
+    range: "$400+",
+    color: "lilac",
+    items: [
+      { id: "takis", name: { en: "Takis", es: "Takis" }, price: "$400" },
+      { id: "squishies", name: { en: "Squishies", es: "Squishies" }, price: "$400" },
     ],
   },
 ];

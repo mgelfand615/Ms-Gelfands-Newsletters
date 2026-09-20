@@ -4,17 +4,19 @@ import {
   breakingBankIntro,
   economyIntro,
   economySections,
+  gelfStand,
+  gelfStandIntro,
   makingBank,
   makingBankIntro,
   spendingIntro,
 } from "@/content/classroom-economy";
-import type { EconomyBlock } from "@/content/classroom-economy";
+import type { EconomyBlock, StoreTier } from "@/content/classroom-economy";
 import type { Text } from "@/content/types";
 import { PageHeader } from "@/components/page-header";
 import { T } from "@/components/t";
 import { Rich } from "@/components/rich-text";
 import { SectionCard } from "@/components/section";
-import type { Tone } from "@/components/tone";
+import { subjectSurface, type Tone } from "@/components/tone";
 
 export const metadata: Metadata = {
   title: "Classroom Economy",
@@ -72,9 +74,69 @@ export default function ClassroomEconomyPage() {
               </SectionCard>
             ))}
           </div>
+
+          <GelfStand />
         </section>
       </div>
     </>
+  );
+}
+
+/**
+ * The class store's price board, one column per tier.
+ *
+ * A tier is a column rather than a row so a family can scan a price band
+ * top to bottom — "what can my child afford today?" is the question this
+ * board exists to answer. On a phone the columns stack in price order.
+ */
+function GelfStand() {
+  return (
+    <div className="mt-10">
+      <h3 className="flex items-center gap-2.5 font-display text-xl font-semibold tracking-tight text-ink sm:text-2xl">
+        <span aria-hidden>🏪</span>
+        <span>
+          <T en="The Gelf-Stand" es="The Gelf-Stand" />
+        </span>
+      </h3>
+      <p className="mt-2 leading-relaxed text-muted">
+        <Rich value={gelfStandIntro} />
+      </p>
+
+      <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {gelfStand.map((tier) => (
+          <Tier key={tier.id} tier={tier} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Tier({ tier }: { tier: StoreTier }) {
+  return (
+    <section className={`rounded-card border p-5 ${subjectSurface[tier.color]}`}>
+      <h4 className="font-display text-lg font-semibold tracking-tight text-ink">
+        <T value={tier.name} />
+      </h4>
+      <p className="text-sm font-medium text-muted">{tier.range}</p>
+
+      <ul className="mt-4 space-y-2.5">
+        {tier.items.map((item) => (
+          <li
+            key={item.id}
+            className="flex items-baseline justify-between gap-3 border-b border-ink/10 pb-2.5 last:border-0 last:pb-0"
+          >
+            <span className="leading-snug text-ink">
+              <T value={item.name} />
+            </span>
+            {/* Tabular figures so the column of prices lines up on the
+                decimal rather than drifting with the digit widths. */}
+            <span className="shrink-0 font-semibold tabular-nums text-ink">
+              {item.price}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
 
