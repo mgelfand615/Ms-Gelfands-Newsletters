@@ -249,7 +249,10 @@ export const newsletters: Newsletter[] = [
         ],
         span: "half",
         showHomework: true,
-        homework: blank,
+        homework: {
+          en: "Weekly Reading Log due Friday, 9/25.",
+          es: "El registro de lectura semanal se entrega el viernes 25 de septiembre.",
+        },
         // The reading log is the same every week, so the link stays put.
         directionsLink: "/weekly-reading-log-directions.pdf",
         directionsLabel: {
@@ -270,7 +273,10 @@ export const newsletters: Newsletter[] = [
         ],
         span: "half",
         showHomework: true,
-        homework: blank,
+        homework: {
+          en: "The worksheet that will be sent home on Monday. Due Friday, 9/25.",
+          es: "La hoja de trabajo que se enviará a casa el lunes. Se entrega el viernes 25 de septiembre.",
+        },
         directionsLink: "",
         directionsLabel: directions,
       },
