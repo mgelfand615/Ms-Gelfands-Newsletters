@@ -57,24 +57,19 @@ function ArchivedWeek({ newsletter }: { newsletter: Newsletter }) {
   return (
     <details className="group rounded-card border border-line bg-surface">
       <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5 sm:p-6 [&::-webkit-details-marker]:hidden">
-        <span>
-          <span className="font-display text-xl font-semibold tracking-tight text-ink sm:text-2xl">
-            <T
-              en={
-                dated
-                  ? `${newsletter.dateRange.en} Newsletter`
-                  : `Week ${newsletter.week}`
-              }
-              es={
-                dated
-                  ? `Boletín del ${spanish(newsletter.dateRange)}`
-                  : `Semana ${newsletter.week}`
-              }
-            />
-          </span>
-          <span className="mt-0.5 block text-sm text-muted">
-            <T en={`Week ${newsletter.week}`} es={`Semana ${newsletter.week}`} />
-          </span>
+        <span className="font-display text-xl font-semibold tracking-tight text-ink sm:text-2xl">
+          <T
+            en={
+              dated
+                ? `${newsletter.dateRange.en} Newsletter`
+                : `Week ${newsletter.week}`
+            }
+            es={
+              dated
+                ? `Boletín del ${spanish(newsletter.dateRange)}`
+                : `Semana ${newsletter.week}`
+            }
+          />
         </span>
 
         <span
