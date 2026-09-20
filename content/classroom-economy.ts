@@ -225,8 +225,8 @@ export const breakingBank: EconomyBlock[] = [
 
 /** Sits under the "Spending" heading, above the boxes. */
 export const spendingIntro: Text = {
-  en: "Bills come first. Whatever is left is theirs to spend.",
-  es: "Primero las cuentas. Lo que sobra es suyo para gastar.",
+  en: "Bills are due the first Friday of the month and the store opens every other Friday, so the two rarely land on the same day. Students set their bill money aside first — whatever is left after that is theirs to spend.",
+  es: "Las cuentas vencen el primer viernes del mes y la tienda abre cada dos viernes, así que rara vez caen el mismo día. Los estudiantes apartan primero el dinero de sus cuentas — lo que quede después es suyo para gastar.",
 };
 
 /** The remaining sections, each its own box across the bottom. */
@@ -265,8 +265,8 @@ export const economySections: EconomyBlock[] = [
     emoji: "🎁",
     title: { en: "The Perks", es: "Los Beneficios" },
     body: {
-      en: "Students shop **The Gelf-Stand**, our classroom store, every payday — **every other Friday**, at the very end of the day. Bills come out first; whatever is left is theirs to spend. Everything on the shelves is priced below.",
-      es: "Los estudiantes compran en **The Gelf-Stand**, la tienda de nuestro salón, cada día de pago — **cada dos viernes**, al final del día. Primero se pagan las cuentas; lo que sobra es suyo para gastar. Abajo están los precios de todo lo que hay en la tienda.",
+      en: "Students shop **The Gelf-Stand**, our classroom store, every payday — **every other Friday**, at the very end of the day. Before spending anything, students set aside the **$280** they owe for that month's bills. Whatever is left after that is theirs to spend. Everything on the shelves is priced below.",
+      es: "Los estudiantes compran en **The Gelf-Stand**, la tienda de nuestro salón, cada día de pago — **cada dos viernes**, al final del día. Antes de gastar, los estudiantes apartan los **$280** que deben para las cuentas de ese mes. Lo que quede después es suyo para gastar. Abajo están los precios de todo lo que hay en la tienda.",
     },
     lists: [
       {
@@ -303,8 +303,8 @@ export type StoreTier = {
 };
 
 export const gelfStandIntro: Text = {
-  en: "Everything students can buy, and what it costs. The store opens every other Friday, right after bills come out.",
-  es: "Todo lo que los estudiantes pueden comprar y cuánto cuesta. La tienda abre cada dos viernes, justo después de pagar las cuentas.",
+  en: "Everything students can buy, and what it costs. Bills are set aside first — the rest is theirs to spend.",
+  es: "Todo lo que los estudiantes pueden comprar y cuánto cuesta. Primero apartan el dinero de las cuentas — el resto es suyo para gastar.",
 };
 
 export const gelfStand: StoreTier[] = [
