@@ -193,7 +193,23 @@ export const newsletters: Newsletter[] = [
       },
     ],
 
-    birthdays: [],
+    birthdays: [
+      {
+        id: "caleb",
+        name: "Caleb",
+        date: { en: "September 22nd", es: "22 de septiembre" },
+      },
+      {
+        id: "addy",
+        name: "Addy",
+        date: { en: "September 25th", es: "25 de septiembre" },
+      },
+      {
+        id: "alex",
+        name: "Alex",
+        date: { en: "September 26th", es: "26 de septiembre" },
+      },
+    ],
 
     learning: [
       {
@@ -204,7 +220,12 @@ export const newsletters: Newsletter[] = [
           en: "Social Emotional Learning",
           es: "Aprendizaje Socioemocional",
         },
-        body: [],
+        body: [
+          {
+            en: "This week in SEL, our class is exploring how to make school a happy and safe place for everyone by recognizing and building positive emotions. Students are also practicing ‘Think, Pair, Share’ to take quiet moments to reflect before sharing their ideas with peers.",
+            es: "Esta semana en Aprendizaje Socioemocional, nuestra clase explora cómo hacer de la escuela un lugar feliz y seguro para todos, reconociendo y cultivando las emociones positivas. Los estudiantes también practican ‘Piensa, Comparte en Pareja’ para tomarse un momento de reflexión antes de compartir sus ideas con sus compañeros.",
+          },
+        ],
         span: "full",
         showHomework: false,
         homework: blank,
@@ -215,8 +236,17 @@ export const newsletters: Newsletter[] = [
         id: "reading",
         color: "lilac",
         emoji: "📚",
-        name: { en: "Reading", es: "Lectura" },
-        body: [],
+        name: { en: "ELA", es: "Lengua y Literatura" },
+        body: [
+          {
+            en: "Scholars will continue to read *Love That Dog* and identify the main character’s feelings and how they change throughout the story. They will also read and analyze poems to identify the theme and summary.",
+            es: "Los estudiantes seguirán leyendo *Love That Dog* e identificarán los sentimientos del personaje principal y cómo cambian a lo largo de la historia. También leerán y analizarán poemas para identificar el tema y el resumen.",
+          },
+          {
+            en: "We begin the writing portion of our module this week. Students will write an informative paragraph describing what inspires the main character of our book to write poetry.",
+            es: "Esta semana comenzamos la parte de escritura de nuestro módulo. Los estudiantes escribirán un párrafo informativo que describa qué inspira al personaje principal de nuestro libro a escribir poesía.",
+          },
+        ],
         span: "half",
         showHomework: true,
         homework: blank,
@@ -230,9 +260,14 @@ export const newsletters: Newsletter[] = [
       {
         id: "math",
         color: "clay",
-        emoji: "🔢",
+        emoji: "➗️",
         name: { en: "Math", es: "Matemáticas" },
-        body: [],
+        body: [
+          {
+            en: "Scholars will continue to use a variety of strategies (number line, multiples of the denominator, visual representations) to identify and compare fractions.",
+            es: "Los estudiantes seguirán usando una variedad de estrategias (la recta numérica, los múltiplos del denominador, las representaciones visuales) para identificar y comparar fracciones.",
+          },
+        ],
         span: "half",
         showHomework: true,
         homework: blank,
@@ -242,9 +277,17 @@ export const newsletters: Newsletter[] = [
       {
         id: "social-studies",
         color: "ice",
-        emoji: "🗺️",
-        name: { en: "Social Studies", es: "Estudios Sociales" },
-        body: [],
+        emoji: "🌎",
+        name: {
+          en: "Science / Social Studies",
+          es: "Ciencias / Estudios Sociales",
+        },
+        body: [
+          {
+            en: "Scholars will learn about North Carolina’s culture and diversity, as well as the different groups of people who contribute to our state.",
+            es: "Los estudiantes aprenderán sobre la cultura y la diversidad de Carolina del Norte, así como sobre los diferentes grupos de personas que contribuyen a nuestro estado.",
+          },
+        ],
         span: "full",
         showHomework: false,
         homework: blank,
