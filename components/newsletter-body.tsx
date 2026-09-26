@@ -247,8 +247,16 @@ function Event({ children }: { children: React.ReactNode }) {
  */
 const BIRTHDAY_TINTS: SubjectColor[] = ["mint", "lilac", "ice", "clay"];
 
-/** One box per birthday, with the name large enough to spot from across the page. */
+/**
+ * One box per birthday, with the name large enough to spot from across the
+ * page.
+ *
+ * A week with no birthdays drops the section entirely rather than heading an
+ * empty box — there is nothing to celebrate, so there is nothing to show.
+ */
 function Birthdays({ newsletter }: { newsletter: Newsletter }) {
+  if (newsletter.birthdays.length === 0) return null;
+
   return (
     <section>
       <SectionHeading
@@ -258,14 +266,6 @@ function Birthdays({ newsletter }: { newsletter: Newsletter }) {
           es: "¡FELIZ CUMPLEAÑOS A...",
         }}
       />
-      {newsletter.birthdays.length === 0 ? (
-        <Placeholder
-          label={{
-            en: "Add this week's birthdays here.",
-            es: "Agregue los cumpleaños de esta semana aquí.",
-          }}
-        />
-      ) : (
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {newsletter.birthdays.map((birthday, i) => (
           <li
@@ -285,7 +285,6 @@ function Birthdays({ newsletter }: { newsletter: Newsletter }) {
           </li>
         ))}
       </ul>
-      )}
     </section>
   );
 }
