@@ -104,6 +104,112 @@ const directions: Text = { en: "Directions", es: "Instrucciones" };
 /** A fresh, empty week. Copy this block to start each newsletter. */
 export const newsletters: Newsletter[] = [
   {
+    slug: "week-3",
+    week: 3,
+    date: "2026-10-02",
+    dateRange: {
+      en: "September 28 - October 2",
+      es: "28 de septiembre - 2 de octubre",
+    },
+
+    updatesLead: blank,
+
+    updates: [],
+
+    updatesClose: blank,
+
+    upcomingDates: [
+      {
+        when: { en: "Monday, September 28th", es: "Lunes 28 de septiembre" },
+        events: [],
+      },
+      {
+        when: { en: "Tuesday, September 29th", es: "Martes 29 de septiembre" },
+        events: [],
+      },
+      {
+        when: {
+          en: "Wednesday, September 30th",
+          es: "Miércoles 30 de septiembre",
+        },
+        events: [],
+      },
+      {
+        when: { en: "Thursday, October 1st", es: "Jueves 1 de octubre" },
+        events: [],
+      },
+      {
+        when: { en: "Friday, October 2nd", es: "Viernes 2 de octubre" },
+        events: [],
+      },
+    ],
+
+    reminders: [],
+
+    birthdays: [],
+
+    learning: [
+      {
+        id: "sel",
+        color: "mint",
+        emoji: "💛",
+        name: {
+          en: "Social Emotional Learning",
+          es: "Aprendizaje Socioemocional",
+        },
+        body: [],
+        span: "full",
+        showHomework: false,
+        homework: blank,
+        directionsLink: "",
+        directionsLabel: directions,
+      },
+      {
+        id: "reading",
+        color: "lilac",
+        emoji: "📚",
+        name: { en: "ELA", es: "Lengua y Literatura" },
+        body: [],
+        span: "half",
+        showHomework: true,
+        homework: blank,
+        // The reading log is the same every week, so the link stays put.
+        directionsLink: "/weekly-reading-log-directions.pdf",
+        directionsLabel: {
+          en: "Weekly Reading Log Directions",
+          es: "Instrucciones del Registro de Lectura Semanal",
+        },
+      },
+      {
+        id: "math",
+        color: "clay",
+        emoji: "➗️",
+        name: { en: "Math", es: "Matemáticas" },
+        body: [],
+        span: "half",
+        showHomework: true,
+        homework: blank,
+        directionsLink: "",
+        directionsLabel: directions,
+      },
+      {
+        id: "social-studies",
+        color: "ice",
+        emoji: "🌎",
+        name: {
+          en: "Science / Social Studies",
+          es: "Ciencias / Estudios Sociales",
+        },
+        body: [],
+        span: "full",
+        showHomework: false,
+        homework: blank,
+        directionsLink: "",
+        directionsLabel: directions,
+      },
+    ],
+  },
+  {
     slug: "week-2",
     week: 2,
     date: "2026-09-25",
