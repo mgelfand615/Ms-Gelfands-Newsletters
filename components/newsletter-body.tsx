@@ -1,4 +1,9 @@
-import type { DateEntry, Newsletter, Subject } from "@/content/newsletters";
+import type {
+  DateEntry,
+  Newsletter,
+  Subject,
+  Update,
+} from "@/content/newsletters";
 import { isBlank, spanish, type Text } from "@/content/types";
 import { Placeholder, T } from "@/components/t";
 import { Rich } from "@/components/rich-text";
@@ -80,7 +85,7 @@ export function NewsletterBody({ newsletter }: { newsletter: Newsletter }) {
  */
 function Updates({ newsletter }: { newsletter: Newsletter }) {
   const { updatesLead, updates, updatesClose } = newsletter;
-  const written = updates.filter((item) => !isBlank(item));
+  const written = updates.filter((item) => !isBlank(item.text));
 
   if (written.length === 0 && isBlank(updatesLead) && isBlank(updatesClose)) {
     return <Placeholder />;
@@ -103,25 +108,61 @@ function Updates({ newsletter }: { newsletter: Newsletter }) {
   );
 }
 
-/** Plain bulleted points, with any pasted web address turned into a link. */
-function Bullets({ items }: { items: Text[] }) {
-  const written = items.filter((item) => !isBlank(item));
+/**
+ * The announcements, each with its details indented underneath.
+ *
+ * Any pasted web address becomes a link on its own.
+ */
+function Bullets({ items }: { items: Update[] }) {
+  const written = items.filter((item) => !isBlank(item.text));
   if (written.length === 0) return <Placeholder />;
 
   return (
     <ul className="space-y-3">
-      {written.map((item) => (
-        <li key={item.en} className="flex gap-2.5 leading-relaxed text-ink">
-          <span
-            aria-hidden
-            className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-muted/50"
-          />
-          <span>
-            <Rich value={item} />
-          </span>
-        </li>
-      ))}
+      {written.map((item) => {
+        const points = (item.points ?? []).filter((p) => !isBlank(p));
+
+        return (
+          <li key={item.text.en}>
+            <Point>
+              <Rich value={item.text} />
+            </Point>
+            {points.length > 0 && (
+              <ul className="ml-5 mt-2 space-y-2">
+                {points.map((point) => (
+                  <li key={point.en}>
+                    <Point nested>
+                      <Rich value={point} />
+                    </Point>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        );
+      })}
     </ul>
+  );
+}
+
+/** One bullet. A nested one is drawn hollow, so the levels read apart. */
+function Point({
+  children,
+  nested = false,
+}: {
+  children: React.ReactNode;
+  nested?: boolean;
+}) {
+  return (
+    <div className="flex gap-2.5 leading-relaxed text-ink">
+      <span
+        aria-hidden
+        className={`mt-2 h-1.5 w-1.5 shrink-0 rounded-full ${
+          nested ? "border border-muted/60" : "bg-muted/50"
+        }`}
+      />
+      <span>{children}</span>
+    </div>
   );
 }
 

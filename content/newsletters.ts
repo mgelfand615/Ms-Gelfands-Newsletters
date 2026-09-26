@@ -27,6 +27,13 @@ import type { SubjectColor } from "@/components/tone";
  */
 export type DateEntry = { when: Text; events: Text[] };
 
+/**
+ * One announcement. `points` are the details underneath it, indented — the
+ * three things to know about the lunch invitation, say, rather than three
+ * more announcements.
+ */
+export type Update = { text: Text; points?: Text[] };
+
 /** One birthday, in its own box. */
 export type Birthday = { id: string; name: string; date: Text };
 
@@ -82,8 +89,8 @@ export type Newsletter = {
 
   /** A sentence or two opening the week, above the bulleted updates. */
   updatesLead: Text;
-  /** One point per entry. Any web address becomes a link on its own. */
-  updates: Text[];
+  /** One announcement per entry. Any web address becomes a link on its own. */
+  updates: Update[];
   /** A closing line under the updates. */
   updatesClose: Text;
 
@@ -114,9 +121,51 @@ export const newsletters: Newsletter[] = [
 
     updatesLead: blank,
 
-    updates: [],
+    updates: [
+      {
+        text: {
+          en: "**Tuesday, 9/29 — Progress Reports** are available to view on Infinite Campus.",
+          es: "**Martes 29/9 — Los informes de progreso** se pueden ver en Infinite Campus.",
+        },
+        points: [
+          {
+            en: "Directions on how to set up your Infinite Campus account can be found [here](https://www.cmsk12.org/strategy-innovation/office-of-accountability/infinite-campus-student-information-system). Scroll down to select your language and it will take you to the set-up.",
+            es: "Las instrucciones para crear su cuenta de Infinite Campus están [aquí](https://www.cmsk12.org/strategy-innovation/office-of-accountability/infinite-campus-student-information-system). Baje en la página para elegir su idioma y lo llevará a la configuración.",
+          },
+        ],
+      },
+      {
+        text: {
+          en: "**Families are invited to eat lunch with their scholars!**",
+          es: "**¡Las familias están invitadas a almorzar con sus estudiantes!**",
+        },
+        points: [
+          {
+            en: "Sign in at the front office with your ID and meet us in the cafeteria.",
+            es: "Regístrese en la oficina principal con su identificación y encuéntrenos en la cafetería.",
+          },
+          {
+            en: "You are welcome to bring food to enjoy with your child at lunch.",
+            es: "Puede traer comida para disfrutar junto a su hijo/a durante el almuerzo.",
+          },
+          {
+            en: "Scholars are seated and ready to eat at 11:20. We leave for recess at 11:45.",
+            es: "Los estudiantes están sentados y listos para comer a las 11:20. Salimos al recreo a las 11:45.",
+          },
+        ],
+      },
+      {
+        text: {
+          en: "**Classroom Snacks:** If you would like to bring a snack for your child's homeroom, we currently have 23 students in Ms. Gelfand's class and 26 students in Mrs. Phoso's class.",
+          es: "**Bocadillos para el salón:** Si desea traer un bocadillo para el salón de su hijo/a, actualmente hay 23 estudiantes en la clase de Ms. Gelfand y 26 estudiantes en la clase de Mrs. Phoso.",
+        },
+      },
+    ],
 
-    updatesClose: blank,
+    updatesClose: {
+      en: "As always, please reach out with any questions or concerns! Thank you for all your support and have a great weekend! 💛\n— Ms. Gelfand and Mrs. Phoso",
+      es: "¡Como siempre, comuníquese con nosotras si tiene preguntas o inquietudes! Gracias por todo su apoyo y ¡que tengan un buen fin de semana! 💛\n— Ms. Gelfand y Mrs. Phoso",
+    },
 
     upcomingDates: [
       {
@@ -125,7 +174,12 @@ export const newsletters: Newsletter[] = [
       },
       {
         when: { en: "Tuesday, September 29th", es: "Martes 29 de septiembre" },
-        events: [],
+        events: [
+          {
+            en: "Progress reports are available to view on Infinite Campus",
+            es: "Los informes de progreso se pueden ver en Infinite Campus",
+          },
+        ],
       },
       {
         when: {
@@ -140,11 +194,25 @@ export const newsletters: Newsletter[] = [
       },
       {
         when: { en: "Friday, October 2nd", es: "Viernes 2 de octubre" },
-        events: [],
+        events: [
+          {
+            en: "Teacher Workday — No School for Students",
+            es: "Día de trabajo docente — No hay clases para los estudiantes",
+          },
+        ],
       },
     ],
 
-    reminders: [],
+    reminders: [
+      {
+        en: "**Interested in joining the PTA?** Click here to join: https://gvsa.givebacks.com/shop",
+        es: "**¿Le interesa unirse a la PTA?** Haga clic aquí para unirse: https://gvsa.givebacks.com/shop",
+      },
+      {
+        en: "**GVSA Popcorn Sales!** 🚀 Share this link with anyone who loves a good snack. The top-selling classroom will earn a pizza party!\n**Link:**\nhttps://poppinpopcornonline.com/store/store.php?sID=00676032",
+        es: "**¡Venta de palomitas de GVSA!** 🚀 Comparta este enlace con cualquier persona a la que le guste un buen bocadillo. ¡El salón con más ventas ganará una fiesta de pizza!\n**Enlace:**\nhttps://poppinpopcornonline.com/store/store.php?sID=00676032",
+      },
+    ],
 
     birthdays: [],
 
@@ -157,7 +225,16 @@ export const newsletters: Newsletter[] = [
           en: "Social Emotional Learning",
           es: "Aprendizaje Socioemocional",
         },
-        body: [],
+        body: [
+          {
+            en: "This week, our class is exploring how to recognize and manage our own emotions while developing empathy for others. We are also practicing how to take responsibility for our learning, choices, and shared classroom materials to build a strong, supportive community.",
+            es: "Esta semana, nuestra clase explora cómo reconocer y manejar nuestras propias emociones mientras desarrollamos empatía por los demás. También practicamos cómo hacernos responsables de nuestro aprendizaje, nuestras decisiones y los materiales que compartimos en el salón, para formar una comunidad fuerte y solidaria.",
+          },
+          {
+            en: "**Continue the Conversation at Home:** Ask your child, \"What is one emotion you felt this week, and how did your body help you recognize it?\" or \"How did you show empathy to a classmate when sharing supplies or working together?\"",
+            es: "**Continúe la conversación en casa:** Pregúntele a su hijo/a: «¿Qué emoción sentiste esta semana y cómo te ayudó tu cuerpo a reconocerla?» o «¿Cómo mostraste empatía con un compañero al compartir materiales o trabajar juntos?»",
+          },
+        ],
         span: "full",
         showHomework: false,
         homework: blank,
@@ -169,10 +246,18 @@ export const newsletters: Newsletter[] = [
         color: "lilac",
         emoji: "📚",
         name: { en: "ELA", es: "Lengua y Literatura" },
-        body: [],
+        body: [
+          {
+            en: "Scholars are beginning research in preparation for their first essay. Their four-paragraph essay will answer the question: \u201cWhat inspires poets to write poetry?\u201d",
+            es: "Los estudiantes comienzan a investigar como preparación para su primer ensayo. Su ensayo de cuatro párrafos responderá a la pregunta: «¿Qué inspira a los poetas a escribir poesía?»",
+          },
+        ],
         span: "half",
         showHomework: true,
-        homework: blank,
+        homework: {
+          en: "Weekly Reading Log due Thursday, 10/1. Students are only required to complete 3 sections, as we don't have a full five-day week.",
+          es: "El registro de lectura semanal se entrega el jueves 1 de octubre. Los estudiantes solo deben completar 3 secciones, ya que no tenemos una semana completa de cinco días.",
+        },
         // The reading log is the same every week, so the link stays put.
         directionsLink: "/weekly-reading-log-directions.pdf",
         directionsLabel: {
@@ -185,10 +270,18 @@ export const newsletters: Newsletter[] = [
         color: "clay",
         emoji: "➗️",
         name: { en: "Math", es: "Matemáticas" },
-        body: [],
+        body: [
+          {
+            en: "Scholars will continue to use a variety of strategies (number line, multiples of the denominator, visual representations) to identify and compare fractions.",
+            es: "Los estudiantes seguirán usando una variedad de estrategias (la recta numérica, los múltiplos del denominador, las representaciones visuales) para identificar y comparar fracciones.",
+          },
+        ],
         span: "half",
         showHomework: true,
-        homework: blank,
+        homework: {
+          en: "Worksheet due Thursday, 10/1.",
+          es: "La hoja de trabajo se entrega el jueves 1 de octubre.",
+        },
         directionsLink: "",
         directionsLabel: directions,
       },
@@ -197,10 +290,15 @@ export const newsletters: Newsletter[] = [
         color: "ice",
         emoji: "🌎",
         name: {
-          en: "Science / Social Studies",
-          es: "Ciencias / Estudios Sociales",
+          en: "Science & Social Studies",
+          es: "Ciencias y Estudios Sociales",
         },
-        body: [],
+        body: [
+          {
+            en: "Scholars will learn about North Carolina's culture and diversity, as well as the different groups of people who contribute to our state.",
+            es: "Los estudiantes aprenderán sobre la cultura y la diversidad de Carolina del Norte, así como sobre los diferentes grupos de personas que contribuyen a nuestro estado.",
+          },
+        ],
         span: "full",
         showHomework: false,
         homework: blank,
@@ -225,20 +323,28 @@ export const newsletters: Newsletter[] = [
 
     updates: [
       {
-        en: "**Curriculum Night:** Thank you to everyone who came out for curriculum night! If you were unable to attend, the slides are linked below. Please reach out if you have any questions about the information shared there.\n**Curriculum Night slides:**\nhttps://docs.google.com/presentation/d/1WxpypzlAJcSLT1-WIb9Q5PhW6El1ttAaI7hjpR63BzY/edit",
-        es: "**Noche de Currículo:** ¡Gracias a todos los que asistieron a la Noche de Currículo! Si no pudo asistir, abajo está el enlace a las diapositivas. Comuníquese conmigo si tiene alguna pregunta sobre la información compartida.\n**Diapositivas de la Noche de Currículo:**\nhttps://docs.google.com/presentation/d/1WxpypzlAJcSLT1-WIb9Q5PhW6El1ttAaI7hjpR63BzY/edit",
+        text: {
+          en: "**Curriculum Night:** Thank you to everyone who came out for curriculum night! If you were unable to attend, the slides are linked below. Please reach out if you have any questions about the information shared there.\n**Curriculum Night slides:**\nhttps://docs.google.com/presentation/d/1WxpypzlAJcSLT1-WIb9Q5PhW6El1ttAaI7hjpR63BzY/edit",
+          es: "**Noche de Currículo:** ¡Gracias a todos los que asistieron a la Noche de Currículo! Si no pudo asistir, abajo está el enlace a las diapositivas. Comuníquese conmigo si tiene alguna pregunta sobre la información compartida.\n**Diapositivas de la Noche de Currículo:**\nhttps://docs.google.com/presentation/d/1WxpypzlAJcSLT1-WIb9Q5PhW6El1ttAaI7hjpR63BzY/edit",
+        },
       },
       {
-        en: "**Dressing for the Classroom:** My classroom is quite cold right now, while Mrs. Phoso’s is quite warm. With the weather changing and the classroom temperatures varying, please have students bring layers so they can adjust as needed.",
-        es: "**Cómo vestirse para el salón:** Mi salón está bastante frío en este momento, mientras que el de Mrs. Phoso está bastante caluroso. Con el cambio de clima y las distintas temperaturas de los salones, por favor envíe a su hijo/a con varias capas de ropa para que pueda ajustarse según lo necesite.",
+        text: {
+          en: "**Dressing for the Classroom:** My classroom is quite cold right now, while Mrs. Phoso’s is quite warm. With the weather changing and the classroom temperatures varying, please have students bring layers so they can adjust as needed.",
+          es: "**Cómo vestirse para el salón:** Mi salón está bastante frío en este momento, mientras que el de Mrs. Phoso está bastante caluroso. Con el cambio de clima y las distintas temperaturas de los salones, por favor envíe a su hijo/a con varias capas de ropa para que pueda ajustarse según lo necesite.",
+        },
       },
       {
-        en: "**Water Bottles:** Reusable water bottles sent with your child would be greatly appreciated. Coming in from recess we really want to get right to work, so having water with them in the classroom helps minimize our transition time and get right into learning!",
-        es: "**Botellas de agua:** Agradeceríamos mucho que su hijo/a traiga una botella de agua reutilizable. Al volver del recreo queremos ponernos a trabajar enseguida, así que tener agua en el salón nos ayuda a acortar la transición y ¡empezar a aprender de inmediato!",
+        text: {
+          en: "**Water Bottles:** Reusable water bottles sent with your child would be greatly appreciated. Coming in from recess we really want to get right to work, so having water with them in the classroom helps minimize our transition time and get right into learning!",
+          es: "**Botellas de agua:** Agradeceríamos mucho que su hijo/a traiga una botella de agua reutilizable. Al volver del recreo queremos ponernos a trabajar enseguida, así que tener agua en el salón nos ayuda a acortar la transición y ¡empezar a aprender de inmediato!",
+        },
       },
       {
-        en: "**The Gelf-Stand:** This Friday is the second time our class store will be open! The classroom money students have earned over the past two weeks can be spent there at the very end of the day — after they set aside $280 for their bills, which are due October 2nd. Any and all donations for the store would be greatly appreciated! Some popular items are large candy bars, baby bottle pops, push pops, ring pops, and little squishies. For a closer look at what The Gelf-Stand offers, check out the Classroom Economy tab.",
-        es: "**The Gelf-Stand:** ¡Este viernes será la segunda vez que abra la tienda de nuestro salón! El dinero del salón que los estudiantes ganaron en las últimas dos semanas se podrá gastar allí al final del día — después de apartar $280 para sus cuentas, que vencen el 2 de octubre. ¡Agradeceríamos muchísimo cualquier donación para la tienda! Algunos artículos populares son barras de dulce grandes, Baby Bottle Pops, Push Pops, Ring Pops y squishies pequeños. Para ver más de cerca lo que ofrece The Gelf-Stand, visite la pestaña de Economía del Salón.",
+        text: {
+          en: "**The Gelf-Stand:** This Friday is the second time our class store will be open! The classroom money students have earned over the past two weeks can be spent there at the very end of the day — after they set aside $280 for their bills, which are due October 2nd. Any and all donations for the store would be greatly appreciated! Some popular items are large candy bars, baby bottle pops, push pops, ring pops, and little squishies. For a closer look at what The Gelf-Stand offers, check out the Classroom Economy tab.",
+          es: "**The Gelf-Stand:** ¡Este viernes será la segunda vez que abra la tienda de nuestro salón! El dinero del salón que los estudiantes ganaron en las últimas dos semanas se podrá gastar allí al final del día — después de apartar $280 para sus cuentas, que vencen el 2 de octubre. ¡Agradeceríamos muchísimo cualquier donación para la tienda! Algunos artículos populares son barras de dulce grandes, Baby Bottle Pops, Push Pops, Ring Pops y squishies pequeños. Para ver más de cerca lo que ofrece The Gelf-Stand, visite la pestaña de Economía del Salón.",
+        },
       },
     ],
 
@@ -422,16 +528,22 @@ export const newsletters: Newsletter[] = [
 
     updates: [
       {
-        en: "**i-Ready Testing:** i-Ready testing is all finished! Students who were absent on one of the testing days will make it up this coming week. i-Ready scores will be sent home in your child’s takehome folder soon.",
-        es: "**Pruebas de i-Ready:** ¡Las pruebas de i-Ready ya terminaron! Los estudiantes que estuvieron ausentes en uno de los días de prueba las recuperarán esta próxima semana. Los resultados de i-Ready se enviarán a casa próximamente en la carpeta de su hijo/a.",
+        text: {
+          en: "**i-Ready Testing:** i-Ready testing is all finished! Students who were absent on one of the testing days will make it up this coming week. i-Ready scores will be sent home in your child’s takehome folder soon.",
+          es: "**Pruebas de i-Ready:** ¡Las pruebas de i-Ready ya terminaron! Los estudiantes que estuvieron ausentes en uno de los días de prueba las recuperarán esta próxima semana. Los resultados de i-Ready se enviarán a casa próximamente en la carpeta de su hijo/a.",
+        },
       },
       {
-        en: "**Interested in joining the PTA?** Click here to join: https://gvsa.givebacks.com/shop",
-        es: "**¿Le interesa unirse a la PTA?** Haga clic aquí para unirse: https://gvsa.givebacks.com/shop",
+        text: {
+          en: "**Interested in joining the PTA?** Click here to join: https://gvsa.givebacks.com/shop",
+          es: "**¿Le interesa unirse a la PTA?** Haga clic aquí para unirse: https://gvsa.givebacks.com/shop",
+        },
       },
       {
-        en: "**GVSA Fundraiser:** Our first fundraiser of the school year is kicking off Tuesday, September 22nd, and we’re ready to see which classroom can bring in the BIGGEST popcorn sales! 🚀 Our classroom has its own unique fundraising link that you can share with your families, friends, neighbors, and anyone else who loves a good snack! 🍿 🍕 TOP-SELLING CLASSROOM will earn an EPIC PIZZA PARTY! 🎉🍕\n**Ms. Gelfand’s Homeroom class link:**\nhttps://poppinpopcornonline.com/store/store.php?sID=00676032",
-        es: "**Recaudación de fondos de GVSA:** ¡Nuestra primera recaudación de fondos del año escolar comienza el martes 22 de septiembre, y estamos listos para ver qué salón logra las MAYORES ventas de palomitas! 🚀 Nuestro salón tiene su propio enlace de recaudación que puede compartir con su familia, amigos, vecinos y cualquier persona a la que le guste un buen bocadillo. 🍿 🍕 ¡EL SALÓN CON MÁS VENTAS ganará una ÉPICA FIESTA DE PIZZA! 🎉🍕\n**Enlace del salón de Ms. Gelfand:**\nhttps://poppinpopcornonline.com/store/store.php?sID=00676032",
+        text: {
+          en: "**GVSA Fundraiser:** Our first fundraiser of the school year is kicking off Tuesday, September 22nd, and we’re ready to see which classroom can bring in the BIGGEST popcorn sales! 🚀 Our classroom has its own unique fundraising link that you can share with your families, friends, neighbors, and anyone else who loves a good snack! 🍿 🍕 TOP-SELLING CLASSROOM will earn an EPIC PIZZA PARTY! 🎉🍕\n**Ms. Gelfand’s Homeroom class link:**\nhttps://poppinpopcornonline.com/store/store.php?sID=00676032",
+          es: "**Recaudación de fondos de GVSA:** ¡Nuestra primera recaudación de fondos del año escolar comienza el martes 22 de septiembre, y estamos listos para ver qué salón logra las MAYORES ventas de palomitas! 🚀 Nuestro salón tiene su propio enlace de recaudación que puede compartir con su familia, amigos, vecinos y cualquier persona a la que le guste un buen bocadillo. 🍿 🍕 ¡EL SALÓN CON MÁS VENTAS ganará una ÉPICA FIESTA DE PIZZA! 🎉🍕\n**Enlace del salón de Ms. Gelfand:**\nhttps://poppinpopcornonline.com/store/store.php?sID=00676032",
+        },
       },
     ],
 

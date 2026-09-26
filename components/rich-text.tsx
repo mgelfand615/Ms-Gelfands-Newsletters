@@ -7,6 +7,7 @@ import { spanish, type Text } from "@/content/types";
  *
  *   **bold**            →  bold
  *   *italic*            →  italic
+ *   [words](https://…)  →  those words, linked
  *
  * Emphasised text is left exactly as written — nothing inside **…** or *…*
  * is turned into a link. That is what lets a username pattern like
@@ -41,6 +42,13 @@ export function Rich({ value }: { value: Text }) {
 const LINKABLE =
   /(https?:\/\/[^\s<>"')*]+|[^\s<>"'(),;:*]+@[^\s<>"'(),;:*]+\.[a-z]{2,})/gi;
 
+/**
+ * [words](https://example.com) — a link that reads as words rather than as
+ * a pasted address. Read before anything else, so the address inside the
+ * brackets is never linkified a second time on its own.
+ */
+const LABELLED_LINK = /(\[[^\]\n]+\]\(https?:\/\/[^\s)]+\))/g;
+
 /** **bold** or *italic*, kept when splitting. */
 const EMPHASIS = /(\*\*[^*\n]+\*\*|\*[^*\n]+\*)/g;
 
@@ -66,9 +74,29 @@ function lines(paragraph: string): ReactNode {
   return paragraph.split("\n").map((line, l) => (
     <span key={l}>
       {l > 0 && <br />}
-      {emphasise(line)}
+      {labelledLinks(line)}
     </span>
   ));
+}
+
+/** [words](https://…), for a link that should read as words. */
+function labelledLinks(line: string): ReactNode[] {
+  return line.split(LABELLED_LINK).map((piece, i) => {
+    const match = /^\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)$/.exec(piece);
+    if (!match) return <span key={i}>{emphasise(piece)}</span>;
+
+    return (
+      <a
+        key={i}
+        href={match[2]}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-medium text-accent underline underline-offset-2"
+      >
+        {match[1]}
+      </a>
+    );
+  });
 }
 
 /** Links, for the stretches of a line that are not emphasised. */
