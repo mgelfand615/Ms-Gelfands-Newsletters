@@ -156,6 +156,34 @@ export const newsletters: Newsletter[] = [
       },
       {
         text: {
+          en: "**Google Classroom:** We are now using Google Classroom regularly during ALL Block and Social Studies, so students can see what work is coming up and keep track of what they have finished.",
+          es: "**Google Classroom:** Ahora usamos Google Classroom con regularidad durante ALL Block y Estudios Sociales, para que los estudiantes puedan ver qué trabajo viene y llevar la cuenta de lo que ya terminaron.",
+        },
+        points: [
+          {
+            en: "All Google Classroom work is expected to be completed at school. Students can also sign in at home — login information is on the **Student Tech at Home** page — so you can see what has and has not been completed.",
+            es: "Todo el trabajo de Google Classroom se debe completar en la escuela. Los estudiantes también pueden iniciar sesión en casa — la información para iniciar sesión está en la página **Tecnología del Estudiante en Casa** — para que usted pueda ver qué han terminado y qué no.",
+          },
+          {
+            en: "We are entering our third week of using it. ALL Block assignments are grouped by week — Week 5 and Week 6 are posted now — and a new week posts every **Monday at 7:30 AM.**",
+            es: "Estamos entrando en nuestra tercera semana de uso. Las tareas de ALL Block están agrupadas por semana — la Semana 5 y la Semana 6 ya están publicadas — y cada **lunes a las 7:30 AM** se publica una semana nueva.",
+          },
+          {
+            en: "Some ALL Block work is taken for a grade. Each week, completion is also logged as a **Prepare** grade in Infinite Campus, so you can easily keep track of the work your child is getting done.",
+            es: "Parte del trabajo de ALL Block se toma como calificación. Además, cada semana se registra el cumplimiento como una calificación de **Prepare** en Infinite Campus, para que pueda seguir fácilmente el trabajo que su hijo/a va completando.",
+          },
+          {
+            en: "Completing these tasks is required in order to attend **Fun Friday** and to shop **The Gelf-Stand** every other Friday.",
+            es: "Completar estas tareas es requisito para participar en **Fun Friday** y para comprar en **The Gelf-Stand** cada dos viernes.",
+          },
+          {
+            en: "Students should already be familiar with the expectations, but there are videos in the **Quick Links** section of their Google Classroom that you and your child can review if they are working at home.",
+            es: "Los estudiantes ya deben conocer las expectativas, pero hay videos en la sección **Quick Links** de su Google Classroom que usted y su hijo/a pueden repasar si están trabajando en casa.",
+          },
+        ],
+      },
+      {
+        text: {
           en: "**Lockdown Drill:** Our first lockdown drill will take place on **Monday, October 5th.** Please take a few minutes this weekend to talk with your student about why we conduct these drills and the importance of school safety procedures. Your support helps ensure our students feel prepared, safe, and calm.",
           es: "**Simulacro de encierro:** Nuestro primer simulacro de encierro será el **lunes 5 de octubre.** Por favor tome unos minutos este fin de semana para hablar con su estudiante sobre por qué hacemos estos simulacros y sobre la importancia de los procedimientos de seguridad escolar. Su apoyo ayuda a que nuestros estudiantes se sientan preparados, seguros y tranquilos.",
         },
