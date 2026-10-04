@@ -127,16 +127,30 @@ function Bullets({ items }: { items: Update[] }) {
             <Point>
               <Rich value={item.text} />
             </Point>
-            {points.length > 0 && (
-              <ul className="ml-5 mt-2 space-y-2">
-                {points.map((point) => (
-                  <li key={point.en}>
-                    <Point nested>
+            {points.length > 0 &&
+              (item.ordered ? (
+                <ol className="ml-5 mt-2 list-decimal space-y-2 pl-4 marker:font-semibold marker:text-muted">
+                  {points.map((point) => (
+                    <li key={point.en} className="pl-1 leading-relaxed text-ink">
                       <Rich value={point} />
-                    </Point>
-                  </li>
-                ))}
-              </ul>
+                    </li>
+                  ))}
+                </ol>
+              ) : (
+                <ul className="ml-5 mt-2 space-y-2">
+                  {points.map((point) => (
+                    <li key={point.en}>
+                      <Point nested>
+                        <Rich value={point} />
+                      </Point>
+                    </li>
+                  ))}
+                </ul>
+              ))}
+            {item.close && !isBlank(item.close) && (
+              <p className="ml-5 mt-2 leading-relaxed text-ink">
+                <Rich value={item.close} />
+              </p>
             )}
           </li>
         );

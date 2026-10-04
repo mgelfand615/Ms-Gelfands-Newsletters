@@ -32,7 +32,14 @@ export type DateEntry = { when: Text; events: Text[] };
  * three things to know about the lunch invitation, say, rather than three
  * more announcements.
  */
-export type Update = { text: Text; points?: Text[] };
+export type Update = {
+  text: Text;
+  points?: Text[];
+  /** Set true when the points are steps to follow in order, so they number. */
+  ordered?: boolean;
+  /** A closing line under the points — what to do once they are done. */
+  close?: Text;
+};
 
 /** One birthday, in its own box. */
 export type Birthday = { id: string; name: string; date: Text };
@@ -121,14 +128,48 @@ export const newsletters: Newsletter[] = [
 
     updatesLead: blank,
 
-    updates: [],
+    updates: [
+      {
+        text: {
+          en: "**i-Ready Family Reports:** This year our i-Ready Family Reports are being shared digitally! You can access your student's report and learning progress through the newly updated i-Ready Family Center.",
+          es: "**Informes Familiares de i-Ready:** ¡Este año los Informes Familiares de i-Ready se comparten de forma digital! Puede ver el informe y el progreso de su estudiante en el nuevo Centro para Familias de i-Ready.",
+        },
+        ordered: true,
+        points: [
+          {
+            en: "Log in to your student's i-Ready dashboard through the district portal. Login information is on the **Student Tech at Home** page.",
+            es: "Inicie sesión en el panel de i-Ready de su estudiante desde el portal del distrito. La información para iniciar sesión está en la página **Tecnología del Estudiante en Casa**.",
+          },
+          {
+            en: "Click **For Families** at the top of your student's dashboard to open the Family Center.",
+            es: "Haga clic en **For Families** en la parte superior del panel de su estudiante para abrir el Centro para Familias.",
+          },
+          {
+            en: "Enter our school report code: **LVG2X7**",
+            es: "Escriba el código de informe de nuestra escuela: **LVG2X7**",
+          },
+        ],
+        close: {
+          en: "The Family Center is a great way to stay connected to what your student is learning and how they are growing this year. If you would prefer a printed paper copy of the report, please let me know and I will be happy to provide one!",
+          es: "El Centro para Familias es una excelente manera de mantenerse al tanto de lo que su estudiante está aprendiendo y de cómo va creciendo este año. Si prefiere una copia impresa del informe, avíseme y con gusto se la entrego.",
+        },
+      },
+      {
+        text: {
+          en: "**Lockdown Drill:** Our first lockdown drill will take place on **Monday, October 5th.** Please take a few minutes this weekend to talk with your student about why we conduct these drills and the importance of school safety procedures. Your support helps ensure our students feel prepared, safe, and calm.",
+          es: "**Simulacro de encierro:** Nuestro primer simulacro de encierro será el **lunes 5 de octubre.** Por favor tome unos minutos este fin de semana para hablar con su estudiante sobre por qué hacemos estos simulacros y sobre la importancia de los procedimientos de seguridad escolar. Su apoyo ayuda a que nuestros estudiantes se sientan preparados, seguros y tranquilos.",
+        },
+      },
+    ],
 
     updatesClose: blank,
 
     upcomingDates: [
       {
         when: { en: "Monday, October 5th", es: "Lunes 5 de octubre" },
-        events: [],
+        events: [
+          { en: "Lockdown Drill", es: "Simulacro de encierro" },
+        ],
       },
       {
         when: { en: "Tuesday, October 6th", es: "Martes 6 de octubre" },
@@ -136,7 +177,12 @@ export const newsletters: Newsletter[] = [
       },
       {
         when: { en: "Wednesday, October 7th", es: "Miércoles 7 de octubre" },
-        events: [],
+        events: [
+          {
+            en: "Unit 2 Math Test",
+            es: "Examen de Matemáticas de la Unidad 2",
+          },
+        ],
       },
       {
         when: { en: "Thursday, October 8th", es: "Jueves 8 de octubre" },
@@ -144,11 +190,25 @@ export const newsletters: Newsletter[] = [
       },
       {
         when: { en: "Friday, October 9th", es: "Viernes 9 de octubre" },
-        events: [],
+        events: [
+          {
+            en: "Module 1 Unit 2 End of Unit Assessment",
+            es: "Evaluación de Fin de Unidad del Módulo 1, Unidad 2",
+          },
+        ],
       },
     ],
 
-    reminders: [],
+    reminders: [
+      {
+        en: "**Interested in joining the PTA?** Click here to join: https://gvsa.givebacks.com/shop",
+        es: "**¿Le interesa unirse a la PTA?** Haga clic aquí para unirse: https://gvsa.givebacks.com/shop",
+      },
+      {
+        en: "**GVSA Popcorn Sales!** 🚀 Share this link with anyone who loves a good snack. The top-selling classroom will earn a pizza party!\n**Link:**\nhttps://poppinpopcornonline.com/store/store.php?sID=00676032",
+        es: "**¡Venta de palomitas de GVSA!** 🚀 Comparta este enlace con cualquier persona a la que le guste un buen bocadillo. ¡El salón con más ventas ganará una fiesta de pizza!\n**Enlace:**\nhttps://poppinpopcornonline.com/store/store.php?sID=00676032",
+      },
+    ],
 
     birthdays: [],
 
@@ -161,7 +221,16 @@ export const newsletters: Newsletter[] = [
           en: "Social Emotional Learning",
           es: "Aprendizaje Socioemocional",
         },
-        body: [],
+        body: [
+          {
+            en: "Our 4th graders kicked off October's month-long focus on **Respect** by turning the spotlight inward. Through engaging read-alouds, videos, and reflection activities, students explored Self-Respect, Identity, and Boundaries. They practiced identifying their unique strengths, replacing negative self-talk with positive affirmations, and establishing healthy physical and emotional boundaries. By understanding that treating ourselves with dignity and care is the foundation for how we treat others, students build confidence and personal accountability to set a positive tone for the school year.",
+            es: "Nuestros estudiantes de 4º grado comenzaron el enfoque de octubre en el **Respeto** mirando hacia adentro. Con lecturas en voz alta, videos y actividades de reflexión, exploraron el respeto por uno mismo, la identidad y los límites personales. Practicaron reconocer sus propias fortalezas, cambiar los pensamientos negativos por afirmaciones positivas y establecer límites físicos y emocionales saludables. Al comprender que tratarnos con dignidad y cuidado es la base de cómo tratamos a los demás, los estudiantes desarrollan confianza y responsabilidad personal, y marcan un tono positivo para el año escolar.",
+          },
+          {
+            en: "**Continue the Conversation at Home:**\n**Ask:** \"What is one thing about yourself — a strength, talent, or personality trait — that you feel proud of?\"\n**Discuss:** \"We talked about personal boundaries at school. How do you feel when someone enters your personal space bubble, and how can you politely ask for space?\"\n**Reflect:** \"What does negative self-talk sound like, and how can we help each other reframe unhelpful thoughts at home when things get frustrating?\"",
+            es: "**Continúe la conversación en casa:**\n**Pregunte:** «¿Qué cosa de ti mismo — una fortaleza, un talento o un rasgo de tu personalidad — te hace sentir orgulloso?»\n**Converse:** «En la escuela hablamos de los límites personales. ¿Cómo te sientes cuando alguien entra en tu espacio personal y cómo puedes pedir espacio con amabilidad?»\n**Reflexione:** «¿Cómo suenan los pensamientos negativos sobre uno mismo y cómo podemos ayudarnos en casa a cambiarlos cuando algo nos frustra?»",
+          },
+        ],
         span: "full",
         showHomework: false,
         homework: blank,
@@ -173,10 +242,18 @@ export const newsletters: Newsletter[] = [
         color: "lilac",
         emoji: "📚",
         name: { en: "ELA", es: "Lengua y Literatura" },
-        body: [],
+        body: [
+          {
+            en: "This week our 4th graders reach an exciting milestone as they write their very first multi-paragraph essay! To build confidence and guide their progress, we will break the writing process down day by day, exploring what inspired a famous poet to create their work — from drafting their introduction and body paragraphs to wrapping up with a thoughtful conclusion. The week culminates on Friday with our Unit 2 Assessment, where students will take constructive feedback from teachers and peers to revise, edit, and polish their finished essays into final masterpieces.",
+            es: "¡Esta semana nuestros estudiantes de 4º grado llegan a un momento emocionante al escribir su primer ensayo de varios párrafos! Para darles confianza y guiar su avance, dividiremos el proceso de escritura día por día, explorando qué inspiró a un poeta famoso a crear su obra — desde redactar la introducción y los párrafos del cuerpo hasta cerrar con una conclusión bien pensada. La semana termina el viernes con nuestra Evaluación de la Unidad 2, donde los estudiantes usarán los comentarios de sus maestras y compañeros para revisar, corregir y pulir sus ensayos hasta dejarlos como verdaderas obras maestras.",
+          },
+        ],
         span: "half",
         showHomework: true,
-        homework: blank,
+        homework: {
+          en: "Weekly Reading Log due Friday, 10/9.",
+          es: "El registro de lectura semanal se entrega el viernes 9 de octubre.",
+        },
         // The reading log is the same every week, so the link stays put.
         directionsLink: "/weekly-reading-log-directions.pdf",
         directionsLabel: {
@@ -189,10 +266,18 @@ export const newsletters: Newsletter[] = [
         color: "clay",
         emoji: "➗️",
         name: { en: "Math", es: "Matemáticas" },
-        body: [],
+        body: [
+          {
+            en: "This week our mathematicians are tying together everything they've learned in Unit 2! We'll spend the first part of the week reviewing key concepts, ordering fractions using various strategies, and taking our Unit 2 Assessment. Then we'll launch right into Unit 3, where students will explore equal groups of fractions. They'll use visual diagrams, drawings, and expressions to represent situations with fractions, and learn how to multiply whole numbers by unit fractions.",
+            es: "¡Esta semana nuestros matemáticos unen todo lo que han aprendido en la Unidad 2! Pasaremos la primera parte de la semana repasando los conceptos clave, ordenando fracciones con distintas estrategias y tomando la Evaluación de la Unidad 2. Después comenzaremos la Unidad 3, donde los estudiantes explorarán grupos iguales de fracciones. Usarán diagramas, dibujos y expresiones para representar situaciones con fracciones, y aprenderán a multiplicar números enteros por fracciones unitarias.",
+          },
+        ],
         span: "half",
         showHomework: true,
-        homework: blank,
+        homework: {
+          en: "Worksheet due Friday, 10/9.",
+          es: "La hoja de trabajo se entrega el viernes 9 de octubre.",
+        },
         directionsLink: "",
         directionsLabel: directions,
       },
@@ -204,7 +289,12 @@ export const newsletters: Newsletter[] = [
           en: "Science & Social Studies",
           es: "Ciencias y Estudios Sociales",
         },
-        body: [],
+        body: [
+          {
+            en: "Scholars will learn about North Carolina's culture and diversity, as well as the different groups of people who contribute to our state.",
+            es: "Los estudiantes aprenderán sobre la cultura y la diversidad de Carolina del Norte, así como sobre los diferentes grupos de personas que contribuyen a nuestro estado.",
+          },
+        ],
         span: "full",
         showHomework: false,
         homework: blank,
