@@ -137,6 +137,12 @@ export const newsletters: Newsletter[] = [
     updates: [
       {
         text: {
+          en: "**Parent-Teacher Conferences** are coming up soon! Please be on the lookout for a sign-up sheet from Mrs. Phoso and me for our joint conference. If you have a tight schedule and need a specific day or time, please reach out to us and we will make sure we can accommodate you.",
+          es: "**¡Las conferencias de padres y maestros** se acercan! Esté atento/a a la hoja de inscripción que enviaremos Mrs. Phoso y yo para nuestra conferencia conjunta. Si su horario es muy ajustado y necesita un día o una hora en particular, comuníquese con nosotras y nos aseguraremos de acomodarlo.",
+        },
+      },
+      {
+        text: {
           en: "**Google Classroom:** We use Google Classroom for ALL Block and Social Studies to track upcoming and finished work. Tasks are done at school, but parents can log in at home to check progress. New ALL Block work posts every **Monday at 7:30 AM** and counts toward grades and Fun Friday eligibility. Review the **Quick Links** videos in Google Classroom if needed.",
           es: "**Google Classroom:** Usamos Google Classroom para ALL Block y Estudios Sociales, para seguir el trabajo pendiente y el terminado. Las tareas se hacen en la escuela, pero los padres pueden iniciar sesión en casa para ver el progreso. El nuevo trabajo de ALL Block se publica cada **lunes a las 7:30 AM** y cuenta para las calificaciones y para participar en Fun Friday. Repase los videos de **Quick Links** en Google Classroom si lo necesita.",
         },
