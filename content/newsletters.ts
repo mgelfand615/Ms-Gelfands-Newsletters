@@ -103,6 +103,12 @@ export type Newsletter = {
 
   upcomingDates: DateEntry[];
   /**
+   * Dates beyond this week, so families can plan — a book fair, a festival,
+   * the end of the quarter. They sit under the week's days, below their own
+   * "Looking Ahead" label.
+   */
+  futureDates: Text[];
+  /**
    * Notices that belong to the whole week rather than to one day — a sign-up
    * that is still open, a fundraiser that is running. They sit under the days
    * in the same box, and the box's heading grows to say "& Reminders".
@@ -128,7 +134,14 @@ export const newsletters: Newsletter[] = [
 
     updatesLead: blank,
 
-    updates: [],
+    updates: [
+      {
+        text: {
+          en: "**Google Classroom:** We use Google Classroom for ALL Block and Social Studies to track upcoming and finished work. Tasks are done at school, but parents can log in at home to check progress. New ALL Block work posts every **Monday at 7:30 AM** and counts toward grades and Fun Friday eligibility. Review the **Quick Links** videos in Google Classroom if needed.",
+          es: "**Google Classroom:** Usamos Google Classroom para ALL Block y Estudios Sociales, para seguir el trabajo pendiente y el terminado. Las tareas se hacen en la escuela, pero los padres pueden iniciar sesión en casa para ver el progreso. El nuevo trabajo de ALL Block se publica cada **lunes a las 7:30 AM** y cuenta para las calificaciones y para participar en Fun Friday. Repase los videos de **Quick Links** en Google Classroom si lo necesita.",
+        },
+      },
+    ],
 
     updatesClose: blank,
 
@@ -139,25 +152,101 @@ export const newsletters: Newsletter[] = [
       },
       {
         when: { en: "Tuesday, October 13th", es: "Martes 13 de octubre" },
-        events: [],
+        events: [
+          {
+            en: "Local author Erika Ferrari Lopez visits 4th grade",
+            es: "La autora local Erika Ferrari Lopez visita 4º grado",
+          },
+        ],
       },
       {
         when: { en: "Wednesday, October 14th", es: "Miércoles 14 de octubre" },
-        events: [],
+        events: [
+          {
+            en: "**Early Release Day** — scholars are dismissed at 12pm. Please let your child's homeroom teacher know if they will be going home a different way than usual that day.",
+            es: "**Día de salida temprana** — los estudiantes salen a las 12pm. Por favor avise a la maestra del salón si su hijo/a se irá a casa de una manera distinta a la habitual ese día.",
+          },
+        ],
       },
       {
         when: { en: "Thursday, October 15th", es: "Jueves 15 de octubre" },
-        events: [],
+        events: [
+          {
+            en: "**Cowboy/Vaquero Western Day** — students are invited to wear their favorite Cowboy/Vaquero or Western-inspired gear.",
+            es: "**Día Vaquero / Western** — los estudiantes pueden venir con su ropa favorita de vaquero o de estilo western.",
+          },
+          {
+            en: "PTA Meeting 5:30-6:30pm — Muffins with Moms",
+            es: "Reunión de la PTA de 5:30 a 6:30pm — Muffins con Mamá",
+          },
+        ],
       },
       {
         when: { en: "Friday, October 16th", es: "Viernes 16 de octubre" },
-        events: [],
+        events: [
+          {
+            en: "**Bright Colors Day** — students are invited to wear bright, festive colors as we continue celebrating Hispanic heritage and learn about Día de los Muertos and its cultural traditions.",
+            es: "**Día de Colores Brillantes** — los estudiantes pueden vestir colores brillantes y festivos mientras seguimos celebrando la herencia hispana y aprendemos sobre el Día de los Muertos y sus tradiciones culturales.",
+          },
+        ],
       },
     ],
 
-    reminders: [],
+    futureDates: [
+      {
+        en: "**Tuesday, 10/20** — Book Fair Family Night 4-6pm",
+        es: "**Martes 20/10** — Noche Familiar de la Feria del Libro de 4 a 6pm",
+      },
+      {
+        en: "**Wednesday, 10/21** — SIT Meeting on Teams 4pm",
+        es: "**Miércoles 21/10** — Reunión del SIT por Teams a las 4pm",
+      },
+      {
+        en: "**Wednesday, 10/21** — Book Fair for Mrs. Phoso's class",
+        es: "**Miércoles 21/10** — Feria del Libro para la clase de Mrs. Phoso",
+      },
+      {
+        en: "**Thursday, 10/22** — Book Fair for Ms. Gelfand's class",
+        es: "**Jueves 22/10** — Feria del Libro para la clase de Ms. Gelfand",
+      },
+      {
+        en: "**Friday, 10/23** — PTA Trunk or Treat 4-5pm and PTA Fall Festival 4-6:30pm",
+        es: "**Viernes 23/10** — Trunk or Treat de la PTA de 4 a 5pm y Festival de Otoño de la PTA de 4 a 6:30pm",
+      },
+      {
+        en: "**Friday, 10/30** — Last day of Quarter 1",
+        es: "**Viernes 30/10** — Último día del primer trimestre",
+      },
+    ],
 
-    birthdays: [],
+    reminders: [
+      {
+        en: "**Interested in joining the PTA?** Click here to join: https://gvsa.givebacks.com/shop",
+        es: "**¿Le interesa unirse a la PTA?** Haga clic aquí para unirse: https://gvsa.givebacks.com/shop",
+      },
+      {
+        en: "**GVSA Popcorn Sales!** 🚀 Share this link with anyone who loves a good snack. The top-selling classroom will earn a pizza party!\n**Link:**\nhttps://poppinpopcornonline.com/store/store.php?sID=00676032",
+        es: "**¡Venta de palomitas de GVSA!** 🚀 Comparta este enlace con cualquier persona a la que le guste un buen bocadillo. ¡El salón con más ventas ganará una fiesta de pizza!\n**Enlace:**\nhttps://poppinpopcornonline.com/store/store.php?sID=00676032",
+      },
+    ],
+
+    birthdays: [
+      {
+        id: "ariel",
+        name: "Ariel",
+        date: { en: "October 11th", es: "11 de octubre" },
+      },
+      {
+        id: "nolan",
+        name: "Nolan",
+        date: { en: "October 14th", es: "14 de octubre" },
+      },
+      {
+        id: "blake",
+        name: "Blake",
+        date: { en: "October 15th", es: "15 de octubre" },
+      },
+    ],
 
     learning: [
       {
@@ -168,7 +257,16 @@ export const newsletters: Newsletter[] = [
           en: "Social Emotional Learning",
           es: "Aprendizaje Socioemocional",
         },
-        body: [],
+        body: [
+          {
+            en: "This week, students are exploring perspective-taking, active listening, and challenging assumptions or stereotypes. Through group debates and partner activities, students are practicing how to step into someone else's shoes, demonstrate active listening skills, and replace judgment with curiosity when encountering something unfamiliar.",
+            es: "Esta semana, los estudiantes exploran cómo ver las cosas desde el punto de vista de otra persona, cómo escuchar de forma activa y cómo cuestionar suposiciones o estereotipos. Con debates en grupo y actividades en parejas, practican ponerse en el lugar de los demás, demostrar que están escuchando y cambiar el juicio por la curiosidad ante lo que no conocen.",
+          },
+          {
+            en: "**Continue the Conversation at Home:** Ask your child to share a time this week when they looked at a situation from someone else's point of view, or discovered a shared interest with a classmate! You can also practice **HEAR** active listening together at home by taking turns sharing about your day while focusing on eye contact and acknowledging feelings.",
+            es: "**Continúe la conversación en casa:** ¡Pídale a su hijo/a que le cuente un momento de esta semana en que vio una situación desde el punto de vista de otra persona o descubrió un interés en común con un compañero! También pueden practicar juntos la escucha activa **HEAR** en casa, turnándose para contar cómo les fue en el día mientras se enfocan en el contacto visual y en reconocer los sentimientos del otro.",
+          },
+        ],
         span: "full",
         showHomework: false,
         homework: blank,
@@ -180,10 +278,18 @@ export const newsletters: Newsletter[] = [
         color: "lilac",
         emoji: "📚",
         name: { en: "ELA", es: "Lengua y Literatura" },
-        body: [],
+        body: [
+          {
+            en: "This week, 4th-grade scholars are completing their original poems inspired by meaningful personal experiences. Students will revise their draft work focusing on precise word choices and intentional punctuation for poetic effect, take their Mid-Unit 3 Assessment on revision skills, and write a formal presentation introduction explaining their inspiration. Finally, students will analyze fluent read-aloud models to set criteria for reading their poetry aloud effectively!",
+            es: "Esta semana, los estudiantes de 4º grado terminan sus poemas originales inspirados en experiencias personales importantes. Revisarán sus borradores enfocándose en elegir las palabras con precisión y en usar la puntuación de forma intencional para lograr un efecto poético, tomarán su Evaluación de Mitad de la Unidad 3 sobre destrezas de revisión y escribirán una introducción formal para su presentación explicando qué los inspiró. Por último, ¡analizarán modelos de lectura en voz alta para establecer los criterios de cómo leer bien su poesía en voz alta!",
+          },
+        ],
         span: "half",
         showHomework: true,
-        homework: blank,
+        homework: {
+          en: "Weekly Reading Log due Friday, 10/16.",
+          es: "El registro de lectura semanal se entrega el viernes 16 de octubre.",
+        },
         // The reading log is the same every week, so the link stays put.
         directionsLink: "/weekly-reading-log-directions.pdf",
         directionsLabel: {
@@ -196,22 +302,35 @@ export const newsletters: Newsletter[] = [
         color: "clay",
         emoji: "➗️",
         name: { en: "Math", es: "Matemáticas" },
-        body: [],
+        body: [
+          {
+            en: "This week, 4th-grade mathematicians are exploring how to multiply whole numbers by non-unit fractions using visual diagrams and equal-group models. Students will discover that multiplying a fraction by a whole number means multiplying the whole number by the numerator while keeping the denominator the same (for example, 5 × 3/10). They will practice rewriting and matching equivalent multiplication expressions using properties of operations, and apply these skills to solve real-world word problems involving recipes and measurements.",
+            es: "Esta semana, los matemáticos de 4º grado exploran cómo multiplicar números enteros por fracciones que no son unitarias, usando diagramas visuales y modelos de grupos iguales. Descubrirán que multiplicar una fracción por un número entero significa multiplicar el número entero por el numerador y mantener el mismo denominador (por ejemplo, 5 × 3/10). Practicarán reescribir y emparejar expresiones de multiplicación equivalentes usando las propiedades de las operaciones, y aplicarán estas destrezas para resolver problemas de la vida real con recetas y medidas.",
+          },
+        ],
         span: "half",
         showHomework: true,
-        homework: blank,
+        homework: {
+          en: "Worksheet due Friday, 10/16.",
+          es: "La hoja de trabajo se entrega el viernes 16 de octubre.",
+        },
         directionsLink: "",
         directionsLabel: directions,
       },
       {
         id: "social-studies",
         color: "ice",
-        emoji: "🌎",
+        emoji: "🔬",
         name: {
-          en: "Science & Social Studies",
-          es: "Ciencias y Estudios Sociales",
+          en: "Science",
+          es: "Ciencias",
         },
-        body: [],
+        body: [
+          {
+            en: "This week, young scientists are investigating different forms of energy — including light, heat, sound, electrical, and mechanical energy — and exploring how energy transforms from one form to another. Students will learn about potential and kinetic energy, examine how heat moves through conduction, convection, and radiation, and identify materials that act as conductors or insulators.",
+            es: "Esta semana, nuestros jóvenes científicos investigan distintas formas de energía — luz, calor, sonido, energía eléctrica y mecánica — y exploran cómo la energía se transforma de una forma a otra. Aprenderán sobre la energía potencial y la cinética, estudiarán cómo se mueve el calor por conducción, convección y radiación, e identificarán qué materiales funcionan como conductores o aislantes.",
+          },
+        ],
         span: "full",
         showHomework: false,
         homework: blank,
@@ -329,6 +448,8 @@ export const newsletters: Newsletter[] = [
         ],
       },
     ],
+
+    futureDates: [],
 
     reminders: [
       {
@@ -527,6 +648,8 @@ export const newsletters: Newsletter[] = [
       },
     ],
 
+    futureDates: [],
+
     reminders: [
       {
         en: "**Interested in joining the PTA?** Click here to join: https://gvsa.givebacks.com/shop",
@@ -721,6 +844,8 @@ export const newsletters: Newsletter[] = [
         events: [],
       },
     ],
+
+    futureDates: [],
 
     reminders: [
       {
@@ -922,6 +1047,8 @@ export const newsletters: Newsletter[] = [
         ],
       },
     ],
+
+    futureDates: [],
 
     reminders: [],
 

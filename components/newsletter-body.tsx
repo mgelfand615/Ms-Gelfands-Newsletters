@@ -186,18 +186,42 @@ function Point({
  */
 function Dates({ newsletter }: { newsletter: Newsletter }) {
   const dates = newsletter.upcomingDates.filter((d) => !isBlank(d.when));
+  const ahead = newsletter.futureDates.filter((item) => !isBlank(item));
   const reminders = newsletter.reminders.filter((item) => !isBlank(item));
-  if (dates.length === 0 && reminders.length === 0) return <Placeholder />;
+  if (dates.length === 0 && ahead.length === 0 && reminders.length === 0) {
+    return <Placeholder />;
+  }
+
+  // Each group is divided from the one above it, but the first group in the
+  // box sits straight under the heading with no rule over it.
+  let drawn = dates.length > 0;
+  const after = () => {
+    const rule = drawn ? "mt-5 border-t border-info/40 pt-5" : "";
+    drawn = true;
+    return rule;
+  };
 
   return (
     <>
       {dates.length > 0 && <Days dates={dates} />}
+
+      {ahead.length > 0 && (
+        <div className={after()}>
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted">
+            <T en="Looking Ahead" es="Próximamente" />
+          </p>
+          <ul className="space-y-2">
+            {ahead.map((date) => (
+              <Event key={date.en}>
+                <Rich value={date} />
+              </Event>
+            ))}
+          </ul>
+        </div>
+      )}
+
       {reminders.length > 0 && (
-        <ul
-          className={`space-y-3 ${
-            dates.length > 0 ? "mt-5 border-t border-info/40 pt-5" : ""
-          }`}
-        >
+        <ul className={`space-y-3 ${after()}`}>
           {reminders.map((reminder) => (
             <Event key={reminder.en}>
               <Rich value={reminder} />
