@@ -137,8 +137,8 @@ export const newsletters: Newsletter[] = [
     updates: [
       {
         text: {
-          en: "**Parent-Teacher Conferences:** Please sign up for a 15-minute conference with Mrs. Phoso and me — one conference total for both of us. If none of the available time slots work for you, please message me and we will make something work!",
-          es: "**Conferencias de padres y maestros:** Por favor inscríbase para una conferencia de 15 minutos con Mrs. Phoso y conmigo — una sola conferencia con las dos. Si ninguno de los horarios disponibles le funciona, envíeme un mensaje y encontraremos la manera de acomodarlo.",
+          en: "**Parent-Teacher Conferences:** Please [sign up here](https://calendar.app.google/5qrg85PPa6i1RzMK7) for a 15-minute conference with Mrs. Phoso and me — one conference total for both of us. If none of the available time slots work for you, please message me and we will make something work!",
+          es: "**Conferencias de padres y maestros:** Por favor [inscríbase aquí](https://calendar.app.google/5qrg85PPa6i1RzMK7) para una conferencia de 15 minutos con Mrs. Phoso y conmigo — una sola conferencia con las dos. Si ninguno de los horarios disponibles le funciona, envíeme un mensaje y encontraremos la manera de acomodarlo.",
         },
         points: [
           {
