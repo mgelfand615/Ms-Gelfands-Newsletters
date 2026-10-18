@@ -134,38 +134,132 @@ export const newsletters: Newsletter[] = [
 
     updatesLead: blank,
 
-    updates: [],
+    updates: [
+      {
+        text: {
+          en: "**Parent-Teacher Conferences:** Please sign up for a 15-minute conference with Mrs. Phoso and me — one conference total for both of us. If none of the available time slots work for you, please message me and we will make something work!",
+          es: "**Conferencias de padres y maestros:** Por favor inscríbase para una conferencia de 15 minutos con Mrs. Phoso y conmigo — una sola conferencia con las dos. Si ninguno de los horarios disponibles le funciona, envíeme un mensaje y encontraremos la manera de acomodarlo.",
+        },
+        points: [
+          {
+            en: "🌐 **Spanish Interpreter Info:** The time block on **Monday, November 2nd between 9:00 AM and 11:45 AM** is strictly reserved for families who require Spanish interpretation. If you do not require a Spanish interpreter, please do not sign up during this block. Any bookings in this timeframe made by families who do not need an interpreter will be canceled, and you will be asked to reschedule for another available time.",
+            es: "🌐 **Información sobre intérprete de español:** El bloque del **lunes 2 de noviembre, de 9:00 AM a 11:45 AM** está reservado exclusivamente para las familias que necesitan interpretación en español. Si usted no necesita intérprete, por favor no se inscriba en ese bloque. Las citas hechas en ese horario por familias que no necesitan intérprete serán canceladas y se les pedirá que elijan otro horario disponible.",
+          },
+          {
+            en: "💻 **Meeting Location:** All conferences will be held virtually via Google Meet. The meeting link will be emailed to you prior to our scheduled time.",
+            es: "💻 **Lugar de la reunión:** Todas las conferencias serán virtuales por Google Meet. El enlace se le enviará por correo electrónico antes de la hora acordada.",
+          },
+        ],
+        close: {
+          en: "We look forward to speaking with you!",
+          es: "¡Esperamos conversar con usted!",
+        },
+      },
+    ],
 
     updatesClose: blank,
 
     upcomingDates: [
       {
         when: { en: "Monday, October 19th", es: "Lunes 19 de octubre" },
-        events: [],
+        events: [
+          {
+            en: "**Spirit Wear:** Camo Day",
+            es: "**Spirit Wear:** Día de camuflaje",
+          },
+        ],
       },
       {
         when: { en: "Tuesday, October 20th", es: "Martes 20 de octubre" },
-        events: [],
+        events: [
+          {
+            en: "**Spirit Wear:** Black & Orange Day",
+            es: "**Spirit Wear:** Día de negro y naranja",
+          },
+          {
+            en: "Book Fair Family Night 4-6pm",
+            es: "Noche Familiar de la Feria del Libro de 4 a 6pm",
+          },
+        ],
       },
       {
         when: { en: "Wednesday, October 21st", es: "Miércoles 21 de octubre" },
-        events: [],
+        events: [
+          {
+            en: "**Spirit Wear:** Breast Cancer Awareness — wear pink",
+            es: "**Spirit Wear:** Concientización sobre el cáncer de seno — vestir de rosa",
+          },
+          {
+            en: "SIT Meeting on Teams 4pm",
+            es: "Reunión del SIT por Teams a las 4pm",
+          },
+          {
+            en: "Book Fair for Mrs. Phoso's class",
+            es: "Feria del Libro para la clase de Mrs. Phoso",
+          },
+        ],
       },
       {
         when: { en: "Thursday, October 22nd", es: "Jueves 22 de octubre" },
-        events: [],
+        events: [
+          {
+            en: "**Spirit Wear:** Scarecrow Day 🧹",
+            es: "**Spirit Wear:** Día del espantapájaros 🧹",
+          },
+          {
+            en: "Book Fair for Ms. Gelfand's class",
+            es: "Feria del Libro para la clase de Ms. Gelfand",
+          },
+        ],
       },
       {
         when: { en: "Friday, October 23rd", es: "Viernes 23 de octubre" },
-        events: [],
+        events: [
+          {
+            en: "**Spirit Wear:** 📖 Book Character Day",
+            es: "**Spirit Wear:** 📖 Día de personajes de libros",
+          },
+          {
+            en: "PTA Trunk or Treat 4-5pm and PTA Fall Festival 4-6:30pm",
+            es: "Trunk or Treat de la PTA de 4 a 5pm y Festival de Otoño de la PTA de 4 a 6:30pm",
+          },
+        ],
       },
     ],
 
-    futureDates: [],
+    futureDates: [
+      {
+        en: "**Wednesday, 10/28** — PBIS Glowstick Celebration during Specials",
+        es: "**Miércoles 28/10** — Celebración PBIS con barras luminosas durante Specials",
+      },
+      {
+        en: "**Thursday, 10/29** — RTA Testing",
+        es: "**Jueves 29/10** — Pruebas de RTA",
+      },
+      {
+        en: "**Friday, 10/30** — Last day of Quarter 1",
+        es: "**Viernes 30/10** — Último día del primer trimestre",
+      },
+    ],
 
-    reminders: [],
+    reminders: [
+      {
+        en: "**Interested in joining the PTA?** Click here to join: https://gvsa.givebacks.com/shop",
+        es: "**¿Le interesa unirse a la PTA?** Haga clic aquí para unirse: https://gvsa.givebacks.com/shop",
+      },
+      {
+        en: "**GVSA Popcorn Sales!** 🚀 Share this link with anyone who loves a good snack. The top-selling classroom will earn a pizza party!\n**Link:**\nhttps://poppinpopcornonline.com/store/store.php?sID=00676032",
+        es: "**¡Venta de palomitas de GVSA!** 🚀 Comparta este enlace con cualquier persona a la que le guste un buen bocadillo. ¡El salón con más ventas ganará una fiesta de pizza!\n**Enlace:**\nhttps://poppinpopcornonline.com/store/store.php?sID=00676032",
+      },
+    ],
 
-    birthdays: [],
+    birthdays: [
+      {
+        id: "dallas",
+        name: "Dallas",
+        date: { en: "October 19th", es: "19 de octubre" },
+      },
+    ],
 
     learning: [
       {
@@ -176,7 +270,16 @@ export const newsletters: Newsletter[] = [
           en: "Social Emotional Learning",
           es: "Aprendizaje Socioemocional",
         },
-        body: [],
+        body: [
+          {
+            en: "This week, students are exploring respect, stewardship, and responsibility across our shared spaces, digital lives, and school community. They are learning how to care for shared property and environments, practice safe and kind digital citizenship using the **THINK** filter, and express gratitude for school support staff.",
+            es: "Esta semana, los estudiantes exploran el respeto, el cuidado y la responsabilidad en nuestros espacios compartidos, en la vida digital y en la comunidad escolar. Aprenden a cuidar la propiedad y los espacios que compartimos, a practicar una ciudadanía digital segura y amable usando el filtro **THINK**, y a mostrar gratitud por el personal de apoyo de la escuela.",
+          },
+          {
+            en: "**Continue the Conversation at Home:** Ask your child what it means to be a good steward of shared family spaces, and talk through how taking care of their surroundings shows respect for others. You can also practice the **THINK** filter together — *Is it True, Helpful, Inspiring, Necessary, Kind?* — when using digital devices, and encourage them to show appreciation for the people who help support your local community.",
+            es: "**Continúe la conversación en casa:** Pregúntele a su hijo/a qué significa cuidar bien los espacios que comparte la familia, y conversen sobre cómo cuidar su entorno demuestra respeto por los demás. También pueden practicar juntos el filtro **THINK** — *¿Es Verdadero, Útil, Inspirador, Necesario y Amable?* — al usar los dispositivos digitales, y anímelo/a a mostrar agradecimiento por las personas que apoyan a su comunidad.",
+          },
+        ],
         span: "full",
         showHomework: false,
         homework: blank,
@@ -188,10 +291,18 @@ export const newsletters: Newsletter[] = [
         color: "lilac",
         emoji: "📚",
         name: { en: "ELA", es: "Lengua y Literatura" },
-        body: [],
+        body: [
+          {
+            en: "This week in ELA, students are putting the finishing touches on their poetry presentations by writing a proof paragraph and conclusion to explain what inspired their poems. They will revise and edit their work using linking words, precise vocabulary, and descriptive details. To wrap up Unit 3, students will select visuals to support their ideas and demonstrate their reading fluency by reading a new poem aloud.",
+            es: "Esta semana en Lengua y Literatura, los estudiantes dan los toques finales a sus presentaciones de poesía escribiendo un párrafo de evidencia y una conclusión para explicar qué inspiró sus poemas. Revisarán y corregirán su trabajo usando palabras de enlace, vocabulario preciso y detalles descriptivos. Para cerrar la Unidad 3, elegirán imágenes que apoyen sus ideas y demostrarán su fluidez leyendo un poema nuevo en voz alta.",
+          },
+        ],
         span: "half",
         showHomework: true,
-        homework: blank,
+        homework: {
+          en: "Weekly Reading Log due Friday, 10/23.",
+          es: "El registro de lectura semanal se entrega el viernes 23 de octubre.",
+        },
         // The reading log is the same every week, so the link stays put.
         directionsLink: "/weekly-reading-log-directions.pdf",
         directionsLabel: {
@@ -204,10 +315,18 @@ export const newsletters: Newsletter[] = [
         color: "clay",
         emoji: "➗️",
         name: { en: "Math", es: "Matemáticas" },
-        body: [],
+        body: [
+          {
+            en: "This week in math, students are learning how to solve word problems involving fractions of a set using diagrams, equations, and visual models. Later in the week, they will explore decomposing fractions into sums of smaller fractions and practice representing these fraction sums using number lines.",
+            es: "Esta semana en matemáticas, los estudiantes aprenden a resolver problemas con fracciones de un conjunto usando diagramas, ecuaciones y modelos visuales. Más adelante en la semana, explorarán cómo descomponer fracciones en sumas de fracciones más pequeñas y practicarán representar esas sumas en la recta numérica.",
+          },
+        ],
         span: "half",
         showHomework: true,
-        homework: blank,
+        homework: {
+          en: "Worksheet due Friday, 10/23.",
+          es: "La hoja de trabajo se entrega el viernes 23 de octubre.",
+        },
         directionsLink: "",
         directionsLabel: directions,
       },
@@ -215,8 +334,16 @@ export const newsletters: Newsletter[] = [
         id: "social-studies",
         color: "ice",
         emoji: "🔬",
-        name: { en: "Science", es: "Ciencias" },
-        body: [],
+        name: {
+          en: "Science & Social Studies",
+          es: "Ciencias y Estudios Sociales",
+        },
+        body: [
+          {
+            en: "This week in science, students are investigating forces and interactions by exploring how magnets attract, repel, and interact with objects without touching them. Towards the end of the week, they will transition into studying static electricity to learn how objects become electrically charged and interact from a distance.",
+            es: "Esta semana en ciencias, los estudiantes investigan las fuerzas y las interacciones explorando cómo los imanes atraen, repelen e interactúan con los objetos sin tocarlos. Hacia el final de la semana, pasarán a estudiar la electricidad estática para aprender cómo los objetos se cargan eléctricamente e interactúan a distancia.",
+          },
+        ],
         span: "full",
         showHomework: false,
         homework: blank,
