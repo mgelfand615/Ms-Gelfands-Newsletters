@@ -134,36 +134,101 @@ export const newsletters: Newsletter[] = [
 
     updatesLead: blank,
 
-    updates: [],
+    updates: [
+      {
+        text: {
+          en: "**Parent-Teacher Conferences:** Please [sign up here](https://calendar.app.google/5qrg85PPa6i1RzMK7) for a 15-minute conference with Mrs. Phoso and me — one conference total for both of us. If none of the available time slots work for you, please message me and we will make something work!",
+          es: "**Conferencias de padres y maestros:** Por favor [inscríbase aquí](https://calendar.app.google/5qrg85PPa6i1RzMK7) para una conferencia de 15 minutos con Mrs. Phoso y conmigo — una sola conferencia con las dos. Si ninguno de los horarios disponibles le funciona, envíeme un mensaje y encontraremos la manera de acomodarlo.",
+        },
+      },
+      {
+        text: {
+          en: "**ALL Block Assignments:** Please check in with your student to see how they are progressing with completing ALL Block assignments in class. You can log in to Google Classroom through ClassLink and see what they have submitted over the last few weeks.",
+          es: "**Tareas de ALL Block:** Por favor pregúntele a su estudiante cómo va con las tareas de ALL Block en clase. Puede iniciar sesión en Google Classroom desde ClassLink y ver lo que ha entregado en las últimas semanas.",
+        },
+      },
+      {
+        text: {
+          en: "**Jackets for Recess:** As it gets colder, please make sure students are bringing sweatshirts and jackets to school. We will continue to go outside for recess and we want everyone to stay warm.",
+          es: "**Abrigos para el recreo:** Como está haciendo más frío, por favor asegúrese de que su hijo/a traiga sudadera y chaqueta a la escuela. Seguiremos saliendo al recreo y queremos que todos estén abrigados.",
+        },
+      },
+    ],
 
     updatesClose: blank,
 
     upcomingDates: [
       {
         when: { en: "Monday, October 26th", es: "Lunes 26 de octubre" },
-        events: [],
+        events: [
+          {
+            en: "**Spirit Wear:** Silly Socks",
+            es: "**Spirit Wear:** Calcetines divertidos",
+          },
+        ],
       },
       {
         when: { en: "Tuesday, October 27th", es: "Martes 27 de octubre" },
-        events: [],
+        events: [
+          {
+            en: "**Spirit Wear:** Beetlejuice Stripes",
+            es: "**Spirit Wear:** Rayas estilo Beetlejuice",
+          },
+        ],
       },
       {
         when: { en: "Wednesday, October 28th", es: "Miércoles 28 de octubre" },
-        events: [],
+        events: [
+          {
+            en: "**Spirit Wear:** Pink for Breast Cancer Awareness",
+            es: "**Spirit Wear:** Rosa por la concientización sobre el cáncer de seno",
+          },
+          {
+            en: "PBIS Celebration during Specials\nStudents who primarily earned 3s each day in their agendas and have not received an office referral will be eligible to attend.",
+            es: "Celebración PBIS durante Specials\nPodrán asistir los estudiantes que hayan obtenido principalmente 3 cada día en su agenda y no hayan recibido una referencia a la oficina.",
+          },
+        ],
       },
       {
         when: { en: "Thursday, October 29th", es: "Jueves 29 de octubre" },
-        events: [],
+        events: [
+          {
+            en: "**Spirit Wear:** Thriller Day",
+            es: "**Spirit Wear:** Día de Thriller",
+          },
+          {
+            en: "4th grade Reach to Achieve retests. If your child is required to retest, they will receive a paper home on Monday.",
+            es: "Reexámenes de Reach to Achieve de 4º grado. Si su hijo/a debe presentarlo, recibirá un aviso en papel el lunes.",
+          },
+        ],
       },
       {
         when: { en: "Friday, October 30th", es: "Viernes 30 de octubre" },
-        events: [],
+        events: [
+          {
+            en: "**Spirit Wear:** Favorite Fall Shirt or Colors of Fall",
+            es: "**Spirit Wear:** Camisa favorita de otoño o colores otoñales",
+          },
+          {
+            en: "Last day of Quarter 1",
+            es: "Último día del primer trimestre",
+          },
+        ],
       },
     ],
 
     futureDates: [],
 
-    reminders: [],
+    reminders: [
+      {
+        en: "**Interested in joining the PTA?** Click here to join: https://gvsa.givebacks.com/shop",
+        es: "**¿Le interesa unirse a la PTA?** Haga clic aquí para unirse: https://gvsa.givebacks.com/shop",
+      },
+      {
+        en: "**GVSA Popcorn Sales!** 🚀 Share this link with anyone who loves a good snack. The top-selling classroom will earn a pizza party!\n**Link:**\nhttps://poppinpopcornonline.com/store/store.php?sID=00676032",
+        es: "**¡Venta de palomitas de GVSA!** 🚀 Comparta este enlace con cualquier persona a la que le guste un buen bocadillo. ¡El salón con más ventas ganará una fiesta de pizza!\n**Enlace:**\nhttps://poppinpopcornonline.com/store/store.php?sID=00676032",
+      },
+    ],
 
     birthdays: [],
 
@@ -176,7 +241,16 @@ export const newsletters: Newsletter[] = [
           en: "Social Emotional Learning",
           es: "Aprendizaje Socioemocional",
         },
-        body: [],
+        body: [
+          {
+            en: "This week in SEL, students will explore what it means to show respect in their daily interactions. They will learn how to disagree respectfully, practice giving sincere apologies, discuss ways to be an upstander when they see disrespect, and explore the qualities of respectful leadership. Students will also reflect on their growth and celebrate the positive choices they have made throughout the month.",
+            es: "Esta semana en Aprendizaje Socioemocional, los estudiantes explorarán qué significa mostrar respeto en sus interacciones diarias. Aprenderán a estar en desacuerdo de manera respetuosa, practicarán pedir disculpas sinceras, conversarán sobre cómo dar la cara cuando ven una falta de respeto y explorarán las cualidades de un liderazgo respetuoso. También reflexionarán sobre su crecimiento y celebrarán las buenas decisiones que han tomado durante el mes.",
+          },
+          {
+            en: "**Continue the Conversation at Home:** Throughout the week, look for opportunities to use respectful communication at home. Practice using \u201cI\u201d statements, giving sincere apologies when needed, and encouraging family members with kind and respectful words.",
+            es: "**Continúe la conversación en casa:** Durante la semana, busque oportunidades para practicar una comunicación respetuosa en casa. Practiquen usar frases con «yo», pedir disculpas sinceras cuando haga falta y animar a los demás con palabras amables y respetuosas.",
+          },
+        ],
         span: "full",
         showHomework: false,
         homework: blank,
@@ -188,10 +262,18 @@ export const newsletters: Newsletter[] = [
         color: "lilac",
         emoji: "📚",
         name: { en: "ELA", es: "Lengua y Literatura" },
-        body: [],
+        body: [
+          {
+            en: "This week in ELA, students will prepare for and complete their Unit 3 performance task by presenting their original poems. They will practice speaking clearly and confidently, explain the inspiration behind their writing, give and receive peer feedback, and reflect on their growth as presenters. Through these poetry presentations, students will strengthen their speaking and listening skills while celebrating their creativity and hard work.",
+            es: "Esta semana en Lengua y Literatura, los estudiantes se prepararán para su tarea de desempeño de la Unidad 3 y la completarán presentando sus poemas originales. Practicarán hablar con claridad y seguridad, explicarán qué inspiró su escritura, darán y recibirán comentarios de sus compañeros y reflexionarán sobre su crecimiento como presentadores. Con estas presentaciones de poesía, fortalecerán sus destrezas de expresión oral y escucha mientras celebran su creatividad y su esfuerzo.",
+          },
+        ],
         span: "half",
         showHomework: true,
-        homework: blank,
+        homework: {
+          en: "Weekly Reading Log due Friday, 10/30.",
+          es: "El registro de lectura semanal se entrega el viernes 30 de octubre.",
+        },
         // The reading log is the same every week, so the link stays put.
         directionsLink: "/weekly-reading-log-directions.pdf",
         directionsLabel: {
@@ -204,10 +286,18 @@ export const newsletters: Newsletter[] = [
         color: "clay",
         emoji: "➗️",
         name: { en: "Math", es: "Matemáticas" },
-        body: [],
+        body: [
+          {
+            en: "This week in math, students will build their understanding of fractions by adding and subtracting fractions and mixed numbers with the same denominator. They will practice decomposing whole numbers, using equivalent fractions, and exploring multiple strategies to solve problems. Students will explain their mathematical thinking, compare different solution methods, and apply their fraction skills to real-world word problems.",
+            es: "Esta semana en matemáticas, los estudiantes profundizarán su comprensión de las fracciones sumando y restando fracciones y números mixtos con el mismo denominador. Practicarán descomponer números enteros, usar fracciones equivalentes y explorar varias estrategias para resolver problemas. Explicarán su razonamiento matemático, compararán distintos métodos de solución y aplicarán sus destrezas con fracciones a problemas de la vida real.",
+          },
+        ],
         span: "half",
         showHomework: true,
-        homework: blank,
+        homework: {
+          en: "Worksheet due Friday, 10/30.",
+          es: "La hoja de trabajo se entrega el viernes 30 de octubre.",
+        },
         directionsLink: "",
         directionsLabel: directions,
       },
@@ -219,7 +309,12 @@ export const newsletters: Newsletter[] = [
           en: "Science & Social Studies",
           es: "Ciencias y Estudios Sociales",
         },
-        body: [],
+        body: [
+          {
+            en: "This week in science, students will investigate forces and interactions by exploring electricity and magnetism. They will conduct hands-on investigations to discover how electrically charged objects can push or pull other objects without touching them, compare the properties of magnets and electric charges, and use evidence from texts and experiments to explain their observations. Students will conclude the unit by creating models that demonstrate their understanding of forces and interactions and completing an end-of-unit assessment to showcase their learning.",
+            es: "Esta semana en ciencias, los estudiantes investigarán las fuerzas y las interacciones explorando la electricidad y el magnetismo. Harán investigaciones prácticas para descubrir cómo los objetos con carga eléctrica pueden empujar o atraer otros objetos sin tocarlos, compararán las propiedades de los imanes y de las cargas eléctricas, y usarán evidencia de textos y experimentos para explicar lo que observan. Cerrarán la unidad creando modelos que demuestren lo que entienden sobre las fuerzas y las interacciones, y tomando una evaluación de fin de unidad para mostrar lo aprendido.",
+          },
+        ],
         span: "full",
         showHomework: false,
         homework: blank,
