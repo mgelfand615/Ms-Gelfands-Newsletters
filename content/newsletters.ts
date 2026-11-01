@@ -134,38 +134,119 @@ export const newsletters: Newsletter[] = [
 
     updatesLead: blank,
 
-    updates: [],
+    updates: [
+      {
+        text: {
+          en: "**Parent-Teacher Conferences:** **Monday, 11/2** is the last conference day that Mrs. Phoso and I will be holding. If you have not yet signed up, please claim a slot by **7:00 AM Monday morning.** If you have not signed up by then, Mrs. Phoso and I will reach out by phone to complete our conference.",
+          es: "**Conferencias de padres y maestros:** El **lunes 2/11** es el último día de conferencias que ofreceremos Mrs. Phoso y yo. Si todavía no se ha inscrito, por favor reserve un horario antes de las **7:00 AM del lunes.** Si no se ha inscrito para entonces, Mrs. Phoso y yo nos comunicaremos por teléfono para realizar la conferencia.",
+        },
+        points: [
+          {
+            en: "Please [sign up here](https://calendar.app.google/5qrg85PPa6i1RzMK7) for a 15-minute conference. If none of the available time slots work for you, please message me and we will make something work!",
+            es: "Por favor [inscríbase aquí](https://calendar.app.google/5qrg85PPa6i1RzMK7) para una conferencia de 15 minutos. Si ninguno de los horarios disponibles le funciona, envíeme un mensaje y encontraremos la manera de acomodarlo.",
+          },
+        ],
+      },
+      {
+        text: {
+          en: "**MVPa Testing:** MVPa testing will take place **Wednesday, 11/4** and **Friday, 11/6.** These tests simulate the EOGs. Students should arrive with enough time to eat breakfast and use the bathroom before we begin testing at about **8:15 AM.** Students will show what they know, which helps teachers guide our instruction moving forward. Please encourage your child to do the best they can — they have learned so much this year and we want them to show it!",
+          es: "**Pruebas MVPa:** Las pruebas MVPa serán el **miércoles 4/11** y el **viernes 6/11.** Estas pruebas simulan los exámenes EOG. Los estudiantes deben llegar con tiempo suficiente para desayunar e ir al baño antes de comenzar, alrededor de las **8:15 AM.** Los estudiantes mostrarán lo que saben, lo cual nos ayuda a las maestras a guiar la enseñanza de aquí en adelante. Por favor anime a su hijo/a a dar lo mejor de sí — ¡han aprendido muchísimo este año y queremos que lo demuestren!",
+        },
+      },
+      {
+        text: {
+          en: "**Class Spelling Bee:** **Thursday, 11/5** is our class spelling bee! Flyers went home last week along with a practice list. Students across grades 3-5 will be competing. Our class winner will go on to compete against the winners of the other 4th grade classes, and the 4th grade winner will move on to compete against the winners of 3rd and 5th grade.",
+          es: "**Concurso de deletreo del salón:** ¡El **jueves 5/11** es nuestro concurso de deletreo! La semana pasada se enviaron a casa los volantes junto con una lista de práctica. Participarán estudiantes de 3º a 5º grado. El ganador de nuestro salón competirá contra los ganadores de los otros salones de 4º grado, y el ganador de 4º grado competirá contra los ganadores de 3º y 5º grado.",
+        },
+      },
+    ],
 
     updatesClose: blank,
 
     upcomingDates: [
       {
         when: { en: "Monday, November 2nd", es: "Lunes 2 de noviembre" },
-        events: [],
+        events: [
+          {
+            en: "Teacher Workday — No school for students",
+            es: "Día de trabajo docente — No hay clases para los estudiantes",
+          },
+        ],
       },
       {
         when: { en: "Tuesday, November 3rd", es: "Martes 3 de noviembre" },
-        events: [],
+        events: [
+          {
+            en: "Teacher Workday — No school for students",
+            es: "Día de trabajo docente — No hay clases para los estudiantes",
+          },
+        ],
       },
       {
         when: { en: "Wednesday, November 4th", es: "Miércoles 4 de noviembre" },
-        events: [],
+        events: [
+          { en: "Reading MVPa Test", es: "Prueba MVPa de Lectura" },
+        ],
       },
       {
         when: { en: "Thursday, November 5th", es: "Jueves 5 de noviembre" },
-        events: [],
+        events: [
+          {
+            en: "Class Spelling Bee 🐝",
+            es: "Concurso de deletreo del salón 🐝",
+          },
+          {
+            en: "Second Harvest Food Bank 5-6pm",
+            es: "Banco de alimentos Second Harvest de 5 a 6pm",
+          },
+        ],
       },
       {
         when: { en: "Friday, November 6th", es: "Viernes 6 de noviembre" },
-        events: [],
+        events: [
+          { en: "Math MVPa Test", es: "Prueba MVPa de Matemáticas" },
+        ],
       },
     ],
 
-    futureDates: [],
+    futureDates: [
+      {
+        en: "**Wednesday, 11/11** — No school",
+        es: "**Miércoles 11/11** — No hay clases",
+      },
+      {
+        en: "**Thursday, 11/12** — PTA Meeting 5:30-6:30pm",
+        es: "**Jueves 12/11** — Reunión de la PTA de 5:30 a 6:30pm",
+      },
+      {
+        en: "**Friday, 11/13** — Report cards visible in Infinite Campus",
+        es: "**Viernes 13/11** — Las boletas de calificaciones estarán disponibles en Infinite Campus",
+      },
+    ],
 
-    reminders: [],
+    reminders: [
+      {
+        en: "**Interested in joining the PTA?** Click here to join: https://gvsa.givebacks.com/shop",
+        es: "**¿Le interesa unirse a la PTA?** Haga clic aquí para unirse: https://gvsa.givebacks.com/shop",
+      },
+      {
+        en: "**GVSA Popcorn Sales!** 🚀 Share this link with anyone who loves a good snack. The top-selling classroom will earn a pizza party!\n**Link:**\nhttps://poppinpopcornonline.com/store/store.php?sID=00676032",
+        es: "**¡Venta de palomitas de GVSA!** 🚀 Comparta este enlace con cualquier persona a la que le guste un buen bocadillo. ¡El salón con más ventas ganará una fiesta de pizza!\n**Enlace:**\nhttps://poppinpopcornonline.com/store/store.php?sID=00676032",
+      },
+    ],
 
-    birthdays: [],
+    birthdays: [
+      {
+        id: "brittany",
+        name: "Brittany",
+        date: { en: "November 1st", es: "1 de noviembre" },
+      },
+      {
+        id: "maleeya",
+        name: "Maleeya",
+        date: { en: "November 2nd", es: "2 de noviembre" },
+      },
+    ],
 
     learning: [
       {
@@ -176,7 +257,16 @@ export const newsletters: Newsletter[] = [
           en: "Social Emotional Learning",
           es: "Aprendizaje Socioemocional",
         },
-        body: [],
+        body: [
+          {
+            en: "In our upcoming SEL lessons, students will be learning about integrity and what it means to do the right thing, even when no one is watching. They will explore how honesty, responsibility, and making positive choices help build trust and strong relationships.",
+            es: "En nuestras próximas lecciones de Aprendizaje Socioemocional, los estudiantes aprenderán sobre la integridad y lo que significa hacer lo correcto, incluso cuando nadie está mirando. Explorarán cómo la honestidad, la responsabilidad y las buenas decisiones ayudan a construir confianza y relaciones sólidas.",
+          },
+          {
+            en: "**Continue the Conversation at Home:** Ask your child what integrity means to them, and discuss ways they can show integrity in everyday situations. Working together, we can help students develop strong character both in and out of the classroom! 💙",
+            es: "**Continúe la conversación en casa:** Pregúntele a su hijo/a qué significa la integridad para él o ella, y conversen sobre cómo puede demostrarla en situaciones cotidianas. ¡Trabajando juntos podemos ayudar a los estudiantes a formar un carácter fuerte dentro y fuera del salón! 💙",
+          },
+        ],
         span: "full",
         showHomework: false,
         homework: blank,
@@ -188,10 +278,18 @@ export const newsletters: Newsletter[] = [
         color: "lilac",
         emoji: "📚",
         name: { en: "ELA", es: "Lengua y Literatura" },
-        body: [],
+        body: [
+          {
+            en: "This week we are beginning **Module 2: Animal Defense Mechanisms!** Students will explore the fascinating ways animals protect themselves from predators while practicing important reading and research skills. We will learn how to make and support inferences using information from texts and images, build academic vocabulary, and begin researching animal defenses. Ask your child to share an interesting animal defense mechanism they discovered and what clues helped them learn about it! 📚✨",
+            es: "¡Esta semana comenzamos el **Módulo 2: Mecanismos de defensa de los animales!** Los estudiantes explorarán las formas fascinantes en que los animales se protegen de los depredadores mientras practican importantes destrezas de lectura e investigación. Aprenderán a hacer inferencias y a respaldarlas con información de los textos y las imágenes, ampliarán su vocabulario académico y comenzarán a investigar las defensas de los animales. ¡Pídale a su hijo/a que le cuente algún mecanismo de defensa interesante que haya descubierto y qué pistas lo ayudaron a aprenderlo! 📚✨",
+          },
+        ],
         span: "half",
         showHomework: true,
-        homework: blank,
+        homework: {
+          en: "Weekly Reading Log due Friday, 11/6. Only 2 nights are due.",
+          es: "El registro de lectura semanal se entrega el viernes 6 de noviembre. Solo se requieren 2 noches.",
+        },
         // The reading log is the same every week, so the link stays put.
         directionsLink: "/weekly-reading-log-directions.pdf",
         directionsLabel: {
@@ -204,10 +302,18 @@ export const newsletters: Newsletter[] = [
         color: "clay",
         emoji: "➗️",
         name: { en: "Math", es: "Matemáticas" },
-        body: [],
+        body: [
+          {
+            en: "This week in math, students will build on their understanding of fractions by using equivalent fractions to add tenths and hundredths. Through visual models, number lines, and problem-solving activities, students will learn how to find sums up to 1 and explain their mathematical reasoning. Encourage your child to share how equivalent fractions can make addition easier, and to explain the strategies they used in class! 🔢✨",
+            es: "Esta semana en matemáticas, los estudiantes profundizarán su comprensión de las fracciones usando fracciones equivalentes para sumar décimos y centésimos. Con modelos visuales, rectas numéricas y actividades de resolución de problemas, aprenderán a hallar sumas hasta 1 y a explicar su razonamiento matemático. ¡Anime a su hijo/a a contarle cómo las fracciones equivalentes facilitan la suma y a explicarle las estrategias que usó en clase! 🔢✨",
+          },
+        ],
         span: "half",
         showHomework: true,
-        homework: blank,
+        homework: {
+          en: "Worksheet due Friday, 11/6.",
+          es: "La hoja de trabajo se entrega el viernes 6 de noviembre.",
+        },
         directionsLink: "",
         directionsLabel: directions,
       },
@@ -219,7 +325,12 @@ export const newsletters: Newsletter[] = [
           en: "Science & Social Studies",
           es: "Ciencias y Estudios Sociales",
         },
-        body: [],
+        body: [
+          {
+            en: "This week, students are beginning an exciting science unit focused on energy and light. Throughout the unit, they will investigate different forms of energy — including light, sound, heat, and electricity — and explore how energy causes motion and creates change. Students will also conduct hands-on investigations to learn how light travels, reflects, refracts, and interacts with objects. Ask your child what type of energy they see or use most often in their daily lives, and what they are curious to learn about energy and light! 🔦✨",
+            es: "Esta semana, los estudiantes comienzan una emocionante unidad de ciencias sobre la energía y la luz. A lo largo de la unidad investigarán distintas formas de energía — luz, sonido, calor y electricidad — y explorarán cómo la energía produce movimiento y genera cambios. También harán investigaciones prácticas para aprender cómo viaja la luz, cómo se refleja, cómo se refracta y cómo interactúa con los objetos. ¡Pregúntele a su hijo/a qué tipo de energía ve o usa más en su vida diaria y qué le da curiosidad aprender sobre la energía y la luz! 🔦✨",
+          },
+        ],
         span: "full",
         showHomework: false,
         homework: blank,
