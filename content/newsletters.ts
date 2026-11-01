@@ -124,6 +124,111 @@ const directions: Text = { en: "Directions", es: "Instrucciones" };
 /** A fresh, empty week. Copy this block to start each newsletter. */
 export const newsletters: Newsletter[] = [
   {
+    slug: "week-8",
+    week: 8,
+    date: "2026-11-06",
+    dateRange: {
+      en: "November 2 - November 6",
+      es: "2 - 6 de noviembre",
+    },
+
+    updatesLead: blank,
+
+    updates: [],
+
+    updatesClose: blank,
+
+    upcomingDates: [
+      {
+        when: { en: "Monday, November 2nd", es: "Lunes 2 de noviembre" },
+        events: [],
+      },
+      {
+        when: { en: "Tuesday, November 3rd", es: "Martes 3 de noviembre" },
+        events: [],
+      },
+      {
+        when: { en: "Wednesday, November 4th", es: "Miércoles 4 de noviembre" },
+        events: [],
+      },
+      {
+        when: { en: "Thursday, November 5th", es: "Jueves 5 de noviembre" },
+        events: [],
+      },
+      {
+        when: { en: "Friday, November 6th", es: "Viernes 6 de noviembre" },
+        events: [],
+      },
+    ],
+
+    futureDates: [],
+
+    reminders: [],
+
+    birthdays: [],
+
+    learning: [
+      {
+        id: "sel",
+        color: "mint",
+        emoji: "💛",
+        name: {
+          en: "Social Emotional Learning",
+          es: "Aprendizaje Socioemocional",
+        },
+        body: [],
+        span: "full",
+        showHomework: false,
+        homework: blank,
+        directionsLink: "",
+        directionsLabel: directions,
+      },
+      {
+        id: "reading",
+        color: "lilac",
+        emoji: "📚",
+        name: { en: "ELA", es: "Lengua y Literatura" },
+        body: [],
+        span: "half",
+        showHomework: true,
+        homework: blank,
+        // The reading log is the same every week, so the link stays put.
+        directionsLink: "/weekly-reading-log-directions.pdf",
+        directionsLabel: {
+          en: "Weekly Reading Log Directions",
+          es: "Instrucciones del Registro de Lectura Semanal",
+        },
+      },
+      {
+        id: "math",
+        color: "clay",
+        emoji: "➗️",
+        name: { en: "Math", es: "Matemáticas" },
+        body: [],
+        span: "half",
+        showHomework: true,
+        homework: blank,
+        directionsLink: "",
+        directionsLabel: directions,
+      },
+      {
+        id: "social-studies",
+        color: "ice",
+        emoji: "🔬",
+        name: {
+          en: "Science & Social Studies",
+          es: "Ciencias y Estudios Sociales",
+        },
+        body: [],
+        span: "full",
+        showHomework: false,
+        homework: blank,
+        directionsLink: "",
+        directionsLabel: directions,
+      },
+    ],
+  },
+  {
     slug: "week-7",
     week: 7,
     date: "2026-10-30",
