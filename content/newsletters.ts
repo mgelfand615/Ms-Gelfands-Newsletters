@@ -137,20 +137,20 @@ export const newsletters: Newsletter[] = [
     updates: [
       {
         text: {
-          en: "**Spelling Bee Winner:** Congratulations to Shanvi B. in Ms. Gelfand's class for winning our classroom Spelling Bee! Shanvi will compete in the grade-level spelling bee on **November 17th.**",
-          es: "**Ganadora del concurso de deletreo:** ¡Felicidades a Shanvi B., de la clase de Ms. Gelfand, por ganar el concurso de deletreo de nuestro salón! Shanvi competirá en el concurso de deletreo de todo el grado el **17 de noviembre.**",
+          en: "**Spelling Bee Winner:** Congratulations to Shanvi B. in Ms. Gelfand's class for winning our classroom Spelling Bee! Shanvi will go on to compete in the grade-level spelling bee on **November 17th.**",
+          es: "**Ganadora del concurso de deletreo:** ¡Felicidades a Shanvi B., de la clase de Ms. Gelfand, por ganar el concurso de deletreo de nuestro salón! Shanvi pasará a competir en el concurso de deletreo de todo el grado el **17 de noviembre.**",
         },
       },
       {
         text: {
-          en: "**MVPa Testing:** Good job getting through all of the MVPa testing this past week! Students did a great job simulating the EOGs. Their hard work will help Mrs. Phoso and me create targeted small-group plans to extend their knowledge and maximize their growth this year!",
-          es: "**Pruebas MVPa:** ¡Buen trabajo con todas las pruebas MVPa de la semana pasada! Los estudiantes simularon los exámenes EOG estupendamente. Su esfuerzo nos ayudará a Mrs. Phoso y a mí a crear planes de grupos pequeños bien enfocados para ampliar sus conocimientos y aprovechar al máximo su crecimiento este año.",
+          en: "**MVPa Testing:** Great job getting through all of the MVPa testing this past week! Students did so well simulating the EOGs, and their hard work will help Mrs. Phoso and me build targeted small-group plans to extend their knowledge and maximize their growth this year!",
+          es: "**Pruebas MVPa:** ¡Excelente trabajo con todas las pruebas MVPa de la semana pasada! Los estudiantes simularon los exámenes EOG estupendamente, y su esfuerzo nos ayudará a Mrs. Phoso y a mí a formar grupos pequeños bien enfocados para ampliar sus conocimientos y aprovechar al máximo su crecimiento este año.",
         },
       },
       {
         text: {
-          en: "**Layers for the Cold:** As it gets colder, please be sure students wear layers to school. We will still be going outside for recess as the temperature drops and we don't want anyone cold. Different classrooms are also different temperatures, so layers always help.",
-          es: "**Ropa en capas para el frío:** Como está haciendo más frío, por favor asegúrese de que su hijo/a venga a la escuela con varias capas de ropa. Seguiremos saliendo al recreo aunque baje la temperatura y no queremos que nadie pase frío. Además, cada salón tiene una temperatura distinta, así que la ropa en capas siempre ayuda.",
+          en: "**Layers for the Cold:** As it gets colder, please be sure students wear layers to school. We will still be going outside for recess as the temperature drops, and we don't want anyone to be cold. Classrooms also vary in temperature, so layers always help.",
+          es: "**Ropa en capas para el frío:** Como está haciendo más frío, por favor asegúrese de que su hijo/a venga a la escuela con varias capas de ropa. Seguiremos saliendo al recreo aunque baje la temperatura, y no queremos que nadie pase frío. Los salones también varían de temperatura, así que la ropa en capas siempre ayuda.",
         },
       },
     ],
