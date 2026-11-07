@@ -134,7 +134,26 @@ export const newsletters: Newsletter[] = [
 
     updatesLead: blank,
 
-    updates: [],
+    updates: [
+      {
+        text: {
+          en: "**Spelling Bee Winner:** Congratulations to Shanvi B. in Ms. Gelfand's class for winning our classroom Spelling Bee! Shanvi will compete in the grade-level spelling bee on **November 17th.**",
+          es: "**Ganadora del concurso de deletreo:** ¡Felicidades a Shanvi B., de la clase de Ms. Gelfand, por ganar el concurso de deletreo de nuestro salón! Shanvi competirá en el concurso de deletreo de todo el grado el **17 de noviembre.**",
+        },
+      },
+      {
+        text: {
+          en: "**MVPa Testing:** Good job getting through all of the MVPa testing this past week! Students did a great job simulating the EOGs. Their hard work will help Mrs. Phoso and me create targeted small-group plans to extend their knowledge and maximize their growth this year!",
+          es: "**Pruebas MVPa:** ¡Buen trabajo con todas las pruebas MVPa de la semana pasada! Los estudiantes simularon los exámenes EOG estupendamente. Su esfuerzo nos ayudará a Mrs. Phoso y a mí a crear planes de grupos pequeños bien enfocados para ampliar sus conocimientos y aprovechar al máximo su crecimiento este año.",
+        },
+      },
+      {
+        text: {
+          en: "**Layers for the Cold:** As it gets colder, please be sure students wear layers to school. We will still be going outside for recess as the temperature drops and we don't want anyone cold. Different classrooms are also different temperatures, so layers always help.",
+          es: "**Ropa en capas para el frío:** Como está haciendo más frío, por favor asegúrese de que su hijo/a venga a la escuela con varias capas de ropa. Seguiremos saliendo al recreo aunque baje la temperatura y no queremos que nadie pase frío. Además, cada salón tiene una temperatura distinta, así que la ropa en capas siempre ayuda.",
+        },
+      },
+    ],
 
     updatesClose: blank,
 
@@ -152,23 +171,69 @@ export const newsletters: Newsletter[] = [
           en: "Wednesday, November 11th",
           es: "Miércoles 11 de noviembre",
         },
-        events: [],
+        events: [
+          {
+            en: "**Veterans Day** — No school",
+            es: "**Día de los Veteranos** — No hay clases",
+          },
+        ],
       },
       {
         when: { en: "Thursday, November 12th", es: "Jueves 12 de noviembre" },
-        events: [],
+        events: [
+          {
+            en: "PTA Meeting 5:30-6:30pm",
+            es: "Reunión de la PTA de 5:30 a 6:30pm",
+          },
+        ],
       },
       {
         when: { en: "Friday, November 13th", es: "Viernes 13 de noviembre" },
-        events: [],
+        events: [
+          {
+            en: "Report cards available on Infinite Campus",
+            es: "Las boletas de calificaciones estarán disponibles en Infinite Campus",
+          },
+        ],
       },
     ],
 
-    futureDates: [],
+    futureDates: [
+      {
+        en: "**Tuesday, 11/17** — School-Wide Spelling Bee",
+        es: "**Martes 17/11** — Concurso de deletreo de toda la escuela",
+      },
+      {
+        en: "**Wednesday, 11/18** — SIT Meeting at 3:30pm",
+        es: "**Miércoles 18/11** — Reunión del SIT a las 3:30pm",
+      },
+      {
+        en: "**Thursday, 11/19** — Chick-fil-A Night 4-7pm",
+        es: "**Jueves 19/11** — Noche de Chick-fil-A de 4 a 7pm",
+      },
+      {
+        en: "**Thursday, 11/19** — Parent Involvement Day",
+        es: "**Jueves 19/11** — Día de Participación de los Padres",
+      },
+      {
+        en: "**Thursday, 11/19** — Road to Homeownership Day at 5:30pm",
+        es: "**Jueves 19/11** — Día Camino a Ser Propietario de Vivienda a las 5:30pm",
+      },
+      {
+        en: "**Friday, 11/20** — Class Awards",
+        es: "**Viernes 20/11** — Premios del salón",
+      },
+    ],
 
     reminders: [],
 
-    birthdays: [],
+    birthdays: [
+      {
+        id: "ethan-s",
+        name: "Ethan S.",
+        date: { en: "November 9th", es: "9 de noviembre" },
+      },
+    ],
 
     learning: [
       {
@@ -179,7 +244,16 @@ export const newsletters: Newsletter[] = [
           en: "Social Emotional Learning",
           es: "Aprendizaje Socioemocional",
         },
-        body: [],
+        body: [
+          {
+            en: "This week in SEL, students are exploring the word of the month: **gratitude.** Through discussions and real-life scenarios, students are learning what gratitude looks, sounds, and feels like, how to recognize kindness from others, and how to focus on the positive even when things do not go as planned. Students are practicing noticing acts of kindness, expressing appreciation, and reflecting on the impact gratitude has on themselves and others.",
+            es: "Esta semana en Aprendizaje Socioemocional, los estudiantes exploran la palabra del mes: **la gratitud.** Con conversaciones y situaciones de la vida real, aprenden cómo se ve, cómo suena y cómo se siente la gratitud, cómo reconocer la amabilidad de los demás y cómo enfocarse en lo positivo aun cuando las cosas no salen como esperaban. Están practicando notar los actos de amabilidad, expresar agradecimiento y reflexionar sobre el efecto que la gratitud tiene en ellos mismos y en los demás.",
+          },
+          {
+            en: "**Continue the Conversation at Home:** Ask your child to share one person or event they were grateful for each day, and why. Encourage them to show gratitude at home by saying thank you, writing a note, or helping someone in a small way.",
+            es: "**Continúe la conversación en casa:** Pídale a su hijo/a que le cuente cada día una persona o un momento por el que estuvo agradecido/a, y por qué. Anímelo/a a mostrar gratitud en casa dando las gracias, escribiendo una nota o ayudando a alguien con algo pequeño.",
+          },
+        ],
         span: "full",
         showHomework: false,
         homework: blank,
@@ -191,10 +265,18 @@ export const newsletters: Newsletter[] = [
         color: "lilac",
         emoji: "📚",
         name: { en: "ELA", es: "Lengua y Literatura" },
-        body: [],
+        body: [
+          {
+            en: "This week in Reading, students are continuing **Module 2: Animal Defense Mechanisms.** They will practice identifying the main idea of a text, explaining how key details support that main idea, and closely reading informational texts about how animals protect themselves from predators. Students will also build academic vocabulary and strengthen their skills in paraphrasing and citing evidence from the text.",
+            es: "Esta semana en Lectura, los estudiantes continúan con el **Módulo 2: Mecanismos de defensa de los animales.** Practicarán identificar la idea principal de un texto, explicar cómo los detalles clave apoyan esa idea principal y leer con atención textos informativos sobre cómo los animales se protegen de los depredadores. También ampliarán su vocabulario académico y fortalecerán sus destrezas para parafrasear y citar evidencia del texto.",
+          },
+        ],
         span: "half",
         showHomework: true,
-        homework: blank,
+        homework: {
+          en: "Weekly Reading Log due Friday, 11/13.",
+          es: "El registro de lectura semanal se entrega el viernes 13 de noviembre.",
+        },
         // The reading log is the same every week, so the link stays put.
         directionsLink: "/weekly-reading-log-directions.pdf",
         directionsLabel: {
@@ -207,10 +289,18 @@ export const newsletters: Newsletter[] = [
         color: "clay",
         emoji: "➗️",
         name: { en: "Math", es: "Matemáticas" },
-        body: [],
+        body: [
+          {
+            en: "This week in math, students are working with fractions and decimals, including using equivalent fractions to add tenths and hundredths and finding missing values in equations. Students will also practice solving and interpreting multi-step word problems, using problem-solving strategies to explain their mathematical thinking and justify their answers.",
+            es: "Esta semana en matemáticas, los estudiantes trabajan con fracciones y decimales, incluyendo el uso de fracciones equivalentes para sumar décimos y centésimos y la búsqueda de valores que faltan en las ecuaciones. También practicarán resolver e interpretar problemas de varios pasos, usando estrategias de resolución para explicar su razonamiento matemático y justificar sus respuestas.",
+          },
+        ],
         span: "half",
         showHomework: true,
-        homework: blank,
+        homework: {
+          en: "Worksheet due Friday, 11/13.",
+          es: "La hoja de trabajo se entrega el viernes 13 de noviembre.",
+        },
         directionsLink: "",
         directionsLabel: directions,
       },
@@ -222,7 +312,12 @@ export const newsletters: Newsletter[] = [
           en: "Science & Social Studies",
           es: "Ciencias y Estudios Sociales",
         },
-        body: [],
+        body: [
+          {
+            en: "This week, students are continuing their study of energy and light by exploring how different forms of energy — including light, sound, heat, and electricity — cause motion and create change. Through hands-on investigations, students will discover how light travels and interacts with objects through reflection and refraction. 🔦✨",
+            es: "Esta semana, los estudiantes continúan su estudio de la energía y la luz explorando cómo las distintas formas de energía — luz, sonido, calor y electricidad — producen movimiento y generan cambios. Con investigaciones prácticas, descubrirán cómo viaja la luz y cómo interactúa con los objetos mediante la reflexión y la refracción. 🔦✨",
+          },
+        ],
         span: "full",
         showHomework: false,
         homework: blank,
