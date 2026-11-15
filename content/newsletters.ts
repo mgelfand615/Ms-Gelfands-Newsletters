@@ -132,7 +132,12 @@ export const newsletters: Newsletter[] = [
       es: "16 - 20 de noviembre",
     },
 
-    updatesLead: blank,
+    // A quiet week: one note, so it reads as a short message rather than a
+    // list of one bullet.
+    updatesLead: {
+      en: "No major updates this week! Keep checking in with your student about what they are learning in school, and please don't hesitate to reach out if you need anything.",
+      es: "¡Esta semana no hay novedades importantes! Siga conversando con su estudiante sobre lo que está aprendiendo en la escuela y, por favor, no dude en comunicarse conmigo si necesita algo.",
+    },
 
     updates: [],
 
@@ -145,18 +150,41 @@ export const newsletters: Newsletter[] = [
       },
       {
         when: { en: "Tuesday, November 17th", es: "Martes 17 de noviembre" },
-        events: [],
+        events: [
+          {
+            en: "School-Wide Spelling Bee",
+            es: "Concurso de deletreo de toda la escuela",
+          },
+        ],
       },
       {
         when: {
           en: "Wednesday, November 18th",
           es: "Miércoles 18 de noviembre",
         },
-        events: [],
+        events: [
+          {
+            en: "SIT Meeting at 3:30pm",
+            es: "Reunión del SIT a las 3:30pm",
+          },
+        ],
       },
       {
         when: { en: "Thursday, November 19th", es: "Jueves 19 de noviembre" },
-        events: [],
+        events: [
+          {
+            en: "Chick-fil-A Night 4-7pm",
+            es: "Noche de Chick-fil-A de 4 a 7pm",
+          },
+          {
+            en: "Parent Involvement Day",
+            es: "Día de Participación de los Padres",
+          },
+          {
+            en: "Road to Homeownership Day at 5:30pm",
+            es: "Día Camino a Ser Propietario de Vivienda a las 5:30pm",
+          },
+        ],
       },
       {
         when: { en: "Friday, November 20th", es: "Viernes 20 de noviembre" },
@@ -179,7 +207,16 @@ export const newsletters: Newsletter[] = [
           en: "Social Emotional Learning",
           es: "Aprendizaje Socioemocional",
         },
-        body: [],
+        body: [
+          {
+            en: "This week, students will continue exploring gratitude by recognizing the positive things in challenging situations, appreciating the people who help us every day, and learning how kindness and gratitude work together. Students will discuss being thankful for helpers such as bus drivers, classmates, cafeteria staff, and others whose efforts often go unnoticed. They will also explore how gratitude can help make others feel welcomed, valued, and supported.",
+            es: "Esta semana, los estudiantes seguirán explorando la gratitud al reconocer lo positivo dentro de situaciones difíciles, valorar a las personas que nos ayudan cada día y aprender cómo la amabilidad y la gratitud van de la mano. Conversarán sobre agradecer a quienes nos ayudan — conductores de autobús, compañeros, personal de la cafetería y otras personas cuyo esfuerzo a menudo pasa desapercibido. También explorarán cómo la gratitud puede hacer que los demás se sientan bienvenidos, valorados y apoyados.",
+          },
+          {
+            en: "**Continue the Conversation at Home:** Ask your child, \u201cWho helped you today?\u201d or \u201cWhat is something you might take for granted that you are thankful for?\u201d Encourage them to share ways they can show appreciation to family members, friends, teachers, and community helpers through words or actions.",
+            es: "**Continúe la conversación en casa:** Pregúntele a su hijo/a: «¿Quién te ayudó hoy?» o «¿Qué cosa que quizá das por hecho agradeces?» Anímelo/a a compartir maneras de mostrar agradecimiento a su familia, a sus amigos, a sus maestros y a quienes ayudan en la comunidad, con palabras o con acciones.",
+          },
+        ],
         span: "full",
         showHomework: false,
         homework: blank,
@@ -191,10 +228,18 @@ export const newsletters: Newsletter[] = [
         color: "lilac",
         emoji: "📚",
         name: { en: "ELA", es: "Lengua y Literatura" },
-        body: [],
+        body: [
+          {
+            en: "This week, students will continue building their skills with informational texts as they learn how to identify supporting details, determine the main idea, summarize important information, interpret diagrams, and use context clues and affixes to understand unfamiliar vocabulary. Students will also complete a mid-unit assessment focused on animal defense mechanisms and demonstrate their understanding through reading, discussion, and written responses.",
+            es: "Esta semana, los estudiantes seguirán desarrollando sus destrezas con los textos informativos mientras aprenden a identificar los detalles de apoyo, determinar la idea principal, resumir la información importante, interpretar diagramas y usar las pistas del contexto y los afijos para entender vocabulario nuevo. También completarán una evaluación de mitad de unidad sobre los mecanismos de defensa de los animales y demostrarán lo que saben a través de la lectura, la conversación y las respuestas escritas.",
+          },
+        ],
         span: "half",
         showHomework: true,
-        homework: blank,
+        homework: {
+          en: "Weekly Reading Log due Friday, 11/20.",
+          es: "El registro de lectura semanal se entrega el viernes 20 de noviembre.",
+        },
         // The reading log is the same every week, so the link stays put.
         directionsLink: "/weekly-reading-log-directions.pdf",
         directionsLabel: {
@@ -207,10 +252,18 @@ export const newsletters: Newsletter[] = [
         color: "clay",
         emoji: "➗️",
         name: { en: "Math", es: "Matemáticas" },
-        body: [],
+        body: [
+          {
+            en: "This week, students will review and assess their understanding of major Unit 3 concepts before beginning Unit 4. As they start the new unit, students will explore the relationship between fractions and decimals using hundred grids, diagrams, and models. They will practice representing fractions as decimals, reading and writing decimals to the hundredths place, and reasoning about equivalent fractions and decimals through hands-on activities and mathematical discussions.",
+            es: "Esta semana, los estudiantes repasarán y evaluarán lo que han aprendido de los conceptos principales de la Unidad 3 antes de comenzar la Unidad 4. Al empezar la nueva unidad, explorarán la relación entre las fracciones y los decimales usando cuadrículas de cien, diagramas y modelos. Practicarán representar fracciones como decimales, leer y escribir decimales hasta los centésimos, y razonar sobre fracciones y decimales equivalentes mediante actividades prácticas y conversaciones matemáticas.",
+          },
+        ],
         span: "half",
         showHomework: true,
-        homework: blank,
+        homework: {
+          en: "Worksheet due Friday, 11/20.",
+          es: "La hoja de trabajo se entrega el viernes 20 de noviembre.",
+        },
         directionsLink: "",
         directionsLabel: directions,
       },
@@ -222,7 +275,12 @@ export const newsletters: Newsletter[] = [
           en: "Science & Social Studies",
           es: "Ciencias y Estudios Sociales",
         },
-        body: [],
+        body: [
+          {
+            en: "This week, students are continuing their study of energy and light by exploring how different forms of energy — including light, sound, heat, and electricity — cause motion and create change. Through hands-on investigations, students will discover how light travels and interacts with objects through reflection and refraction. 🔦✨",
+            es: "Esta semana, los estudiantes continúan su estudio de la energía y la luz explorando cómo las distintas formas de energía — luz, sonido, calor y electricidad — producen movimiento y generan cambios. Con investigaciones prácticas, descubrirán cómo viaja la luz y cómo interactúa con los objetos mediante la reflexión y la refracción. 🔦✨",
+          },
+        ],
         span: "full",
         showHomework: false,
         homework: blank,
