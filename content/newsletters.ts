@@ -124,6 +124,114 @@ const directions: Text = { en: "Directions", es: "Instrucciones" };
 /** A fresh, empty week. Copy this block to start each newsletter. */
 export const newsletters: Newsletter[] = [
   {
+    slug: "week-10",
+    week: 10,
+    date: "2026-11-20",
+    dateRange: {
+      en: "November 16 - November 20",
+      es: "16 - 20 de noviembre",
+    },
+
+    updatesLead: blank,
+
+    updates: [],
+
+    updatesClose: blank,
+
+    upcomingDates: [
+      {
+        when: { en: "Monday, November 16th", es: "Lunes 16 de noviembre" },
+        events: [],
+      },
+      {
+        when: { en: "Tuesday, November 17th", es: "Martes 17 de noviembre" },
+        events: [],
+      },
+      {
+        when: {
+          en: "Wednesday, November 18th",
+          es: "Miércoles 18 de noviembre",
+        },
+        events: [],
+      },
+      {
+        when: { en: "Thursday, November 19th", es: "Jueves 19 de noviembre" },
+        events: [],
+      },
+      {
+        when: { en: "Friday, November 20th", es: "Viernes 20 de noviembre" },
+        events: [],
+      },
+    ],
+
+    futureDates: [],
+
+    reminders: [],
+
+    birthdays: [],
+
+    learning: [
+      {
+        id: "sel",
+        color: "mint",
+        emoji: "💛",
+        name: {
+          en: "Social Emotional Learning",
+          es: "Aprendizaje Socioemocional",
+        },
+        body: [],
+        span: "full",
+        showHomework: false,
+        homework: blank,
+        directionsLink: "",
+        directionsLabel: directions,
+      },
+      {
+        id: "reading",
+        color: "lilac",
+        emoji: "📚",
+        name: { en: "ELA", es: "Lengua y Literatura" },
+        body: [],
+        span: "half",
+        showHomework: true,
+        homework: blank,
+        // The reading log is the same every week, so the link stays put.
+        directionsLink: "/weekly-reading-log-directions.pdf",
+        directionsLabel: {
+          en: "Weekly Reading Log Directions",
+          es: "Instrucciones del Registro de Lectura Semanal",
+        },
+      },
+      {
+        id: "math",
+        color: "clay",
+        emoji: "➗️",
+        name: { en: "Math", es: "Matemáticas" },
+        body: [],
+        span: "half",
+        showHomework: true,
+        homework: blank,
+        directionsLink: "",
+        directionsLabel: directions,
+      },
+      {
+        id: "social-studies",
+        color: "ice",
+        emoji: "🔬",
+        name: {
+          en: "Science & Social Studies",
+          es: "Ciencias y Estudios Sociales",
+        },
+        body: [],
+        span: "full",
+        showHomework: false,
+        homework: blank,
+        directionsLink: "",
+        directionsLabel: directions,
+      },
+    ],
+  },
+  {
     slug: "week-9",
     week: 9,
     date: "2026-11-13",
