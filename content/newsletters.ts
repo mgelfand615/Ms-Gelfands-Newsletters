@@ -132,7 +132,12 @@ export const newsletters: Newsletter[] = [
       es: "30 de noviembre - 4 de diciembre",
     },
 
-    updatesLead: blank,
+    // A quiet week: one note, so it reads as a short message rather than a
+    // list of one bullet.
+    updatesLead: {
+      en: "Not many updates this week! Please take a look at what students will be learning when we return from Thanksgiving break. I hope everyone enjoys their Thanksgiving!",
+      es: "¡Esta semana no hay muchas novedades! Por favor eche un vistazo a lo que los estudiantes estarán aprendiendo cuando regresemos de las vacaciones de Acción de Gracias. ¡Espero que todos disfruten su Día de Acción de Gracias!",
+    },
 
     updates: [],
 
@@ -176,7 +181,16 @@ export const newsletters: Newsletter[] = [
           en: "Social Emotional Learning",
           es: "Aprendizaje Socioemocional",
         },
-        body: [],
+        body: [
+          {
+            en: "This week, students will begin learning about **generosity** and how showing kindness, sharing, and helping others can strengthen our classroom community. We will explore ways to be generous with our actions, words, and time.",
+            es: "Esta semana, los estudiantes comenzarán a aprender sobre **la generosidad** y sobre cómo la amabilidad, el compartir y el ayudar a los demás fortalecen la comunidad de nuestro salón. Exploraremos maneras de ser generosos con nuestras acciones, nuestras palabras y nuestro tiempo.",
+          },
+          {
+            en: "**Continue the Conversation at Home:** Ask your child what generosity means, and have them share one way they showed kindness to someone this week. Talk about one act of generosity they can practice at home.",
+            es: "**Continúe la conversación en casa:** Pregúntele a su hijo/a qué significa la generosidad y pídale que comparta una manera en que mostró amabilidad con alguien esta semana. Conversen sobre un acto de generosidad que pueda practicar en casa.",
+          },
+        ],
         span: "full",
         showHomework: false,
         homework: blank,
@@ -188,10 +202,18 @@ export const newsletters: Newsletter[] = [
         color: "lilac",
         emoji: "📚",
         name: { en: "ELA", es: "Lengua y Literatura" },
-        body: [],
+        body: [
+          {
+            en: "Students will continue their research on animal defense mechanisms and participate in collaborative Science Talks where they will share ideas, ask questions, and support their thinking with evidence. They will also learn how to identify the main idea of a text, use key details to support their understanding, recognize modal auxiliaries in reading, and evaluate whether online sources are reliable. Students will finish the week by building vocabulary and determining the meaning of unfamiliar words related to their expert animal studies.",
+            es: "Los estudiantes continuarán su investigación sobre los mecanismos de defensa de los animales y participarán en Conversaciones Científicas en grupo, donde compartirán ideas, harán preguntas y respaldarán su razonamiento con evidencia. También aprenderán a identificar la idea principal de un texto, a usar los detalles clave para apoyar su comprensión, a reconocer los verbos modales en la lectura y a evaluar si una fuente en línea es confiable. Cerrarán la semana ampliando su vocabulario y descubriendo el significado de palabras nuevas relacionadas con el animal que están estudiando como expertos.",
+          },
+        ],
         span: "half",
         showHomework: true,
-        homework: blank,
+        homework: {
+          en: "Weekly Reading Log due Friday, 12/4.",
+          es: "El registro de lectura semanal se entrega el viernes 4 de diciembre.",
+        },
         // The reading log is the same every week, so the link stays put.
         directionsLink: "/weekly-reading-log-directions.pdf",
         directionsLabel: {
@@ -204,10 +226,18 @@ export const newsletters: Newsletter[] = [
         color: "clay",
         emoji: "➗️",
         name: { en: "Math", es: "Matemáticas" },
-        body: [],
+        body: [
+          {
+            en: "Students will strengthen their understanding of place value by comparing and ordering decimals and fractions, exploring the value of 10,000, and working with numbers within 100,000. They will investigate how the same digit can have different values depending on its place, and apply these concepts through problem-solving activities and math discussions.",
+            es: "Los estudiantes fortalecerán su comprensión del valor posicional comparando y ordenando decimales y fracciones, explorando el valor de 10,000 y trabajando con números hasta 100,000. Investigarán cómo un mismo dígito puede tener distintos valores según su posición, y aplicarán estos conceptos en actividades de resolución de problemas y conversaciones matemáticas.",
+          },
+        ],
         span: "half",
         showHomework: true,
-        homework: blank,
+        homework: {
+          en: "Worksheet due Friday, 12/4.",
+          es: "La hoja de trabajo se entrega el viernes 4 de diciembre.",
+        },
         directionsLink: "",
         directionsLabel: directions,
       },
@@ -219,7 +249,12 @@ export const newsletters: Newsletter[] = [
           en: "Science & Social Studies",
           es: "Ciencias y Estudios Sociales",
         },
-        body: [],
+        body: [
+          {
+            en: "Students will begin exploring how North Carolina has changed over time and examine the people and events that influenced those changes. They will learn about important contributions made during the American Revolution, including the role of women in the struggle for independence. At the end of the week, students will demonstrate their understanding through a mid-unit assessment.",
+            es: "Los estudiantes comenzarán a explorar cómo ha cambiado Carolina del Norte con el tiempo y examinarán a las personas y los sucesos que influyeron en esos cambios. Aprenderán sobre aportes importantes hechos durante la Revolución Americana, incluyendo el papel de las mujeres en la lucha por la independencia. Al final de la semana, demostrarán lo aprendido con una evaluación de mitad de unidad.",
+          },
+        ],
         span: "full",
         showHomework: false,
         homework: blank,
